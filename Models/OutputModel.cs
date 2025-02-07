@@ -35,6 +35,14 @@ namespace WhmCalcMaui.Models
             set { SetProperty(ref susHits, Math.Round(value, 2)); }
         }
 
+        /// <summary>
+        /// Полное количество хитов.
+        /// </summary>
+        public double AllHits
+        {
+            get { return NatHits + SustainedHits; }
+        }
+
         private double natWounds;
         /// <summary>
         /// Количесвто вунд БЕЗ леталок.
@@ -53,6 +61,14 @@ namespace WhmCalcMaui.Models
         {
             get { return autoWounds; }
             set { SetProperty(ref autoWounds, Math.Round(value, 2)); }
+        }
+
+        /// <summary>
+        /// Полное количество вунд.
+        /// </summary>
+        public double AllWounds
+        {
+            get { return NatWounds + AutoWounds; }
         }
 
         private double unSavedW;
@@ -75,6 +91,16 @@ namespace WhmCalcMaui.Models
             set { SetProperty(ref devW, Math.Round(value, 2)); }
         }
 
+        private double dmgPerWound;
+        /// <summary>
+        /// Урон за каждую вунду.
+        /// </summary>
+        public double DmgPerWound
+        {
+            get { return dmgPerWound; }
+            set { if (value != dmgPerWound) dmgPerWound = value; }
+        }
+
         private double totalD;
         /// <summary>
         /// Полный урон.
@@ -85,14 +111,14 @@ namespace WhmCalcMaui.Models
             set { SetProperty(ref totalD, Math.Round(value, 2)); }
         }
 
-        private double deadModels;
+        private int deadModels;
         /// <summary>
         /// Количество уничтоженых моделей.
         /// </summary>
-        public double DeadModels
+        public int DeadModels
         {
             get { return deadModels; }
-            set { SetProperty(ref deadModels, Math.Round(value, 0)); }
+            set { SetProperty(ref deadModels, value); }
         }
     }
 }
