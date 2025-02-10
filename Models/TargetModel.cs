@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SQLite;
 using System.ComponentModel.DataAnnotations;
 
 namespace WhmCalcMaui.Models
@@ -6,8 +7,9 @@ namespace WhmCalcMaui.Models
     public sealed partial class TargetModel : ObservableObject
     {
         [ObservableProperty]
-        [property: StringLength(20)]
-        private string targetName = string.Empty;
+        [property: PrimaryKey]
+        [property: StringLength(1, 20)]
+        private string targetName;
 
         [ObservableProperty]
         [property: MaxLength(3)]
@@ -21,6 +23,7 @@ namespace WhmCalcMaui.Models
         [property: MaxLength(3)]
         private int targetW;
 
+        [Ignore]
         public string TargetProps { get => ToString(); }
 
         public override string ToString()
