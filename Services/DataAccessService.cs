@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using SQLite;
 using WhmCalcMaui.Models;
 
 namespace WhmCalcMaui.Services
 {
-    public static class DataAccessService
+    public class DataAccessService : IDataAccessService
     {
-        readonly static string dbPath = FileSystem.Current.AppDataDirectory;
+        private readonly string dbPath = FileSystem.Current.AppDataDirectory;
 
-        readonly static string dbName = "TargetsDb.db3";
+        private readonly string dbName = "TargetsDb.db3";
 
-        static SQLiteAsyncConnection db;
+        private SQLiteAsyncConnection db;
 
-        static async Task Init()
+        private async Task Init()
         {
             if (db is not null)
             {
@@ -35,7 +30,7 @@ namespace WhmCalcMaui.Services
 #endif
         }
 
-        public static async Task AddTargetAsync(TargetModel target)
+        public async Task AddTargetAsync(TargetModel target)
         {
             await Init();
 
@@ -55,7 +50,7 @@ namespace WhmCalcMaui.Services
             await db.InsertAsync(target);
         }
 
-        public static async Task RemoveTargetAsync(string name)
+        public async Task RemoveTargetAsync(string name)
         {
             await Init();
 
@@ -67,7 +62,7 @@ namespace WhmCalcMaui.Services
             }
         }
 
-        public static async Task<IEnumerable<TargetModel>> GetTargetsAsync()
+        public async Task<IEnumerable<TargetModel>> GetTargetsAsync()
         {
             await Init();
 
@@ -76,13 +71,13 @@ namespace WhmCalcMaui.Services
             return result;
         }
 
-        public static async Task<TargetModel?> GetTargetByNameAsync(string name)
+        public async Task<TargetModel?> GetTargetByNameAsync(string name)
         {
             await Init();
             // метод GetAsync выдает эксепшен, если не находит соотв. цель, по-этому ищем через запрос.
             var result = await db.Table<TargetModel>().Where(t => t.TargetName == name).ToListAsync();
 
-            if(result.Count != 1)
+            if (result.Count != 1)
             {
                 // Ошибка при поиске цели по имени.
                 return null;
