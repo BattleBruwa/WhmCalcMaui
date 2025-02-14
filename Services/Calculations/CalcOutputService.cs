@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WhmCalcMaui.Models;
+﻿using WhmCalcMaui.Models;
 
 namespace WhmCalcMaui.Services.Calculations
 {
-    public class CalcOutput
+    public class CalcOutputService
     {
         private void ResolveAttacks(AttackerModel attacker, OutputModel output)
         {

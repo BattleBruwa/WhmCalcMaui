@@ -6,6 +6,23 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
+    <!--My Colors-->
+    <!--Dark-->
+    <Color x:Key="MainWindowBackgroundColorDark">#252422</Color>
+    <Color x:Key="MainOutlineColorDark">#eb5e28</Color>
+    <Color x:Key="BoxesInnerColorDark">#403d39</Color>
+    <Color x:Key="TextMainColorDark">#fffcf2</Color>
+    <Color x:Key="ButtonMainColorDark">#a6a2a2</Color>
+
+    <!--Light-->
+    <Color x:Key="MainWindowBackgroundColorLight">#dcdde1</Color>
+    <Color x:Key="MainOutlineColorLight">#718093</Color>
+    <Color x:Key="BoxesInnerColorLight">#fff</Color>
+    <Color x:Key="TextMainColorLight">Black</Color>
+    <Color x:Key="ButtonMainColorLight">#808080</Color>
+    <!--~~~~~~~~~~~~~~~-->
+
+    <!--Maui Colors-->
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>

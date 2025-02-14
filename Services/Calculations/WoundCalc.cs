@@ -27,7 +27,7 @@ namespace WhmCalcMaui.Services.Calculations
             }
 
             // Есть +1 ту вунд
-            if (mods.Any(m => m.Id == 8))
+            if (mods.Any(m => m.Id == 14))
             {
                 // С реролом 1
                 if (mods.Any(m => m.Id == 3))

@@ -1,0 +1,72 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Re-Roll 1s to Hit",
+    "ToolTip": "Each time an attack is made, re-roll a Hit roll of 1"
+  },
+  {
+    "Id": 2,
+    "Name": "Re-Roll to Hit",
+    "ToolTip": "Each time an attack is made, you can re-roll that attack's Hit roll"
+  },
+  {
+    "Id": 3,
+    "Name": "Re-Roll 1s to Wound",
+    "ToolTip": "Each time an attack is made, re-roll a Wound roll of 1"
+  },
+  {
+    "Id": 4,
+    "Name": "Re-Roll to Wound",
+    "ToolTip": "Each time an attack is made, you can re-roll that attack's Wound roll"
+  },
+  {
+    "Id": 5,
+    "Name": "Lethal Hits",
+    "ToolTip": "Each time an attack is made, a Critical Hit automatically wounds the target"
+  },
+  {
+    "Id": 6,
+    "Name": "Sustained Hits X",
+    "ToolTip": "Each Critical Hit scores X additional hits on the target"
+  },
+  {
+    "Id": 7,
+    "Name": "Devastating Wounds",
+    "ToolTip": "Saving throws cannot be made against Critical Wounds scored by this attack"
+  },
+  {
+    "Id": 8,
+    "Name": "Minus 1 to Wound",
+    "ToolTip": "Subtract 1 from the Wound roll"
+  },
+  {
+    "Id": 9,
+    "Name": "Anti - X+",
+    "ToolTip": "An unmodified Wound roll of X+ against a target with the matching keyword scores a Critical Wound"
+  },
+  {
+    "Id": 10,
+    "Name": "Feel No Pain X+",
+    "ToolTip": "Each time this model would lose a wound, roll one D6: if the result equals or exceeds X, that wound is not lost"
+  },
+  {
+    "Id": 11,
+    "Name": "Invulnerable Save X+",
+    "ToolTip": "Never modified by an attack's AP"
+  },
+  {
+    "Id": 12,
+    "Name": "Minus 1 to Damage",
+    "ToolTip": "Subtract 1 from Damage characteristic"
+  },
+  {
+    "Id": 13,
+    "Name": "Half Damage",
+    "ToolTip": "Each time an attack is allocated to this model, halve the Damage characteristic of that attack"
+  },
+  {
+    "Id": 14,
+    "Name": "Plus 1 to Wound",
+    "ToolTip": "Add 1 to the Wound roll"
+  }
+]
