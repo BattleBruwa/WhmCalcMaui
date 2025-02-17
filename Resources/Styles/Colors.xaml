@@ -22,7 +22,7 @@
     <Color x:Key="ButtonMainColorLight">#808080</Color>
     <!--~~~~~~~~~~~~~~~-->
 
-    <!--Maui Colors-->
+    <!--Maui Default Colors-->
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>

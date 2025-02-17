@@ -14,7 +14,7 @@ namespace WhmCalcMaui.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        ModListService ModListService { get; set; }
+        public ModListService ModListService { get; set; }
 
         IDataAccessService DataAccessService { get; set; }
 
@@ -36,7 +36,7 @@ namespace WhmCalcMaui.ViewModels
 
         public ObservableCollection<TargetModel> Targets { get; set; }
 
-        public OutputModel Output { get; set; }
+        public OutputModel Output { get; set; } = new();
 
         public MainViewModel(ModListService modListService, IDataAccessService dataAccessService, CalcOutputService calculator)
         {
@@ -45,7 +45,10 @@ namespace WhmCalcMaui.ViewModels
             Calculator = calculator;
             Attacker.PropertyChanged += Attacker_PropertyChanged;
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
+            // Тест ----------------------
             Task test = Task.Run(Test);
+            SelectedTarget = new TargetModel { TargetName = "Space Marine", TargetT = 4, TargetSv = 3, TargetW = 2 };
+            // ---------------------------
         }
 
         private void Attacker_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -70,7 +73,8 @@ namespace WhmCalcMaui.ViewModels
         {
             while (true)
             {
-                Debug.WriteLine($"Attacker: {Attacker.AttackerA}");
+                Debug.WriteLine($"Attacker:\nA: {Attacker?.AttackerA} WS: {Attacker?.AttackerWS} S: {Attacker?.AttackerS} AP: {Attacker?.AttackerAP} D: {Attacker?.AttackerD}");
+                Debug.WriteLine($"Output:\nA: {Output?.Attacks} H: {Output?.AllHits} W: {Output?.AllWounds} US: {Output?.UnSavedWounds} D: {Output?.TotalDamage}");
                 Thread.Sleep(2000);
             }
         }

@@ -2,18 +2,140 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:customViews="clr-namespace:WhmCalcMaui.Views.CustomControls"
+             xmlns:models="clr-namespace:WhmCalcMaui.Models"
+             xmlns:viewModels="clr-namespace:WhmCalcMaui.ViewModels"
              x:Class="WhmCalcMaui.Views.MainView"
-             Title="MainView">
+             x:DataType="viewModels:MainViewModel"
+             Background="{AppThemeBinding Light={StaticResource MainWindowBackgroundColorLight}, Dark={StaticResource MainWindowBackgroundColorDark}}"
+             Padding="8">
     <VerticalStackLayout>
 
         <!--Аутпут грид-->
-        <Grid ColumnDefinitions="*,*,*,*,*,*">
-
+        <Grid ColumnDefinitions="*,*,*,*,*,*"
+              RowDefinitions="1*,2*"
+              BindingContext="{Binding Output}"
+              x:DataType="models:OutputModel">
+            <Label Text="Attacks"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="0"
+                   Grid.Row="0" />
+            <Label Text="Hits"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="0" />
+            <Label Text="Wounds"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="2"
+                   Grid.Row="0" />
+            <Label Text="UnSaved"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="3"
+                   Grid.Row="0" />
+            <Label Text="DeadModels"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="4"
+                   Grid.Row="0" />
+            <Label Text="TotalDamage"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="5"
+                   Grid.Row="0" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding Attacks, Mode=OneWay}"
+                                         IsReadOnly="True"
+                                         Grid.Column="0"
+                                         Grid.Row="1" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding NatHits, Mode=OneWay}"
+                                         IsReadOnly="True"
+                                         Grid.Column="1"
+                                         Grid.Row="1" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding NatWounds, Mode=OneWay}"
+                                         IsReadOnly="True"
+                                         Grid.Column="2"
+                                         Grid.Row="1" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding UnSavedWounds, Mode=OneWay}"
+                                         IsReadOnly="True"
+                                         Grid.Column="3"
+                                         Grid.Row="1" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding DeadModels, Mode=OneWay}"
+                                         IsReadOnly="True"
+                                         Grid.Column="4"
+                                         Grid.Row="1" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding TotalDamage, Mode=OneWay}"
+                                         IsReadOnly="True"
+                                         Grid.Column="5"
+                                         Grid.Row="1" />
         </Grid>
         <!--Мод грид-->
         <Grid ColumnDefinitions="*,*"
-              RowDefinitions="*,*,*,*,*,*,*">
-
+              RowDefinitions="*,*,*,*,*,*,*"
+              x:DataType="models:ModificatorModel"
+              x:Name="ModGrid"
+              BindingContext="{Binding ModListService.ModificatorsList}">
+            <customViews:CustomCheckBoxView Grid.Column="0"
+                                            Grid.Row="0"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="0"
+                                            Grid.Row="1"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="0"
+                                            Grid.Row="2"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="0"
+                                            Grid.Row="3"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="0"
+                                            Grid.Row="4"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="0"
+                                            Grid.Row="5"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="0"
+                                            Grid.Row="6"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="0"
+                                            Grid.Row="7"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="1"
+                                            Grid.Row="0"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="1"
+                                            Grid.Row="1"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="1"
+                                            Grid.Row="2"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="1"
+                                            Grid.Row="3"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="1"
+                                            Grid.Row="4"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="1"
+                                            Grid.Row="5"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
+            <customViews:CustomCheckBoxView Grid.Column="1"
+                                            Grid.Row="6"
+                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
+                                            Name="{Binding Name}" />
         </Grid>
         <!--Таргет грид-->
         <Grid ColumnDefinitions="4*, 1*, 1*">
@@ -21,20 +143,50 @@
         </Grid>
         <!--Инпут грид-->
         <Grid ColumnDefinitions="*,*,*,*,*"
-              RowDefinitions="1*, 2*">
+              x:DataType="models:AttackerModel"
+              RowDefinitions="1*, 2*"
+              BindingContext="{Binding Attacker}">
             <Label Text="Attacks"
-                   Style="{StaticResource labelStyle}" />
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="0"
+                   Grid.Row="0" />
             <Label Text="Skill"
-                   Style="{StaticResource labelStyle}" />
-            <Label Text="Strenght"
-                   Style="{StaticResource labelStyle}" />
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="0" />
+            <Label Text="Strength"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="2"
+                   Grid.Row="0" />
             <Label Text="ArmorPen"
-                   Style="{StaticResource labelStyle}" />
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="3"
+                   Grid.Row="0" />
             <Label Text="Damage"
-                   Style="{StaticResource labelStyle}" />
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="4"
+                   Grid.Row="0" />
 
             <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding Source=Attacker, Path=AttackerA}" />
+                                         Text="{Binding AttackerA, Mode=TwoWay}"
+                                         Grid.Column="0"
+                                         Grid.Row="1" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding AttackerWS, Mode=TwoWay}"
+                                         Grid.Column="1"
+                                         Grid.Row="1" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding AttackerS, Mode=TwoWay}"
+                                         Grid.Column="2"
+                                         Grid.Row="1" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding AttackerAP, Mode=TwoWay}"
+                                         Grid.Column="3"
+                                         Grid.Row="1" />
+            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+                                         Text="{Binding AttackerD, Mode=TwoWay}"
+                                         Grid.Column="4"
+                                         Grid.Row="1" />
         </Grid>
 
     </VerticalStackLayout>
