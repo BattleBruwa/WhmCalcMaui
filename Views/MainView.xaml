@@ -71,75 +71,19 @@
                                          Grid.Row="1" />
         </Grid>
         <!--Мод грид-->
-        <Grid ColumnDefinitions="*,*"
-              RowDefinitions="*,*,*,*,*,*,*"
-              x:DataType="models:ModificatorModel"
-              x:Name="ModGrid"
-              BindingContext="{Binding ModListService.ModificatorsList}">
-            <customViews:CustomCheckBoxView Grid.Column="0"
-                                            Grid.Row="0"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="0"
-                                            Grid.Row="1"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="0"
-                                            Grid.Row="2"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="0"
-                                            Grid.Row="3"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="0"
-                                            Grid.Row="4"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="0"
-                                            Grid.Row="5"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="0"
-                                            Grid.Row="6"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="0"
-                                            Grid.Row="7"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="1"
-                                            Grid.Row="0"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="1"
-                                            Grid.Row="1"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="1"
-                                            Grid.Row="2"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="1"
-                                            Grid.Row="3"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="1"
-                                            Grid.Row="4"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="1"
-                                            Grid.Row="5"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-            <customViews:CustomCheckBoxView Grid.Column="1"
-                                            Grid.Row="6"
-                                            ControlTemplate="{StaticResource RadioButtonTemplate}"
-                                            Name="{Binding Name}" />
-        </Grid>
+        <CollectionView x:Name="modCollection"
+                        ItemsSource="{Binding ModListService.ModificatorsList}"
+                        ItemsLayout="VerticalGrid, 2"
+                        EmptyView="No items">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:ModificatorModel">
+                    <customViews:CheckBoxView Name="{Binding Name}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
         <!--Таргет грид-->
         <Grid ColumnDefinitions="4*, 1*, 1*">
-
         </Grid>
         <!--Инпут грид-->
         <Grid ColumnDefinitions="*,*,*,*,*"

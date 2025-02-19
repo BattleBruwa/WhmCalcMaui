@@ -14,7 +14,7 @@ namespace WhmCalcMaui.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        public ModListService ModListService { get; set; }
+        public ModListService ModListService { get; private set; }
 
         IDataAccessService DataAccessService { get; set; }
 
@@ -75,6 +75,12 @@ namespace WhmCalcMaui.ViewModels
             {
                 Debug.WriteLine($"Attacker:\nA: {Attacker?.AttackerA} WS: {Attacker?.AttackerWS} S: {Attacker?.AttackerS} AP: {Attacker?.AttackerAP} D: {Attacker?.AttackerD}");
                 Debug.WriteLine($"Output:\nA: {Output?.Attacks} H: {Output?.AllHits} W: {Output?.AllWounds} US: {Output?.UnSavedWounds} D: {Output?.TotalDamage}");
+                Debug.WriteLine("Modlist:");
+                foreach(var i in ModListService.ModificatorsList)
+                {
+                    Debug.Write(i.Name + " ");
+                }
+                Debug.WriteLine("");
                 Thread.Sleep(2000);
             }
         }

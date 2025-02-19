@@ -8,7 +8,7 @@ namespace WhmCalcMaui.Services
 {
     public class ModListService
     {
-        public List<ModificatorModel> ModificatorsList { get; private set; }
+        public ObservableCollection<ModificatorModel> ModificatorsList { get; private set; } = [];
 
         public ObservableCollection<ModificatorModel> PickedMods { get; set; } = [];
 
@@ -16,17 +16,26 @@ namespace WhmCalcMaui.Services
 
         public ModListService()
         {
-            initTask = LoadModsAsync();
+            initTask = InitAsync();
+        }
+
+        private async Task InitAsync()
+        {
+            await LoadModsAsync();
         }
 
         private async Task LoadModsAsync()
         {
             try
             {
-            using Stream stream = await FileSystem.OpenAppPackageFileAsync("Modificators.json");
+                using Stream stream = await FileSystem.OpenAppPackageFileAsync("Modificators.json");
 
-            ModificatorsList = await JsonSerializer.DeserializeAsync<List<ModificatorModel>>(stream);
+                var tempCollection = await JsonSerializer.DeserializeAsync<ObservableCollection<ModificatorModel>>(stream);
 
+                foreach (var mod in tempCollection)
+                {
+                    ModificatorsList.Add(mod);
+                }
             }
             catch (Exception ex)
             {

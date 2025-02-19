@@ -26,46 +26,6 @@
             Brush="{AppThemeBinding Light={StaticResource TextMainColorLight}, Dark={StaticResource TextMainColorDark}}"
             Radius="3" />
 
-    <ControlTemplate x:Key="RadioButtonTemplate">
-        <Border x:Name="RBborder"
-                Stroke="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}"
-                StrokeThickness="3"
-                StrokeShape="RoundRectangle 5"
-                Background="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}">
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CheckedStates">
-                        <VisualState x:Name="Checked">
-                            <VisualState.Setters>
-                                <Setter TargetName="RBborder"
-                                        Property="Opacity"
-                                        Value="1" />
-                                <Setter TargetName="RBname"
-                                        Property="Shadow"
-                                        Value="{StaticResource modShadow}" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState x:Name="Unchecked">
-                            <VisualState.Setters>
-                                <Setter TargetName="RBborder"
-                                        Property="Opacity"
-                                        Value="0.5" />
-                                <Setter TargetName="RBname"
-                                        Property="Shadow"
-                                        Value="{Null}" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </VisualStateManager.VisualStateGroups>
-            <Label x:Name="RBname"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   Text="{Binding Source={RelativeSource TemplatedParent}, Path=Name}"
-                   TextColor="{AppThemeBinding Light={StaticResource TextMainColorLight}, Dark={StaticResource TextMainColorDark}}" />
-        </Border>
-    </ControlTemplate>
-
     <!--Views/CustomControls/CustomEntryView-->
     <ControlTemplate x:Key="EntryControlTemplate">
         <Border Stroke="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}"
