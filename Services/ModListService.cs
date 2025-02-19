@@ -2,17 +2,21 @@
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CommunityToolkit.Mvvm.ComponentModel;
 using WhmCalcMaui.Models;
 
 namespace WhmCalcMaui.Services
 {
-    public class ModListService
+    public partial class ModListService : ObservableObject
     {
         public ObservableCollection<ModificatorModel> ModificatorsList { get; private set; } = [];
 
         public ObservableCollection<ModificatorModel> PickedMods { get; set; } = [];
 
         private Task initTask;
+
+        [ObservableProperty]
+        private bool isBusy = true;
 
         public ModListService()
         {
@@ -22,6 +26,7 @@ namespace WhmCalcMaui.Services
         private async Task InitAsync()
         {
             await LoadModsAsync();
+            IsBusy = false;
         }
 
         private async Task LoadModsAsync()

@@ -71,7 +71,7 @@
                                          Grid.Row="1" />
         </Grid>
         <!--Мод грид-->
-        <CollectionView x:Name="modCollection"
+        <!--<CollectionView x:Name="modCollection"
                         ItemsSource="{Binding ModListService.ModificatorsList}"
                         ItemsLayout="VerticalGrid, 2"
                         EmptyView="No items">
@@ -81,7 +81,67 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 
-        </CollectionView>
+        </CollectionView>-->
+        <Grid x:Name="modGrid"
+              ColumnDefinitions="*,*"
+              RowDefinitions="*,*,*,*,*,*,*">
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="0"
+                                      Grid.Row="0" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="0"
+                                      Grid.Row="1" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="0"
+                                      Grid.Row="2" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="0"
+                                      Grid.Row="3" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="0"
+                                      Grid.Row="4" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="0"
+                                      Grid.Row="5" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="0"
+                                      Grid.Row="6" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="1"
+                                      Grid.Row="0" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="1"
+                                      Grid.Row="1" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="1"
+                                      Grid.Row="2" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="1"
+                                      Grid.Row="3" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="1"
+                                      Grid.Row="4" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="1"
+                                      Grid.Row="5" />
+            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+                                      Name="{Binding Name}"
+                                      Grid.Column="1"
+                                      Grid.Row="6" />
+        </Grid>
         <!--Таргет грид-->
         <Grid ColumnDefinitions="4*, 1*, 1*">
         </Grid>
