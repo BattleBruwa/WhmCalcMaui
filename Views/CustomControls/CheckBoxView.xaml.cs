@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Windows.Input;
 
 namespace WhmCalcMaui.Views.CustomControls;
 
@@ -23,18 +24,43 @@ public partial class CheckBoxView : ContentView
         set => SetValue(IsCheckedProperty, value);
     }
 
+
+    public static readonly BindableProperty CommandProperty =
+  BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(CheckBoxView), null);
+
+    public ICommand Command
+    {
+        get => (ICommand)GetValue(CommandProperty);
+        set => SetValue(CommandProperty, value);
+    }
+
+
+    public static readonly BindableProperty CommandParameterProperty =
+  BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(CheckBoxView), null);
+
+    public object CommandParameter
+    {
+        get => (object)GetValue(CommandParameterProperty);
+        set => SetValue(CommandParameterProperty, value);
+    }
+
     public CheckBoxView()
 	{
-		InitializeComponent();
+		InitializeComponent();  
         UpdateVisualState();
         var tGR = new TapGestureRecognizer();
         tGR.Tapped += OnTapped;
         GestureRecognizers.Add(tGR);
     }
 
-    private void OnTapped(object? sender, TappedEventArgs e)
+    private async void OnTapped(object? sender, TappedEventArgs e)
     {
+        VisualStateManager.GoToState(this, "Pressed");
+        await Task.Delay(50);
+
         IsChecked = !IsChecked;
+
+        this.Command?.Execute(CommandParameter);
 #if DEBUG
         Debug.WriteLine($"{Name} is tapped!");
 #endif

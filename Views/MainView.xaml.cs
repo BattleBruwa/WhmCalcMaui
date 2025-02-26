@@ -42,11 +42,27 @@ public partial class MainView : ContentPage
             await Task.Delay(500);
         }
 
-        List<IView> children = modGrid.Children.Where(i => i.GetType() == typeof(CheckBoxView)).ToList();
+        List<IView> children = modGrid.Children.Where(i => i.GetType() == typeof(CheckBoxView) || i.GetType() == typeof(PickerCheckBox)).ToList();
 
         for (int i = 0; i < children.Count; i++)
         {
-            (children[i] as CheckBoxView).BindingContext = _viewModel.ModListService.ModificatorsList[i];
+            if (children[i] is CheckBoxView cb)
+            {
+                cb.BindingContext = _viewModel.ModListService.ModificatorsList[i];
+
+                cb.CommandParameter = cb;
+
+                cb.Command = _viewModel.ManageSelectedModsCommand;
+            }
+
+            if (children[i] is PickerCheckBox pcb)
+            {
+                pcb.BindingContext = _viewModel.ModListService.ModificatorsList[i];
+
+                pcb.CommandParameter = pcb;
+
+                pcb.Command = _viewModel.ManageConModsCommand;
+            }
         }
     }
 

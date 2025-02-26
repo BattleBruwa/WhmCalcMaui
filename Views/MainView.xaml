@@ -6,6 +6,7 @@
              xmlns:viewModels="clr-namespace:WhmCalcMaui.ViewModels"
              x:Class="WhmCalcMaui.Views.MainView"
              x:DataType="viewModels:MainViewModel"
+             x:Name="this"
              Background="{AppThemeBinding Light={StaticResource MainWindowBackgroundColorLight}, Dark={StaticResource MainWindowBackgroundColorDark}}"
              Padding="8">
     <VerticalStackLayout>
@@ -85,58 +86,97 @@
         <Grid x:Name="modGrid"
               ColumnDefinitions="*,*"
               RowDefinitions="*,*,*,*,*,*,*">
+            <!--рр 1 хит-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="0" />
+            <!--рр хит-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="1" />
+            <!--рр 1 вунд-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="2" />
+            <!--рр вунд-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="3" />
+            <!--леталки-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="4" />
-            <customViews:CheckBoxView x:DataType="models:ModificatorModel"
+            <!--сус хитс-->
+            <!--<customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="0"
-                                      Grid.Row="5" />
+                                      Grid.Row="5" />-->
+            <customViews:PickerCheckBox x:DataType="models:ModificatorModel"
+                                        Name="{Binding Name}"
+                                        Grid.Column="0"
+                                        Grid.Row="5">
+                <x:Arguments>
+                    <x:Int32>3</x:Int32>
+                    <x:String></x:String>
+                </x:Arguments>
+            </customViews:PickerCheckBox>
+            <!--<Border Grid.Column="0"
+                    Grid.Row="5"
+                    Stroke="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}"
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 5"
+                    Background="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}">
+                <Picker x:Name="SusHitsControl" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Sustained Hits 1</x:String>
+                            <x:String>Sustained Hits 2</x:String>
+                            <x:String>Sustained Hits 3</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Border>-->
+            <!--дев вундс-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="6" />
+            <!---1 вунд-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="0" />
+            <!--анти х-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="1" />
+            <!--фнп-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="2" />
+            <!--инвуль-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="3" />
+            <!---1 дмг-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="4" />
+            <!--халф дмг-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="5" />
+            <!--+1 вунд-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
                                       Grid.Column="1"

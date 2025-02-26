@@ -26,7 +26,7 @@
   },
   {
     "Id": 6,
-    "Name": "Sustained Hits X",
+    "Name": "Sustained Hits",
     "ToolTip": "Each Critical Hit scores X additional hits on the target"
   },
   {
@@ -41,17 +41,17 @@
   },
   {
     "Id": 9,
-    "Name": "Anti - X+",
+    "Name": "AntiX",
     "ToolTip": "An unmodified Wound roll of X+ against a target with the matching keyword scores a Critical Wound"
   },
   {
     "Id": 10,
-    "Name": "Feel No Pain X+",
+    "Name": "Feel No Pain",
     "ToolTip": "Each time this model would lose a wound, roll one D6: if the result equals or exceeds X, that wound is not lost"
   },
   {
     "Id": 11,
-    "Name": "Invulnerable Save X+",
+    "Name": "Invulnerable Save",
     "ToolTip": "Never modified by an attack's AP"
   },
   {

@@ -6,9 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using WhmCalcMaui.Models;
 using WhmCalcMaui.Services;
 using WhmCalcMaui.Services.Calculations;
+using WhmCalcMaui.Views.CustomControls;
 
 namespace WhmCalcMaui.ViewModels
 {
@@ -69,6 +71,50 @@ namespace WhmCalcMaui.ViewModels
             }
         }
 
+        [RelayCommand]
+        private void ManageSelectedMods(object obj)
+        {
+            if (obj is null || obj is not CheckBoxView cb)
+                return;
+
+            var mod = cb.BindingContext as ModificatorModel;
+
+            if (mod is not null)
+            {
+                if (cb.IsChecked)
+                {
+                    ModListService.PickedMods.Add(mod);
+                }
+                if (!cb.IsChecked)
+                {
+                    ModListService.PickedMods.Remove(mod);
+                }
+            }
+        }
+
+        [RelayCommand]
+        private void ManageConMods(object obj)
+        {
+            if (obj is null || obj is not PickerCheckBox cb)
+                return;
+
+            var mod = cb.BindingContext as ModificatorModel;
+
+            if (mod is not null)
+            {
+                mod.Condition = cb.SelectedValue;
+
+                if (cb.SelectedValue is not null && !ModListService.PickedMods.Contains(mod))
+                {
+                    ModListService.PickedMods.Add(mod);
+                }
+                if (cb.SelectedValue is null)
+                {
+                    ModListService.PickedMods.Remove(mod);
+                }
+            }
+        }
+
         private void Test()
         {
             while (true)
@@ -76,9 +122,14 @@ namespace WhmCalcMaui.ViewModels
                 Debug.WriteLine($"Attacker:\nA: {Attacker?.AttackerA} WS: {Attacker?.AttackerWS} S: {Attacker?.AttackerS} AP: {Attacker?.AttackerAP} D: {Attacker?.AttackerD}");
                 Debug.WriteLine($"Output:\nA: {Output?.Attacks} H: {Output?.AllHits} W: {Output?.AllWounds} US: {Output?.UnSavedWounds} D: {Output?.TotalDamage}");
                 Debug.WriteLine("Modlist:");
-                foreach(var i in ModListService.ModificatorsList)
+                foreach(var i in ModListService.PickedMods)
                 {
                     Debug.Write(i.Name + " ");
+
+                    if(i.Condition is not null)
+                    {
+                        Debug.Write(i.Condition + " ");
+                    }
                 }
                 Debug.WriteLine("");
                 Thread.Sleep(2000);
