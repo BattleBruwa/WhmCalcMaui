@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -48,7 +49,7 @@ public partial class PickerCheckBox : ContentView
     // Длина анимации
     private const uint animationLength = 250;
 
-    public PickerCheckBox(int num, string symbol = "")
+    public PickerCheckBox(/*int num*/IList<int> nums, string symbol = "")
     {
         InitializeComponent();
         UpdateVisualState();
@@ -56,7 +57,7 @@ public partial class PickerCheckBox : ContentView
         var tGR = new TapGestureRecognizer();
         tGR.Tapped += OnTapped;
         GestureRecognizers.Add(tGR);
-        PopulateGrid(num, symbol);
+        PopulateGrid(nums, symbol);
     }
     // Обработчик для самого чекбокса.
     private async void OnTapped(object? sender, TappedEventArgs e)
@@ -104,48 +105,88 @@ public partial class PickerCheckBox : ContentView
     /// <summary>
     /// Заполнение чекбокса кнопками.
     /// </summary>
-    /// <param name="num">Количество кнопок значений.</param>
+    /// <param name="nums">Значения для кнопок.</param>
     /// <param name="symbol">Символ мода (++ для инвуля, +++ для фнп).</param>
-    private void PopulateGrid(int num, string symbol)
+    private void PopulateGrid(/*int num*/IList<int> nums, string symbol)
     {
-        for (int i = 1; i <= num; i++)
+        int currentColumn = 0;
+
+        foreach (int num in nums)
         {
             CollectionGrid.ColumnDefinitions.Add(new ColumnDefinition());
 
             Button btn = new()
             {
-                Text = $"{i + symbol}"
+                Text = $"{num + symbol}",
+                Style = (Style)App.Current.Resources["PickerButton"]
             };
 
             btn.Clicked += Btn_Clicked;
 
-            CollectionGrid.Add(btn, (i - 1));
-        }
+            CollectionGrid.Add(btn, currentColumn);
 
+            currentColumn++;
+        }
+        // Кнопка закрывания / отключения мода
         CollectionGrid.ColumnDefinitions.Add(new ColumnDefinition());
 
         Button btnClose = new()
         {
-            Text = "X"
+            Text = "X",
+            Style = (Style)App.Current.Resources["PickerButton"],
+            TextColor = Colors.Red,
+            FontAttributes = FontAttributes.Bold
         };
 
         btnClose.Clicked += BtnClose_Clicked;
         ;
 
-        CollectionGrid.Add(btnClose, (num + 1));
+        CollectionGrid.Add(btnClose, currentColumn);
     }
 
     // Изменение текста при изменении выбранного значения.
     private static void SelectedValueChanged(BindableObject bindable, object oldValue, object newValue)
     {
         var picker = (PickerCheckBox)bindable;
+
+        var buttons = picker.CollectionGrid.Children.ToList();
+
         if (newValue is null)
         {
             picker.NameLabel.Text = picker.Name;
+
+            foreach (var btn in buttons)
+            {
+                if (btn is Button btnt)
+                {
+                    btnt.BorderWidth = 1;
+
+                    btnt.FontAttributes = FontAttributes.None;
+                }
+            }
         }
         if (newValue is not null)
         {
             picker.NameLabel.Text = picker.Name + " " + picker.SelectedValue + picker.valueSymbol;
+
+            foreach (var btn in buttons)
+            {
+                if (btn is Button btnt)
+                {
+                    if ((int)char.GetNumericValue(btnt.Text[0]) == (int)newValue)
+                    {
+                        btnt.BorderWidth = 2;
+
+                        btnt.FontAttributes = FontAttributes.Bold;
+                    }
+                    else
+                    {
+                        btnt.BorderWidth = 1;
+
+                        btnt.FontAttributes = FontAttributes.None;
+                    }
+                }
+            }
         }
     }
 

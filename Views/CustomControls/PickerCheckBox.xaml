@@ -60,7 +60,8 @@
                    TextColor="{AppThemeBinding Light={StaticResource TextMainColorLight}, Dark={StaticResource TextMainColorDark}}" />
 
             <Grid x:Name="CollectionGrid"
-                  IsVisible="False">
+                  BackgroundColor="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}"
+                  IsVisible="False" Padding="2,0,2,0">
             </Grid>
         </Grid>
     </Border>
