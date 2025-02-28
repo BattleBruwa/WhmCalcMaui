@@ -73,6 +73,9 @@
 	  <MauiXaml Update="Views\CustomControls\CustomCheckBoxView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CustomControls\OutputEntryView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\CustomControls\PickerCheckBox.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

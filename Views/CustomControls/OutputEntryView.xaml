@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WhmCalcMaui.Views.CustomControls.OutputEntryView"
+             x:Name="this">
+
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroupList>
+            <VisualStateGroup x:Name="vStates">
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter TargetName="singleLabel"
+                                Property="IsVisible"
+                                Value="True" />
+                        <Setter TargetName="doubleLabel1"
+                                Property="IsVisible"
+                                Value="False" />
+                        <Setter TargetName="doubleLabel2"
+                                Property="IsVisible"
+                                Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Doubled">
+                    <VisualState.Setters>
+                        <Setter TargetName="singleLabel"
+                                Property="IsVisible"
+                                Value="False" />
+                        <Setter TargetName="doubleLabel1"
+                                Property="IsVisible"
+                                Value="True" />
+                        <Setter TargetName="doubleLabel2"
+                                Property="IsVisible"
+                                Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateGroupList>
+    </VisualStateManager.VisualStateGroups>
+
+    <Grid RowDefinitions="*,2*">
+        <Grid>
+        
+        </Grid>
+        <Label x:Name="singleLabel" Grid.RowSpan="2"
+               Style="{StaticResource labelStyle}"
+               IsVisible="True"
+               Text="{Binding Source={x:Reference this}, Path=LabelOneText}"/>
+
+        <Label x:Name="doubleLabel1" Grid.Row="0"
+               Style="{StaticResource labelStyle}"
+               IsVisible="False"
+               Text="{Binding Source={x:Reference this}, Path=LabelTwoText}"/>
+
+        <Label x:Name="doubleLabel2" Grid.Row="1"
+               Style="{StaticResource labelStyle}"
+               IsVisible="False"
+               Text="{Binding Source={x:Reference this}, Path=LabelOneText}"/>
+    </Grid>
+
+</ContentView>

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -49,7 +48,7 @@ public partial class PickerCheckBox : ContentView
     // Длина анимации
     private const uint animationLength = 250;
 
-    public PickerCheckBox(/*int num*/IList<int> nums, string symbol = "")
+    public PickerCheckBox(IList<int> nums, string symbol = "")
     {
         InitializeComponent();
         UpdateVisualState();
@@ -68,7 +67,7 @@ public partial class PickerCheckBox : ContentView
         {
             case "Unchecked":
 
-                CollectionGrid.TranslateTo(0, 0, animationLength, animationEasing);
+                _ = CollectionGrid.TranslateTo(0, 0, animationLength, animationEasing);
 
                 VisualStateManager.GoToState(this, "Pressed");
 
@@ -89,7 +88,7 @@ public partial class PickerCheckBox : ContentView
                 break;
             case "Checked":
 
-                CollectionGrid.TranslateTo(0, 0, animationLength, animationEasing);
+                _ = CollectionGrid.TranslateTo(0, 0, animationLength, animationEasing);
 
                 VisualStateManager.GoToState(this, "Pressed");
 
@@ -107,7 +106,7 @@ public partial class PickerCheckBox : ContentView
     /// </summary>
     /// <param name="nums">Значения для кнопок.</param>
     /// <param name="symbol">Символ мода (++ для инвуля, +++ для фнп).</param>
-    private void PopulateGrid(/*int num*/IList<int> nums, string symbol)
+    private void PopulateGrid(IList<int> nums, string symbol)
     {
         int currentColumn = 0;
 
@@ -118,7 +117,7 @@ public partial class PickerCheckBox : ContentView
             Button btn = new()
             {
                 Text = $"{num + symbol}",
-                Style = (Style)App.Current.Resources["PickerButton"]
+                Style = (Style)Application.Current.Resources["PickerButton"]
             };
 
             btn.Clicked += Btn_Clicked;
@@ -133,7 +132,7 @@ public partial class PickerCheckBox : ContentView
         Button btnClose = new()
         {
             Text = "X",
-            Style = (Style)App.Current.Resources["PickerButton"],
+            Style = (Style)Application.Current.Resources["PickerButton"],
             TextColor = Colors.Red,
             FontAttributes = FontAttributes.Bold
         };
@@ -144,7 +143,7 @@ public partial class PickerCheckBox : ContentView
         CollectionGrid.Add(btnClose, currentColumn);
     }
 
-    // Изменение текста при изменении выбранного значения.
+    // Изменение текста и оформления кнопок при изменении выбранного значения.
     private static void SelectedValueChanged(BindableObject bindable, object oldValue, object newValue)
     {
         var picker = (PickerCheckBox)bindable;

@@ -51,6 +51,8 @@
                 Value="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
         <Setter Property="BorderWidth"
                 Value="1" />
+        <Setter Property="CornerRadius"
+                Value="4" />
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource TextMainColorLight}, Dark={StaticResource TextMainColorDark}}" />
         <Setter Property="MinimumHeightRequest"
