@@ -1,6 +1,7 @@
 using Microsoft.Maui.Controls;
 using WhmCalcMaui.ViewModels;
 using WhmCalcMaui.Views.CustomControls;
+using System.Collections.Specialized;
 
 namespace WhmCalcMaui.Views;
 
@@ -16,7 +17,6 @@ public partial class MainView : ContentPage
         InitializeComponent();
         BindingContext = _viewModel;
         //_viewModel.PropertyChanged += _viewModel_PropertyChanged;
-
         initTask = BindingInitAsync();
     }
 

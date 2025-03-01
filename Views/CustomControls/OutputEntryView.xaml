@@ -2,6 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhmCalcMaui.Views.CustomControls.OutputEntryView"
+             xmlns:customViews="clr-namespace:WhmCalcMaui.Views.CustomControls"
              x:Name="this">
 
     <VisualStateManager.VisualStateGroups>
@@ -9,26 +10,32 @@
             <VisualStateGroup x:Name="vStates">
                 <VisualState x:Name="Normal">
                     <VisualState.Setters>
-                        <Setter TargetName="singleLabel"
+                        <Setter TargetName="singleStateGrid"
                                 Property="IsVisible"
                                 Value="True" />
-                        <Setter TargetName="doubleLabel1"
+                        <Setter TargetName="doubleStateGrid1"
                                 Property="IsVisible"
                                 Value="False" />
-                        <Setter TargetName="doubleLabel2"
+                        <Setter TargetName="doubleStateGrid2"
                                 Property="IsVisible"
                                 Value="False" />
+                        <!--<Setter TargetName="doubleStateGrid1"
+                                Property="TranslationY"
+                                Value="-20" />
+                        <Setter TargetName="doubleStateGrid2"
+                                Property="TranslationY"
+                                Value="20" />-->
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Doubled">
                     <VisualState.Setters>
-                        <Setter TargetName="singleLabel"
+                        <Setter TargetName="singleStateGrid"
                                 Property="IsVisible"
                                 Value="False" />
-                        <Setter TargetName="doubleLabel1"
+                        <Setter TargetName="doubleStateGrid1"
                                 Property="IsVisible"
                                 Value="True" />
-                        <Setter TargetName="doubleLabel2"
+                        <Setter TargetName="doubleStateGrid2"
                                 Property="IsVisible"
                                 Value="True" />
                     </VisualState.Setters>
@@ -37,24 +44,47 @@
         </VisualStateGroupList>
     </VisualStateManager.VisualStateGroups>
 
-    <Grid RowDefinitions="*,2*">
-        <Grid>
-        
+    <Grid RowDefinitions="*,*">
+        <Grid x:Name="singleStateGrid"
+              Grid.Row="0"
+              Grid.RowSpan="2"
+              RowDefinitions="*,2*"
+              IsVisible="True">
+
+            <Label Grid.Row="0"
+                   Style="{StaticResource labelStyle}"
+                   Text="{Binding Source={x:Reference this}, Path=EntryOneHeader}" />
+
+            <customViews:EntryView Text="{Binding Source={x:Reference this}, Path=EntryOneText}"
+                                   Grid.Row="1"
+                                   IsReadOnly="True" />
         </Grid>
-        <Label x:Name="singleLabel" Grid.RowSpan="2"
-               Style="{StaticResource labelStyle}"
-               IsVisible="True"
-               Text="{Binding Source={x:Reference this}, Path=LabelOneText}"/>
 
-        <Label x:Name="doubleLabel1" Grid.Row="0"
-               Style="{StaticResource labelStyle}"
-               IsVisible="False"
-               Text="{Binding Source={x:Reference this}, Path=LabelTwoText}"/>
+        <Grid x:Name="doubleStateGrid1"
+              Grid.Row="0"
+              RowDefinitions="*,2*">
 
-        <Label x:Name="doubleLabel2" Grid.Row="1"
-               Style="{StaticResource labelStyle}"
-               IsVisible="False"
-               Text="{Binding Source={x:Reference this}, Path=LabelOneText}"/>
+            <Label Grid.Row="0"
+                   Style="{StaticResource labelStyle}"
+                   Text="{Binding Source={x:Reference this}, Path=EntryTwoHeader}" />
+
+            <customViews:EntryView Text="{Binding Source={x:Reference this}, Path=EntryTwoText}"
+                                   Grid.Row="1"
+                                   IsReadOnly="True" />
+        </Grid>
+
+        <Grid x:Name="doubleStateGrid2"
+              Grid.Row="1"
+              RowDefinitions="*,2*"
+              IsVisible="False">
+
+            <Label Grid.Row="0"
+                   Style="{StaticResource labelStyle}"
+                   Text="{Binding Source={x:Reference this}, Path=EntryOneHeader}" />
+
+            <customViews:EntryView Text="{Binding Source={x:Reference this}, Path=EntryOneText}"
+                                   Grid.Row="1"
+                                   IsReadOnly="True" />
+        </Grid>
     </Grid>
-
 </ContentView>

@@ -20,10 +20,10 @@
                    Style="{StaticResource labelStyle}"
                    Grid.Column="0"
                    Grid.Row="0" />
-            <Label Text="Hits"
+            <!--<Label Text="Hits"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="1"
-                   Grid.Row="0" />
+                   Grid.Row="0" />-->
             <Label Text="Wounds"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="2"
@@ -40,16 +40,23 @@
                    Style="{StaticResource labelStyle}"
                    Grid.Column="5"
                    Grid.Row="0" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding Attacks, Mode=OneWay}"
-                                         IsReadOnly="True"
-                                         Grid.Column="0"
-                                         Grid.Row="1" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
+            <customViews:EntryView Text="{Binding Attacks}"
+                                   IsReadOnly="True"
+                                   Grid.Column="0"
+                                   Grid.Row="1" />
+            <!--<customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
                                          Text="{Binding NatHits, Mode=OneWay}"
                                          IsReadOnly="True"
                                          Grid.Column="1"
-                                         Grid.Row="1" />
+                                         Grid.Row="1" />-->
+            <customViews:OutputEntryView x:Name="HitsTextBox"
+                                         Grid.Column="1"
+                                         Grid.Row="0"
+                                         Grid.RowSpan="2"
+                                         EntryOneHeader="Hits"
+                                         EntryTwoHeader="SusHits"
+                                         EntryOneText="{Binding NatHits}"
+                                         EntryTwoText="{Binding SustainedHits}" />
             <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
                                          Text="{Binding NatWounds, Mode=OneWay}"
                                          IsReadOnly="True"

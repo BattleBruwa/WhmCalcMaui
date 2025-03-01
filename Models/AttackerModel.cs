@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace WhmCalcMaui.Models
 {
-    public sealed partial class AttackerModel : ObservableObject
+    public partial class AttackerModel : ObservableObject
     {
         [ObservableProperty]
         [property: StringLength(10)]

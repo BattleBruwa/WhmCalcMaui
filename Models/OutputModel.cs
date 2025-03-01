@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace WhmCalcMaui.Models
 {
-    public sealed partial class OutputModel : ObservableObject
+    public partial class OutputModel : ObservableObject
     {
 		private double attacks;
         /// <summary>

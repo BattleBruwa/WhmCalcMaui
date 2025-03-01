@@ -112,6 +112,8 @@ namespace WhmCalcMaui.ViewModels
                 {
                     ModListService.PickedMods.Remove(mod);
                 }
+
+                Recalculate();
             }
         }
 
@@ -120,7 +122,7 @@ namespace WhmCalcMaui.ViewModels
             while (true)
             {
                 Debug.WriteLine($"Attacker:\nA: {Attacker?.AttackerA} WS: {Attacker?.AttackerWS} S: {Attacker?.AttackerS} AP: {Attacker?.AttackerAP} D: {Attacker?.AttackerD}");
-                Debug.WriteLine($"Output:\nA: {Output?.Attacks} H: {Output?.AllHits} W: {Output?.AllWounds} US: {Output?.UnSavedWounds} D: {Output?.TotalDamage}");
+                Debug.WriteLine($"Output:\nA: {Output?.Attacks} H: {Output?.NatHits} Sus: {Output?.SustainedHits} W: {Output?.AllWounds} US: {Output?.UnSavedWounds} D: {Output?.TotalDamage}");
                 Debug.WriteLine("Modlist:");
                 foreach(var i in ModListService.PickedMods)
                 {
