@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhmCalcMaui.Views.CustomControls.EntryView"
-             x:Name="this">
+             x:Name="this" HeightRequest="56">
 
     <Border Stroke="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}"
             StrokeThickness="3"

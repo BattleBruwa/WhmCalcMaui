@@ -14,17 +14,20 @@
                                 Property="IsVisible"
                                 Value="True" />
                         <Setter TargetName="doubleStateGrid1"
-                                Property="IsVisible"
-                                Value="False" />
+                                Property="Opacity"
+                                Value="0" />
                         <Setter TargetName="doubleStateGrid2"
-                                Property="IsVisible"
-                                Value="False" />
+                                Property="Opacity"
+                                Value="0" />
                         <!--<Setter TargetName="doubleStateGrid1"
-                                Property="TranslationY"
-                                Value="-20" />
-                        <Setter TargetName="doubleStateGrid2"
-                                Property="TranslationY"
-                                Value="20" />-->
+                                Property="IsVisible"
+                                Value="False" />-->
+                        <!--<Setter TargetName="upperBoxHeader"
+                                Property="Opacity"
+                                Value="0" />-->
+                        <!--<Setter TargetName="doubleStateGrid2"
+                                Property="IsVisible"
+                                Value="False" />-->
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Doubled">
@@ -32,6 +35,15 @@
                         <Setter TargetName="singleStateGrid"
                                 Property="IsVisible"
                                 Value="False" />
+                        <Setter TargetName="doubleStateGrid1"
+                                Property="Opacity"
+                                Value="1" />
+                        <!--<Setter TargetName="upperBoxHeader"
+                                Property="Opacity"
+                                Value="1" />-->
+                        <Setter TargetName="doubleStateGrid2"
+                                Property="Opacity"
+                                Value="1" />
                         <Setter TargetName="doubleStateGrid1"
                                 Property="IsVisible"
                                 Value="True" />
@@ -48,15 +60,16 @@
         <Grid x:Name="singleStateGrid"
               Grid.Row="0"
               Grid.RowSpan="2"
-              RowDefinitions="*,2*"
-              IsVisible="True">
+              RowDefinitions="1*,2*">
 
             <Label Grid.Row="0"
+                   VerticalOptions="End"
                    Style="{StaticResource labelStyle}"
                    Text="{Binding Source={x:Reference this}, Path=EntryOneHeader}" />
 
             <customViews:EntryView Text="{Binding Source={x:Reference this}, Path=EntryOneText}"
                                    Grid.Row="1"
+                                   VerticalOptions="Start"
                                    IsReadOnly="True" />
         </Grid>
 
@@ -64,7 +77,8 @@
               Grid.Row="0"
               RowDefinitions="*,2*">
 
-            <Label Grid.Row="0"
+            <Label x:Name="upperBoxHeader"
+                   Grid.Row="0"
                    Style="{StaticResource labelStyle}"
                    Text="{Binding Source={x:Reference this}, Path=EntryTwoHeader}" />
 
@@ -75,8 +89,7 @@
 
         <Grid x:Name="doubleStateGrid2"
               Grid.Row="1"
-              RowDefinitions="*,2*"
-              IsVisible="False">
+              RowDefinitions="*,2*">
 
             <Label Grid.Row="0"
                    Style="{StaticResource labelStyle}"

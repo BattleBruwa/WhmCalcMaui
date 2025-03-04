@@ -13,37 +13,43 @@
 
         <!--Аутпут грид-->
         <Grid ColumnDefinitions="*,*,*,*,*,*"
-              RowDefinitions="1*,2*"
+              RowDefinitions="54,108"
               BindingContext="{Binding Output}"
               x:DataType="models:OutputModel">
             <Label Text="Attacks"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="0"
-                   Grid.Row="0" />
+                   Grid.Row="0"
+                   VerticalOptions="End" />
             <!--<Label Text="Hits"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="1"
                    Grid.Row="0" />-->
-            <Label Text="Wounds"
+            <!--<Label Text="Wounds"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="2"
-                   Grid.Row="0" />
-            <Label Text="UnSaved"
+                   Grid.Row="0"
+                   VerticalOptions="End" />-->
+            <!--<Label Text="UnSaved"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="3"
-                   Grid.Row="0" />
+                   Grid.Row="0"
+                   VerticalOptions="End" />-->
             <Label Text="DeadModels"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="4"
-                   Grid.Row="0" />
+                   Grid.Row="0"
+                   VerticalOptions="End" />
             <Label Text="TotalDamage"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="5"
-                   Grid.Row="0" />
+                   Grid.Row="0"
+                   VerticalOptions="End" />
             <customViews:EntryView Text="{Binding Attacks}"
                                    IsReadOnly="True"
                                    Grid.Column="0"
-                                   Grid.Row="1" />
+                                   Grid.Row="1"
+                                   VerticalOptions="Start" />
             <!--<customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
                                          Text="{Binding NatHits, Mode=OneWay}"
                                          IsReadOnly="True"
@@ -57,26 +63,47 @@
                                          EntryTwoHeader="SusHits"
                                          EntryOneText="{Binding NatHits}"
                                          EntryTwoText="{Binding SustainedHits}" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding NatWounds, Mode=OneWay}"
-                                         IsReadOnly="True"
-                                         Grid.Column="2"
-                                         Grid.Row="1" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding UnSavedWounds, Mode=OneWay}"
-                                         IsReadOnly="True"
-                                         Grid.Column="3"
-                                         Grid.Row="1" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding DeadModels, Mode=OneWay}"
-                                         IsReadOnly="True"
-                                         Grid.Column="4"
-                                         Grid.Row="1" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding TotalDamage, Mode=OneWay}"
-                                         IsReadOnly="True"
-                                         Grid.Column="5"
-                                         Grid.Row="1" />
+            <!--<customViews:EntryView Text="{Binding NatWounds}"
+                                   IsReadOnly="True"
+                                   Grid.Column="2"
+                                   Grid.Row="1"
+                                   VerticalOptions="Start" />-->
+            <customViews:OutputEntryView Grid.Column="2"
+                                         Grid.Row="0"
+                                         Grid.RowSpan="2"
+                                         EntryOneHeader="Wounds"
+                                         EntryTwoHeader="Lethals"
+                                         EntryOneText="{Binding NatWounds}"
+                                         EntryTwoText="{Binding AutoWounds}" />
+            <!--<customViews:EntryView Text="{Binding UnSavedWounds}"
+                                   IsReadOnly="True"
+                                   Grid.Column="3"
+                                   Grid.Row="1"
+                                   VerticalOptions="Start" />-->
+            <customViews:OutputEntryView Grid.Column="3"
+                                         Grid.Row="0"
+                                         Grid.RowSpan="2"
+                                         EntryOneHeader="UnSaved"
+                                         EntryTwoHeader="DevWounds"
+                                         EntryOneText="{Binding UnSavedWounds}"
+                                         EntryTwoText="{Binding DevWounds}" />
+            <customViews:EntryView Text="{Binding DeadModels}"
+                                   IsReadOnly="True"
+                                   Grid.Column="4"
+                                   Grid.Row="1"
+                                   VerticalOptions="Start" />
+            <!--<customViews:OutputEntryView Grid.Column="4"
+                                         Grid.Row="0"
+                                         Grid.RowSpan="2"
+                                         EntryOneHeader="DeadModels"
+                                         EntryTwoHeader="FNP"
+                                         EntryOneText="{Binding DeadModels}"
+                                         EntryTwoText="{Binding }" />-->
+            <customViews:EntryView Text="{Binding TotalDamage}"
+                                   IsReadOnly="True"
+                                   Grid.Column="5"
+                                   Grid.Row="1"
+                                   VerticalOptions="Start" />
         </Grid>
         <!--Мод грид-->
         <Grid x:Name="modGrid"
@@ -221,26 +248,21 @@
                    Grid.Column="4"
                    Grid.Row="0" />
 
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding AttackerA, Mode=TwoWay}"
-                                         Grid.Column="0"
-                                         Grid.Row="1" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding AttackerWS, Mode=TwoWay}"
-                                         Grid.Column="1"
-                                         Grid.Row="1" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding AttackerS, Mode=TwoWay}"
-                                         Grid.Column="2"
-                                         Grid.Row="1" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding AttackerAP, Mode=TwoWay}"
-                                         Grid.Column="3"
-                                         Grid.Row="1" />
-            <customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding AttackerD, Mode=TwoWay}"
-                                         Grid.Column="4"
-                                         Grid.Row="1" />
+            <customViews:EntryView Text="{Binding AttackerA}"
+                                   Grid.Column="0"
+                                   Grid.Row="1" />
+            <customViews:EntryView Text="{Binding AttackerWS}"
+                                   Grid.Column="1"
+                                   Grid.Row="1" />
+            <customViews:EntryView Text="{Binding AttackerS}"
+                                   Grid.Column="2"
+                                   Grid.Row="1" />
+            <customViews:EntryView Text="{Binding AttackerAP}"
+                                   Grid.Column="3"
+                                   Grid.Row="1" />
+            <customViews:EntryView Text="{Binding AttackerD}"
+                                   Grid.Column="4"
+                                   Grid.Row="1" />
         </Grid>
 
     </VerticalStackLayout>

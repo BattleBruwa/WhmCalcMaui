@@ -1,4 +1,3 @@
-
 namespace WhmCalcMaui.Views.CustomControls;
 
 public partial class OutputEntryView : ContentView
@@ -9,7 +8,7 @@ public partial class OutputEntryView : ContentView
 
     public string EntryOneHeader
     {
-        get => (string)GetValue(EntryOneHeaderProperty);    
+        get => (string)GetValue(EntryOneHeaderProperty);
         set => SetValue(EntryOneHeaderProperty, value);
     }
 
@@ -28,7 +27,7 @@ public partial class OutputEntryView : ContentView
   BindableProperty.Create(nameof(EntryTwoHeader), typeof(string), typeof(OutputEntryView), string.Empty);
 
     public string EntryTwoHeader
-    {   
+    {
         get => (string)GetValue(EntryTwoHeaderProperty);
         set => SetValue(EntryTwoHeaderProperty, value);
     }
@@ -44,47 +43,14 @@ public partial class OutputEntryView : ContentView
     }
 
     // Анимация
-    private static readonly Easing animationEasing = Easing.CubicInOut;
+    private static readonly Easing animationEasing = Easing.Linear;
     // Длина анимации
-    private const uint animationLength = 250;
+    private const uint animationLength = 3000;
 
     public OutputEntryView()
-	{
-		InitializeComponent();
-	}
-
-    //public async void ChangeState()
-    //{
-    //    string? currentState = GetCurrentVisualState();
-
-    //    switch (currentState)
-    //    {
-    //        case "Normal":
-
-    //            _ = doubleStateGrid1.TranslateTo(0, 0, animationLength, animationEasing);
-
-    //            _ = doubleStateGrid2.TranslateTo(0, 0, animationLength, animationEasing);
-
-    //            VisualStateManager.GoToState(this, "Doubled");
-
-    //            break;
-    //        case "Doubled":
-
-    //            Task a = doubleStateGrid1.TranslateTo(0, -30, animationLength, animationEasing);
-
-    //            Task b = doubleStateGrid2.TranslateTo(0, 30, animationLength, animationEasing);
-
-    //            await Task.WhenAll(b, a);
-
-    //            //await Task.WhenAll(doubleStateGrid1.TranslateTo(0, -30, animationLength, animationEasing), doubleStateGrid2.TranslateTo(0, 30, animationLength, animationEasing));
-
-    //            VisualStateManager.GoToState(this, "Normal");
-
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //}
+    {
+        InitializeComponent();
+    }
 
     private static async void ConModPropChanged(BindableObject bindable, object oldValue, object newValue)
     {
@@ -92,15 +58,13 @@ public partial class OutputEntryView : ContentView
 
         if (string.IsNullOrWhiteSpace(newValue as string) || (newValue as string) == "0")
         {
-            //Task taskA = output.doubleStateGrid1.TranslateTo(0, 30, animationLength, animationEasing);
-
-            //Task taskB = output.doubleStateGrid2.TranslateTo(0, -30, animationLength, animationEasing);
+            double test = (double)output.Parent.GetValue(HeightProperty);
 
             await Task.WhenAll(
 
-                output.doubleStateGrid1.TranslateTo(0, 30, animationLength, animationEasing),
-
-                output.doubleStateGrid2.TranslateTo(0, -30, animationLength, animationEasing)
+                output.TranslateBoxes(output.doubleStateGrid1, /*(double)output.Parent.GetValue(HeightProperty) / 6*/ 27),
+                output.TranslateBoxes(output.doubleStateGrid2, /*(double)output.Parent.GetValue(HeightProperty) / -3*/ -54),
+                output.upperBoxHeader.FadeTo(0, animationLength, animationEasing)
 
                 );
 
@@ -108,9 +72,9 @@ public partial class OutputEntryView : ContentView
             return;
         }
 
-        _ = output.doubleStateGrid1.TranslateTo(0, 0, animationLength, animationEasing);
-
-        _ = output.doubleStateGrid2.TranslateTo(0, 0, animationLength, animationEasing);
+        _ = output.TranslateBoxes(output.doubleStateGrid1, 0);
+        _ = output.TranslateBoxes(output.doubleStateGrid2, 0);
+        _ = output.upperBoxHeader.FadeTo(1, animationLength, animationEasing);
 
         VisualStateManager.GoToState(output, "Doubled");
     }
@@ -126,5 +90,15 @@ public partial class OutputEntryView : ContentView
         var group = states[0];
 
         return group?.CurrentState.Name;
+    }
+
+    private Task<bool> TranslateBoxes(VisualElement view, double y)
+    {
+        var tcs = new TaskCompletionSource<bool>();
+
+        new Animation(v => view.TranslationY = v, view.TranslationY, y)
+            .Commit(view, nameof(TranslateBoxes), 8, animationLength, animationEasing, (f, a) => tcs.SetResult(a));
+
+        return tcs.Task;
     }
 }
