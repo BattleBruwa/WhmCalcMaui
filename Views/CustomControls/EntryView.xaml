@@ -2,7 +2,8 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhmCalcMaui.Views.CustomControls.EntryView"
-             x:Name="this" HeightRequest="56">
+             x:Name="this"
+             HeightRequest="56">
 
     <Border Stroke="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}"
             StrokeThickness="3"
@@ -13,9 +14,10 @@
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center"
                FontAttributes="Bold"
-               FontSize="30"
+               FontSize="Large"
                Text="{Binding Source={x:Reference this}, Path=Text}"
                IsReadOnly="{Binding Source={x:Reference this}, Path=IsReadOnly}"
+               Keyboard="{Binding Source={x:Reference this}, Path=Keyboard}"
                Background="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}" />
     </Border>
 </ContentView>

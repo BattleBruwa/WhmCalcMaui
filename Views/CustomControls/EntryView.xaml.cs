@@ -1,3 +1,5 @@
+using System;
+
 namespace WhmCalcMaui.Views.CustomControls;
 
 public partial class EntryView : ContentView
@@ -18,6 +20,16 @@ public partial class EntryView : ContentView
     {
         get => (bool)GetValue(IsReadOnlyProperty);
         set => SetValue(IsReadOnlyProperty, value);
+    }
+
+    public static readonly BindableProperty KeyboardProperty =
+  BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(EntryView), Keyboard.Default, coerceValue: (o, v) => (Keyboard)v ?? Keyboard.Default);
+
+    [System.ComponentModel.TypeConverter(typeof(Microsoft.Maui.Converters.KeyboardTypeConverter))]
+    public Keyboard Keyboard
+    {
+        get => (Keyboard)GetValue(KeyboardProperty);
+        set => SetValue(KeyboardProperty, value);
     }
 
     public EntryView()

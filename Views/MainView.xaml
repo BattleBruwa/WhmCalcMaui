@@ -12,6 +12,13 @@
     <VerticalStackLayout>
 
         <!--Аутпут грид-->
+        <Label Text="Result:"
+               Style="{StaticResource labelStyle}"
+               FontSize="Medium"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Start" />
+
+        <!--Высота строк багуется и высчитывается неправильно, если ставить "1*,2*", по-этому поставлены абсолютные значения "54, 108"-->
         <Grid ColumnDefinitions="*,*,*,*,*,*"
               RowDefinitions="54,108"
               BindingContext="{Binding Output}"
@@ -21,26 +28,12 @@
                    Grid.Column="0"
                    Grid.Row="0"
                    VerticalOptions="End" />
-            <!--<Label Text="Hits"
-                   Style="{StaticResource labelStyle}"
-                   Grid.Column="1"
-                   Grid.Row="0" />-->
-            <!--<Label Text="Wounds"
-                   Style="{StaticResource labelStyle}"
-                   Grid.Column="2"
-                   Grid.Row="0"
-                   VerticalOptions="End" />-->
-            <!--<Label Text="UnSaved"
-                   Style="{StaticResource labelStyle}"
-                   Grid.Column="3"
-                   Grid.Row="0"
-                   VerticalOptions="End" />-->
-            <Label Text="DeadModels"
+            <Label Text="Dead Models"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="4"
                    Grid.Row="0"
                    VerticalOptions="End" />
-            <Label Text="TotalDamage"
+            <Label Text="Total Damage"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="5"
                    Grid.Row="0"
@@ -50,24 +43,14 @@
                                    Grid.Column="0"
                                    Grid.Row="1"
                                    VerticalOptions="Start" />
-            <!--<customViews:CustomEntryView ControlTemplate="{StaticResource EntryControlTemplate}"
-                                         Text="{Binding NatHits, Mode=OneWay}"
-                                         IsReadOnly="True"
-                                         Grid.Column="1"
-                                         Grid.Row="1" />-->
             <customViews:OutputEntryView x:Name="HitsTextBox"
                                          Grid.Column="1"
                                          Grid.Row="0"
                                          Grid.RowSpan="2"
                                          EntryOneHeader="Hits"
-                                         EntryTwoHeader="SusHits"
+                                         EntryTwoHeader="Sus Hits"
                                          EntryOneText="{Binding NatHits}"
                                          EntryTwoText="{Binding SustainedHits}" />
-            <!--<customViews:EntryView Text="{Binding NatWounds}"
-                                   IsReadOnly="True"
-                                   Grid.Column="2"
-                                   Grid.Row="1"
-                                   VerticalOptions="Start" />-->
             <customViews:OutputEntryView Grid.Column="2"
                                          Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -75,11 +58,6 @@
                                          EntryTwoHeader="Lethals"
                                          EntryOneText="{Binding NatWounds}"
                                          EntryTwoText="{Binding AutoWounds}" />
-            <!--<customViews:EntryView Text="{Binding UnSavedWounds}"
-                                   IsReadOnly="True"
-                                   Grid.Column="3"
-                                   Grid.Row="1"
-                                   VerticalOptions="Start" />-->
             <customViews:OutputEntryView Grid.Column="3"
                                          Grid.Row="0"
                                          Grid.RowSpan="2"
@@ -106,6 +84,12 @@
                                    VerticalOptions="Start" />
         </Grid>
         <!--Мод грид-->
+        <Label Text="Modificators:"
+               Style="{StaticResource labelStyle}"
+               FontSize="Medium"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Start" />
+
         <Grid x:Name="modGrid"
               ColumnDefinitions="*,*"
               RowDefinitions="*,*,*,*,*,*,*">
@@ -220,9 +204,49 @@
                                       Grid.Row="6" />
         </Grid>
         <!--Таргет грид-->
-        <Grid ColumnDefinitions="4*, 1*, 1*">
+        <Label Text="Target:"
+               Style="{StaticResource labelStyle}"
+               FontSize="Medium"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Start" />
+
+        <Grid ColumnDefinitions="*, *, *, *, *"
+              RowDefinitions="2*, *, 2*"
+              BindingContext="{Binding SelectedTarget}"
+              x:DataType="models:TargetModel">
+
+            <Label Text="Toughtnes"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="0"
+                   Grid.Row="1" />
+            <Label Text="Save"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="1"
+                   Grid.Row="1" />
+            <Label Text="Wounds"
+                   Style="{StaticResource labelStyle}"
+                   Grid.Column="2"
+                   Grid.Row="1" />
+            <customViews:EntryView Text="{Binding TargetT}"
+                                   IsReadOnly="True"
+                                   Grid.Column="0"
+                                   Grid.Row="2" />
+            <customViews:EntryView Text="{Binding TargetSv}"
+                                   IsReadOnly="True"
+                                   Grid.Column="1"
+                                   Grid.Row="2" />
+            <customViews:EntryView Text="{Binding TargetW}"
+                                   IsReadOnly="True"
+                                   Grid.Column="2"
+                                   Grid.Row="2" />
         </Grid>
         <!--Инпут грид-->
+        <Label Text="Attacker:"
+               Style="{StaticResource labelStyle}"
+               FontSize="Medium"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Start" />
+
         <Grid ColumnDefinitions="*,*,*,*,*"
               x:DataType="models:AttackerModel"
               RowDefinitions="1*, 2*"
@@ -250,19 +274,24 @@
 
             <customViews:EntryView Text="{Binding AttackerA}"
                                    Grid.Column="0"
-                                   Grid.Row="1" />
+                                   Grid.Row="1"
+                                   Keyboard="Numeric" />
             <customViews:EntryView Text="{Binding AttackerWS}"
                                    Grid.Column="1"
-                                   Grid.Row="1" />
+                                   Grid.Row="1"
+                                   Keyboard="Numeric" />
             <customViews:EntryView Text="{Binding AttackerS}"
                                    Grid.Column="2"
-                                   Grid.Row="1" />
+                                   Grid.Row="1"
+                                   Keyboard="Numeric" />
             <customViews:EntryView Text="{Binding AttackerAP}"
                                    Grid.Column="3"
-                                   Grid.Row="1" />
+                                   Grid.Row="1"
+                                   Keyboard="Numeric" />
             <customViews:EntryView Text="{Binding AttackerD}"
                                    Grid.Column="4"
-                                   Grid.Row="1" />
+                                   Grid.Row="1"
+                                   Keyboard="Numeric" />
         </Grid>
 
     </VerticalStackLayout>

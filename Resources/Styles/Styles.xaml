@@ -14,9 +14,9 @@
         <Setter Property="HorizontalTextAlignment"
                 Value="Center" />
         <Setter Property="FontAttributes"
-                Value="Bold" />
+                Value="None" />
         <Setter Property="FontSize"
-                Value="18" />
+                Value="Small" />
         <Setter Property="Background"
                 Value="Transparent" />
     </Style>
