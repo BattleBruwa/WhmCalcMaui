@@ -210,12 +210,12 @@
                FontAttributes="Bold"
                HorizontalTextAlignment="Start" />
 
-        <Grid ColumnDefinitions="*, *, *, *, *"
+        <Grid ColumnDefinitions="*, *, *, *, *, *"
               RowDefinitions="2*, *, 2*"
               BindingContext="{Binding SelectedTarget}"
               x:DataType="models:TargetModel">
 
-            <Label Text="Toughtnes"
+            <Label Text="Toughness"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="0"
                    Grid.Row="1" />

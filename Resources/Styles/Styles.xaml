@@ -17,6 +17,8 @@
                 Value="None" />
         <Setter Property="FontSize"
                 Value="Small" />
+        <Setter Property="FontAutoScalingEnabled"
+                Value="True" />
         <Setter Property="Background"
                 Value="Transparent" />
     </Style>
