@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WhmCalcMaui.Views.CustomControls.TargetBoxView"
+             xmlns:drawable="clr-namespace:WhmCalcMaui.Views.Drawable"
+             x:Name="this">
+
+    <ContentView.Resources>
+        <drawable:TargetBoxArrow x:Key="drawableArrow"/>
+    </ContentView.Resources>
+
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroupList>
+            <VisualStateGroup x:Name="CheckedStates">
+                <VisualState x:Name="Normal">
+                </VisualState>
+                <VisualState x:Name="Pressed">
+                    <VisualState.Setters>
+                        <Setter TargetName="this"
+                                Property="Scale"
+                                Value="0.95" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateGroupList>
+    </VisualStateManager.VisualStateGroups>
+
+    <Border Style="{StaticResource borderStyle}">
+
+        <Grid ColumnDefinitions="4*, 1*">
+
+            <Label Grid.Column="0"/>
+            <GraphicsView Grid.Column="1" Drawable="{StaticResource drawableArrow}"/>
+        </Grid>
+    </Border>
+
+</ContentView>

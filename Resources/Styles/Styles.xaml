@@ -5,6 +5,18 @@
 
     <!--My Styles-->
 
+    <Style TargetType="Border"
+           x:Key="borderStyle">
+        <Setter Property="Stroke"
+                Value="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+        <Setter Property="StrokeThickness"
+                Value="3" />
+        <Setter Property="StrokeShape"
+                Value="RoundRectangle 5" />
+        <Setter Property="Background"
+                Value="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}" />
+    </Style>
+
     <Style TargetType="Label"
            x:Key="labelStyle">
         <Setter Property="TextColor"

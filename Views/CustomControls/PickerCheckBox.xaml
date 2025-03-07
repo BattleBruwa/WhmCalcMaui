@@ -44,11 +44,7 @@
         </VisualStateGroupList>
     </VisualStateManager.VisualStateGroups>
 
-    <Border x:Name="Border"
-            Stroke="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}"
-            StrokeThickness="3"
-            StrokeShape="RoundRectangle 5"
-            Background="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}">
+    <Border x:Name="Border" Style="{StaticResource borderStyle}">
         <Grid>
 
             <Label x:Name="NameLabel"

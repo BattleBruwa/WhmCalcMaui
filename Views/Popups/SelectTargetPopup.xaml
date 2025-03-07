@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="WhmCalcMaui.Views.Popups.SelectTargetPopup"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:models="clr-namespace:WhmCalcMaui.Models"
+               x:Name="this">
+
+    <ScrollView>
+        <CollectionView ItemsLayout="VerticalList"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding Source={x:Reference this}, Path=Targets}"
+                        SelectionChanged="CollectionView_SelectionChanged" EmptyView="Failed to load targets. Try to reopen the app.">
+
+            <CollectionView.ItemTemplate>
+
+                <DataTemplate x:DataType="models:TargetModel">
+
+                    <Border Style="{StaticResource borderStyle}">
+
+                        <VerticalStackLayout>
+                            <Label Style="{StaticResource labelStyle}"
+                                   Text="{Binding TargetName}" />
+                            <Label Style="{StaticResource labelStyle}"
+                                   Text="{Binding TargetProps}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+
+</toolkit:Popup>

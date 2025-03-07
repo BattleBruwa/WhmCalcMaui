@@ -5,10 +5,7 @@
              x:Name="this"
              HeightRequest="56">
 
-    <Border Stroke="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}"
-            StrokeThickness="3"
-            StrokeShape="RoundRectangle 5"
-            Background="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}">
+    <Border Style="{StaticResource borderStyle}">
 
         <Entry TextColor="{AppThemeBinding Light={StaticResource TextMainColorLight}, Dark={StaticResource TextMainColorDark}}"
                VerticalTextAlignment="Center"
