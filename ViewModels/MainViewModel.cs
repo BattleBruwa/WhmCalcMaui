@@ -5,12 +5,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WhmCalcMaui.Models;
 using WhmCalcMaui.Services;
 using WhmCalcMaui.Services.Calculations;
 using WhmCalcMaui.Views.CustomControls;
+using WhmCalcMaui.Views.Popups;
 
 namespace WhmCalcMaui.ViewModels
 {
@@ -115,6 +117,13 @@ namespace WhmCalcMaui.ViewModels
 
                 Recalculate();
             }
+        }
+
+        private async void ShowSelectTargetAsync()
+        {
+            var popup = new SelectTargetPopup(Targets);
+
+            var result = await Shell.Current.ShowPopupAsync(popup);
         }
 
         private void Test()

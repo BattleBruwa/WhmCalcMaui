@@ -215,29 +215,31 @@
               BindingContext="{Binding SelectedTarget}"
               x:DataType="models:TargetModel">
 
+            <customViews:TargetBoxView Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Text="{Binding TargetName}"/>
+
             <Label Text="Toughness"
                    Style="{StaticResource labelStyle}"
-                   Grid.Column="0"
+                   Grid.Column="3"
                    Grid.Row="1" />
             <Label Text="Save"
                    Style="{StaticResource labelStyle}"
-                   Grid.Column="1"
+                   Grid.Column="4"
                    Grid.Row="1" />
             <Label Text="Wounds"
                    Style="{StaticResource labelStyle}"
-                   Grid.Column="2"
+                   Grid.Column="5"
                    Grid.Row="1" />
             <customViews:EntryView Text="{Binding TargetT}"
                                    IsReadOnly="True"
-                                   Grid.Column="0"
+                                   Grid.Column="3"
                                    Grid.Row="2" />
             <customViews:EntryView Text="{Binding TargetSv}"
                                    IsReadOnly="True"
-                                   Grid.Column="1"
+                                   Grid.Column="4"
                                    Grid.Row="2" />
             <customViews:EntryView Text="{Binding TargetW}"
                                    IsReadOnly="True"
-                                   Grid.Column="2"
+                                   Grid.Column="5"
                                    Grid.Row="2" />
         </Grid>
         <!--Инпут грид-->

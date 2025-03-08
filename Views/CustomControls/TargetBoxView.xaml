@@ -2,17 +2,18 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhmCalcMaui.Views.CustomControls.TargetBoxView"
-             xmlns:drawable="clr-namespace:WhmCalcMaui.Views.Drawable"
-             x:Name="this">
-
-    <ContentView.Resources>
-        <drawable:TargetBoxArrow x:Key="drawableArrow"/>
-    </ContentView.Resources>
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Name="this" HeightRequest="56">
 
     <VisualStateManager.VisualStateGroups>
         <VisualStateGroupList>
-            <VisualStateGroup x:Name="CheckedStates">
+            <VisualStateGroup x:Name="States">
                 <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter TargetName="this"
+                                Property="Scale"
+                                Value="1" />
+                    </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Pressed">
                     <VisualState.Setters>
@@ -29,8 +30,23 @@
 
         <Grid ColumnDefinitions="4*, 1*">
 
-            <Label Grid.Column="0"/>
-            <GraphicsView Grid.Column="1" Drawable="{StaticResource drawableArrow}"/>
+            <Border Style="{StaticResource borderStyle}"
+                    Margin="-4, -4, 0, -4">
+
+                <Label Grid.Column="0"
+                       Text="{Binding Source={x:Reference this}, Path=Text}"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Bold" />
+            </Border>
+
+            <Image Grid.Column="1" Aspect="AspectFit"
+                   Source="targetbox_arrow.png">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                </Image.Behaviors>
+            </Image>
         </Grid>
     </Border>
 

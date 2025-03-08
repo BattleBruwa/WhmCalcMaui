@@ -5,11 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WhmCalcMaui"
     xmlns:views="clr-namespace:WhmCalcMaui.Views"
-    Shell.FlyoutBehavior="Flyout"
-    Title="WhmCalcMaui">
+    Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Home"
         ContentTemplate="{DataTemplate views:MainView}"
         Route="MainView" />
 
