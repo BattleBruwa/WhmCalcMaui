@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -13,6 +15,7 @@ using WhmCalcMaui.Services;
 using WhmCalcMaui.Services.Calculations;
 using WhmCalcMaui.Views.CustomControls;
 using WhmCalcMaui.Views.Popups;
+using static SQLite.SQLite3;
 
 namespace WhmCalcMaui.ViewModels
 {
@@ -42,11 +45,15 @@ namespace WhmCalcMaui.ViewModels
 
         public OutputModel Output { get; set; } = new();
 
+        private Task initTask;
+
         public MainViewModel(ModListService modListService, IDataAccessService dataAccessService, CalcOutputService calculator)
         {
             ModListService = modListService;
             DataAccessService = dataAccessService;
             Calculator = calculator;
+            Targets = [];
+            initTask = InitTargetsAsync();
             Attacker.PropertyChanged += Attacker_PropertyChanged;
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
             // Тест ----------------------
@@ -119,11 +126,36 @@ namespace WhmCalcMaui.ViewModels
             }
         }
 
-        private async void ShowSelectTargetAsync()
+        [RelayCommand]
+        private async Task ShowSelectTargetAsync()
         {
             var popup = new SelectTargetPopup(Targets);
 
             var result = await Shell.Current.ShowPopupAsync(popup);
+
+            if (result is TargetModel sTarget)
+            {
+                SelectedTarget = sTarget;
+            }
+        }
+        
+        private async Task InitTargetsAsync()
+        {
+            var result = await DataAccessService.GetTargetsAsync();
+            if (!result.Any())
+            {
+                using Stream stream = await FileSystem.OpenAppPackageFileAsync("DefaultTargets.json");
+
+                result = await JsonSerializer.DeserializeAsync<List<TargetModel>>(stream);
+            }
+
+            if (result is not null)
+            {
+                foreach (var t in result)
+                {
+                    Targets.Add(t);
+                }
+            }
         }
 
         private void Test()
@@ -133,15 +165,20 @@ namespace WhmCalcMaui.ViewModels
                 Debug.WriteLine($"Attacker:\nA: {Attacker?.AttackerA} WS: {Attacker?.AttackerWS} S: {Attacker?.AttackerS} AP: {Attacker?.AttackerAP} D: {Attacker?.AttackerD}");
                 Debug.WriteLine($"Output:\nA: {Output?.Attacks} H: {Output?.NatHits} Sus: {Output?.SustainedHits} W: {Output?.AllWounds} US: {Output?.UnSavedWounds} D: {Output?.TotalDamage}");
                 Debug.WriteLine("Modlist:");
-                foreach(var i in ModListService.PickedMods)
+                foreach (var i in ModListService.PickedMods)
                 {
                     Debug.Write(i.Name + " ");
 
-                    if(i.Condition is not null)
+                    if (i.Condition is not null)
                     {
                         Debug.Write(i.Condition + " ");
                     }
                 }
+                Debug.WriteLine("Targets:");
+                    foreach (var t in Targets)
+                    {
+                        Debug.Write(t.TargetName + " ");
+                    }
                 Debug.WriteLine("");
                 Thread.Sleep(2000);
             }

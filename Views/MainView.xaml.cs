@@ -16,24 +16,9 @@ public partial class MainView : ContentPage
         _viewModel = viewModel;
         InitializeComponent();
         BindingContext = _viewModel;
-        //_viewModel.PropertyChanged += _viewModel_PropertyChanged;
+        targetBox.Command = _viewModel.ShowSelectTargetCommand;
         initTask = BindingInitAsync();
     }
-
-    //private void _viewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
-    //{
-    //    if (e.PropertyName == nameof(_viewModel.ModListService.IsBusy))
-    //    {
-    //        List<IView> children = modGrid.Children.Where(i => i.GetType() == typeof(CheckBoxView)).ToList();
-
-    //        for (int i = 0; i < _viewModel.ModListService.ModificatorsList.Count; i++)
-    //        {
-    //            CheckBoxView checkBox = children[i] as CheckBoxView;
-
-    //            checkBox.BindingContext = _viewModel.ModListService.ModificatorsList[i];
-    //        }
-    //    }
-    //}
 
     private async Task BindingInitAsync()
     {

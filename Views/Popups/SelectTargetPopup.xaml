@@ -4,30 +4,34 @@
                x:Class="WhmCalcMaui.Views.Popups.SelectTargetPopup"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                xmlns:models="clr-namespace:WhmCalcMaui.Models"
+               CanBeDismissedByTappingOutsideOfPopup="True" Color="Transparent"
                x:Name="this">
+              
+    <ScrollView MaximumHeightRequest="496" WidthRequest="304">
+        <Border Style="{StaticResource borderStyle}" Padding="8">
+            <CollectionView ItemsLayout="VerticalList"
+                            SelectionMode="Single"
+                            x:Name="collView"
+                            SelectionChanged="CollectionView_SelectionChanged" 
+                            EmptyView="Failed to load targets. Try to reopen the app.">
 
-    <ScrollView>
-        <CollectionView ItemsLayout="VerticalList"
-                        SelectionMode="Single"
-                        ItemsSource="{Binding Source={x:Reference this}, Path=Targets}"
-                        SelectionChanged="CollectionView_SelectionChanged" EmptyView="Failed to load targets. Try to reopen the app.">
+                <CollectionView.ItemTemplate>
 
-            <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:TargetModel">
 
-                <DataTemplate x:DataType="models:TargetModel">
+                        <!--<Border Style="{StaticResource borderStyle}">-->
 
-                    <Border Style="{StaticResource borderStyle}">
-
-                        <VerticalStackLayout>
+                        <VerticalStackLayout Background="Transparent">
                             <Label Style="{StaticResource labelStyle}"
+                                   FontAttributes="Bold" FontSize="Medium"
                                    Text="{Binding TargetName}" />
                             <Label Style="{StaticResource labelStyle}"
                                    Text="{Binding TargetProps}" />
                         </VerticalStackLayout>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                        <!--</Border>-->
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
     </ScrollView>
-
 </toolkit:Popup>

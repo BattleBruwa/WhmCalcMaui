@@ -28,7 +28,7 @@ namespace WhmCalcMaui.Models
 
         public override string ToString()
         {
-            return $"{TargetName}\nT:{TargetT} Sv: {TargetSv} W: {TargetW}";
+            return $"T: {TargetT} Sv: {TargetSv} W: {TargetW}";
         }
     }
 }

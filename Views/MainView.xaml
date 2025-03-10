@@ -215,7 +215,11 @@
               BindingContext="{Binding SelectedTarget}"
               x:DataType="models:TargetModel">
 
-            <customViews:TargetBoxView Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Text="{Binding TargetName}"/>
+            <customViews:TargetBoxView Grid.Column="0"
+                                       Grid.ColumnSpan="3"
+                                       Grid.Row="2"
+                                       x:Name="targetBox"
+                                       Text="{Binding TargetName}" />
 
             <Label Text="Toughness"
                    Style="{StaticResource labelStyle}"

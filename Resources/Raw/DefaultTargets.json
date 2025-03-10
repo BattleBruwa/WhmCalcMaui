@@ -1,0 +1,38 @@
+﻿[
+  {
+    "TargetName": "Space Marine",
+    "TargetT": 4,
+    "TargetSv": 3,
+    "TargetW": 2
+  },
+  {
+    "TargetName": "Guardsman",
+    "TargetT": 3,
+    "TargetSv": 5,
+    "TargetW": 1
+  },
+  {
+    "TargetName": "Rhino",
+    "TargetT": 9,
+    "TargetSv": 3,
+    "TargetW": 10
+  },
+  {
+    "TargetName": "Terminator",
+    "TargetT": 5,
+    "TargetSv": 2,
+    "TargetW": 3
+  },
+  {
+    "TargetName": "Chaos Chosen",
+    "TargetT": 4,
+    "TargetSv": 3,
+    "TargetW": 3
+  },
+  {
+    "TargetName": "Leman Russ",
+    "TargetT": 11,
+    "TargetSv": 2,
+    "TargetW": 13
+  }
+]
