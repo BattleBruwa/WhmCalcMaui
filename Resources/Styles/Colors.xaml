@@ -16,7 +16,8 @@
 
     <!--Light-->
     <Color x:Key="MainWindowBackgroundColorLight">#dcdde1</Color>
-    <Color x:Key="MainOutlineColorLight">#718093</Color>
+    <!--<Color x:Key="MainOutlineColorLight">#718093</Color>-->
+    <Color x:Key="MainOutlineColorLight">#8898ab</Color>
     <Color x:Key="BoxesInnerColorLight">#fff</Color>
     <Color x:Key="TextMainColorLight">Black</Color>
     <Color x:Key="ButtonMainColorLight">#808080</Color>

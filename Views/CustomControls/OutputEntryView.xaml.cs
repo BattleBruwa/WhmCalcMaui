@@ -45,7 +45,7 @@ public partial class OutputEntryView : ContentView
     // Анимация
     private static readonly Easing animationEasing = Easing.Linear;
     // Длина анимации
-    private const uint animationLength = 3000;
+    private const uint animationLength = 300;
 
     public OutputEntryView()
     {

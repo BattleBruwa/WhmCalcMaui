@@ -44,8 +44,12 @@ public partial class TargetBoxView : ContentView
     private async void OnTapped(object? sender, TappedEventArgs e)
     {
         VisualStateManager.GoToState(this, "Pressed");
+
         await Task.Delay(50);
+
         VisualStateManager.GoToState(this, "Normal");
+
+        await Task.Delay(10);
 
         this.Command?.Execute(CommandParameter);
 #if DEBUG

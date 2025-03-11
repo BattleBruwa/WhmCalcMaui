@@ -57,7 +57,7 @@ namespace WhmCalcMaui.ViewModels
             Attacker.PropertyChanged += Attacker_PropertyChanged;
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
             // Тест ----------------------
-            Task test = Task.Run(Test);
+            //Task test = Task.Run(Test);
             SelectedTarget = new TargetModel { TargetName = "Space Marine", TargetT = 4, TargetSv = 3, TargetW = 2 };
             // ---------------------------
         }
@@ -127,9 +127,11 @@ namespace WhmCalcMaui.ViewModels
         }
 
         [RelayCommand]
-        private async Task ShowSelectTargetAsync()
+        private async Task ShowSelectTargetAsync(object? parameter)
         {
-            var popup = new SelectTargetPopup(Targets);
+            var popup = new SelectTargetPopup(Targets, SelectedTarget);
+
+            _ = Task.WhenAll(popup.FadePopup(1), popup.SlidePopup());
 
             var result = await Shell.Current.ShowPopupAsync(popup);
 

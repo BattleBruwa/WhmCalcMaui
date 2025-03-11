@@ -4,16 +4,41 @@
                x:Class="WhmCalcMaui.Views.Popups.SelectTargetPopup"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                xmlns:models="clr-namespace:WhmCalcMaui.Models"
-               CanBeDismissedByTappingOutsideOfPopup="True" Color="Transparent"
+               CanBeDismissedByTappingOutsideOfPopup="True"
+               Color="Transparent"
                x:Name="this">
-              
-    <ScrollView MaximumHeightRequest="496" WidthRequest="304">
-        <Border Style="{StaticResource borderStyle}" Padding="8">
-            <CollectionView ItemsLayout="VerticalList"
-                            SelectionMode="Single"
+
+    <toolkit:Popup.Resources>
+    <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{AppThemeBinding Light={StaticResource MainWindowBackgroundColorLight}, Dark={StaticResource MainWindowBackgroundColorDark}}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </toolkit:Popup.Resources>
+
+    <ScrollView MaximumHeightRequest="496"
+                x:Name="mainElement"
+                Opacity="0"
+                WidthRequest="304">
+        <Border Style="{StaticResource borderStyle}"
+                Padding="8">
+            <CollectionView SelectionMode="Single"
                             x:Name="collView"
-                            SelectionChanged="CollectionView_SelectionChanged" 
                             EmptyView="Failed to load targets. Try to reopen the app.">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="8" />
+                </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
 
@@ -21,13 +46,66 @@
 
                         <!--<Border Style="{StaticResource borderStyle}">-->
 
-                        <VerticalStackLayout Background="Transparent">
+                        <Grid RowDefinitions="*,*"
+                              ColumnDefinitions="*,*,*,*,*,*">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Grid.GestureRecognizers>
+
+                            <!--Имя-->
                             <Label Style="{StaticResource labelStyle}"
-                                   FontAttributes="Bold" FontSize="Medium"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="6"
                                    Text="{Binding TargetName}" />
-                            <Label Style="{StaticResource labelStyle}"
-                                   Text="{Binding TargetProps}" />
-                        </VerticalStackLayout>
+
+                            <BoxView HorizontalOptions="Fill"
+                                     Grid.Row="1"
+                                     Grid.Column="0"
+                                     Grid.ColumnSpan="6"
+                                     Margin="8, 0, 8, 0"
+                                     Color="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+
+                            <!--Тафна-->
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="T:"
+                                   Style="{StaticResource labelStyle}"
+                                   HorizontalOptions="Center" />
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding TargetT}"
+                                   Style="{StaticResource labelStyle}"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Start" />
+                            <!--Сейв-->
+                            <Label Grid.Row="1"
+                                   Grid.Column="2"
+                                   Text="Sv:"
+                                   Style="{StaticResource labelStyle}"
+                                   HorizontalOptions="End" />
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="3"
+                                   Text="{Binding TargetSv}"
+                                   Style="{StaticResource labelStyle}"
+                                   FontAttributes="Bold" />
+                            <!--Вунды-->
+                            <Label Grid.Row="1"
+                                   Grid.Column="4"
+                                   Text="W:"
+                                   Style="{StaticResource labelStyle}"
+                                   HorizontalOptions="End" />
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="5"
+                                   Text="{Binding TargetW}"
+                                   Style="{StaticResource labelStyle}"
+                                   FontAttributes="Bold" />
+                        </Grid>
                         <!--</Border>-->
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
