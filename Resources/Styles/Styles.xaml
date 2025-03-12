@@ -5,6 +5,8 @@
 
     <!--My Styles-->
 
+    <x:Double x:Key="spacing">8</x:Double>
+
     <Style TargetType="Border"
            x:Key="borderStyle">
         <Setter Property="Stroke"
@@ -75,8 +77,6 @@
                 Value="2,4,2,4" />
         <Setter Property="Padding"
                 Value="2" />
-        <Setter Property="Shadow"
-                Value="{StaticResource modShadow}" />
     </Style>
 
     <!--~~~~~~~~~~~~~~~-->

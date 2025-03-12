@@ -131,8 +131,7 @@ namespace WhmCalcMaui.ViewModels
         {
             var popup = new SelectTargetPopup(Targets, SelectedTarget);
 
-            _ = Task.WhenAll(popup.FadePopup(1), popup.SlidePopup());
-
+            //_ = Task.WhenAll(popup.FadePopup(1), popup.SlidePopup());
             var result = await Shell.Current.ShowPopupAsync(popup);
 
             if (result is TargetModel sTarget)

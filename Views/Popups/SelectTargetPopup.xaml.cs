@@ -24,6 +24,8 @@ public partial class SelectTargetPopup : Popup
         {
             collView.SelectedItem = selectedTarget;
         }
+
+        Task.WhenAll(FadePopup(1), SlidePopup());
     }
 
     // Нет смысла, работает хуже вызова в тап хэндлере.
@@ -39,7 +41,7 @@ public partial class SelectTargetPopup : Popup
         var tcs = new TaskCompletionSource<bool>();
 
         new Animation(v => mainElement.Opacity = v, mainElement.Opacity, opacityChange)
-            .Commit(mainElement, nameof(FadePopup), 8, animationLength, animationEasing, (f, a) => tcs.SetResult(a));
+            .Commit(mainElement, nameof(FadePopup), 4, animationLength, animationEasing, (f, a) => tcs.SetResult(a));
 
         return tcs.Task;
     }

@@ -4,11 +4,13 @@
              xmlns:customViews="clr-namespace:WhmCalcMaui.Views.CustomControls"
              xmlns:models="clr-namespace:WhmCalcMaui.Models"
              xmlns:viewModels="clr-namespace:WhmCalcMaui.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="WhmCalcMaui.Views.MainView"
              x:DataType="viewModels:MainViewModel"
              x:Name="this"
              Background="{AppThemeBinding Light={StaticResource MainWindowBackgroundColorLight}, Dark={StaticResource MainWindowBackgroundColorDark}}"
-             Padding="8">
+             Padding="{StaticResource spacing}">
+
     <VerticalStackLayout>
 
         <!--Аутпут грид-->
@@ -21,6 +23,7 @@
         <!--Высота строк багуется и высчитывается неправильно, если ставить "1*,2*", по-этому поставлены абсолютные значения "54, 108"-->
         <Grid ColumnDefinitions="*,*,*,*,*,*"
               RowDefinitions="54,108"
+              RowSpacing="{StaticResource spacing}"
               BindingContext="{Binding Output}"
               x:DataType="models:OutputModel">
             <Label Text="Attacks"
@@ -92,7 +95,8 @@
 
         <Grid x:Name="modGrid"
               ColumnDefinitions="*,*"
-              RowDefinitions="*,*,*,*,*,*,*">
+              RowDefinitions="*,*,*,*,*,*,*"
+              ColumnSpacing="{StaticResource spacing}">
             <!--рр 1 хит-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Name="{Binding Name}"
@@ -153,7 +157,6 @@
                         <x:Int32>3</x:Int32>
                         <x:Int32>4</x:Int32>
                         <x:Int32>5</x:Int32>
-                        <x:Int32>6</x:Int32>
                     </x:Array>
                     <x:String>+</x:String>
                 </x:Arguments>
@@ -210,12 +213,44 @@
                FontAttributes="Bold"
                HorizontalTextAlignment="Start" />
 
-        <Grid ColumnDefinitions="*, *, *, *, *, *"
-              RowDefinitions="2*, *, 2*"
+        <Grid ColumnDefinitions="*, *, *, *, *"
+              RowDefinitions="1*, 2*, 2*"
               BindingContext="{Binding SelectedTarget}"
+              RowSpacing="{StaticResource spacing}"
+              ColumnSpacing="{StaticResource spacing}"
               x:DataType="models:TargetModel">
 
-            <customViews:TargetBoxView Grid.Column="0"
+            <!--Кнопка удаления цели-->
+            <Border Grid.Row="2"
+                    Grid.Column="0"
+                    HeightRequest="56"
+                    Style="{StaticResource borderStyle}">
+
+                <ImageButton Aspect="AspectFit"
+                             Source="delete_t_icon.png"
+                             Scale="0.8">
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                    </ImageButton.Behaviors>
+                </ImageButton>
+            </Border>
+
+            <!--Кнопка добавления цели-->
+            <Border Grid.Row="2"
+                    Grid.Column="4"
+                    HeightRequest="56"
+                    Style="{StaticResource borderStyle}">
+
+                <ImageButton Aspect="AspectFit"
+                             Source="add_t_icon.png"
+                             Scale="0.8">
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                    </ImageButton.Behaviors>
+                </ImageButton>
+            </Border>
+
+            <customViews:TargetBoxView Grid.Column="1"
                                        Grid.ColumnSpan="3"
                                        Grid.Row="2"
                                        x:Name="targetBox"
@@ -223,28 +258,28 @@
 
             <Label Text="Toughness"
                    Style="{StaticResource labelStyle}"
-                   Grid.Column="3"
-                   Grid.Row="1" />
+                   Grid.Column="1"
+                   Grid.Row="0" />
             <Label Text="Save"
                    Style="{StaticResource labelStyle}"
-                   Grid.Column="4"
-                   Grid.Row="1" />
+                   Grid.Column="2"
+                   Grid.Row="0" />
             <Label Text="Wounds"
                    Style="{StaticResource labelStyle}"
-                   Grid.Column="5"
-                   Grid.Row="1" />
+                   Grid.Column="3"
+                   Grid.Row="0" />
             <customViews:EntryView Text="{Binding TargetT}"
                                    IsReadOnly="True"
-                                   Grid.Column="3"
-                                   Grid.Row="2" />
+                                   Grid.Column="1"
+                                   Grid.Row="1" />
             <customViews:EntryView Text="{Binding TargetSv}"
                                    IsReadOnly="True"
-                                   Grid.Column="4"
-                                   Grid.Row="2" />
+                                   Grid.Column="2"
+                                   Grid.Row="1" />
             <customViews:EntryView Text="{Binding TargetW}"
                                    IsReadOnly="True"
-                                   Grid.Column="5"
-                                   Grid.Row="2" />
+                                   Grid.Column="3"
+                                   Grid.Row="1" />
         </Grid>
         <!--Инпут грид-->
         <Label Text="Attacker:"
@@ -256,6 +291,8 @@
         <Grid ColumnDefinitions="*,*,*,*,*"
               x:DataType="models:AttackerModel"
               RowDefinitions="1*, 2*"
+              RowSpacing="{StaticResource spacing}"
+              ColumnSpacing="{StaticResource spacing}"
               BindingContext="{Binding Attacker}">
             <Label Text="Attacks"
                    Style="{StaticResource labelStyle}"

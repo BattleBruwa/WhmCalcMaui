@@ -67,14 +67,18 @@ public partial class PickerCheckBox : ContentView
         {
             case "Unchecked":
 
-                _ = CollectionGrid.TranslateTo(0, 0, animationLength, animationEasing);
+                //_ = CollectionGrid.TranslateTo(0, 0, animationLength, animationEasing);
+
+                _ = SmoothTranslate(CollectionGrid, 0);
 
                 VisualStateManager.GoToState(this, "Pressed");
 
                 break;
             case "Pressed":
 
-                await CollectionGrid.TranslateTo(Width, 0, animationLength, animationEasing);
+                //await CollectionGrid.TranslateTo(Width, 0, animationLength, animationEasing);
+
+                await SmoothTranslate(CollectionGrid, Width);
 
                 if (SelectedValue is null)
                 {
@@ -88,7 +92,9 @@ public partial class PickerCheckBox : ContentView
                 break;
             case "Checked":
 
-                _ = CollectionGrid.TranslateTo(0, 0, animationLength, animationEasing);
+                //_ = CollectionGrid.TranslateTo(0, 0, animationLength, animationEasing);
+
+                _ = SmoothTranslate(CollectionGrid, 0);
 
                 VisualStateManager.GoToState(this, "Pressed");
 
@@ -141,6 +147,16 @@ public partial class PickerCheckBox : ContentView
         ;
 
         CollectionGrid.Add(btnClose, currentColumn);
+    }
+
+    private Task<bool> SmoothTranslate(VisualElement element, double translate)
+    {
+        var tcs = new TaskCompletionSource<bool>();
+
+        new Animation(v => element.TranslationX = v, element.TranslationX, translate)
+            .Commit(element, nameof(SmoothTranslate), 4, animationLength, animationEasing, (f, a) => tcs.SetResult(a));
+
+        return tcs.Task;
     }
 
     // Изменение текста и оформления кнопок при изменении выбранного значения.
