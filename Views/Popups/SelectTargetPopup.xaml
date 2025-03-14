@@ -31,13 +31,13 @@
                 Opacity="0"
                 WidthRequest="304">
         <Border Style="{StaticResource borderStyle}"
-                Padding="8">
+                Padding="{StaticResource spacing}">
             <CollectionView SelectionMode="Single"
                             x:Name="collView"
                             EmptyView="Failed to load targets. Try to reopen the app.">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical"
-                                       ItemSpacing="8" />
+                                       ItemSpacing="{StaticResource spacing}" />
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>

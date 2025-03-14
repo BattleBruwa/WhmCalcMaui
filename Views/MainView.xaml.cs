@@ -17,6 +17,7 @@ public partial class MainView : ContentPage
         InitializeComponent();
         BindingContext = _viewModel;
         targetBox.Command = _viewModel.ShowSelectTargetCommand;
+        deleteBtn.Command = _viewModel.TestCommand;
         initTask = BindingInitAsync();
     }
 

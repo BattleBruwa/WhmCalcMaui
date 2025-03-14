@@ -62,6 +62,14 @@ namespace WhmCalcMaui.ViewModels
             // ---------------------------
         }
 
+        [RelayCommand]
+        private async Task TestAsync()
+        {
+            var popup = new MessagePopup("Ахтунг!", "Это тест. Оно работает!");
+
+            await popup.ShowAsync();
+        }
+
         private void Attacker_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             Recalculate();
@@ -99,6 +107,18 @@ namespace WhmCalcMaui.ViewModels
                     ModListService.PickedMods.Remove(mod);
                 }
             }
+        }
+
+        private async Task DeleteTargetAsync()
+        {
+            if (SelectedTarget is null)
+            {
+                return;
+            }
+
+            int res = await DataAccessService.RemoveTargetAsync(SelectedTarget.TargetName);
+
+
         }
 
         [RelayCommand]
@@ -139,7 +159,7 @@ namespace WhmCalcMaui.ViewModels
                 SelectedTarget = sTarget;
             }
         }
-        
+
         private async Task InitTargetsAsync()
         {
             var result = await DataAccessService.GetTargetsAsync();
@@ -176,10 +196,10 @@ namespace WhmCalcMaui.ViewModels
                     }
                 }
                 Debug.WriteLine("Targets:");
-                    foreach (var t in Targets)
-                    {
-                        Debug.Write(t.TargetName + " ");
-                    }
+                foreach (var t in Targets)
+                {
+                    Debug.Write(t.TargetName + " ");
+                }
                 Debug.WriteLine("");
                 Thread.Sleep(2000);
             }

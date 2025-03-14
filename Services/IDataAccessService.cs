@@ -7,6 +7,6 @@ namespace WhmCalcMaui.Services
         Task AddTargetAsync(TargetModel target);
         Task<TargetModel?> GetTargetByNameAsync(string name);
         Task<IEnumerable<TargetModel>> GetTargetsAsync();
-        Task RemoveTargetAsync(string name);
+        Task<int> RemoveTargetAsync(string name);
     }
 }

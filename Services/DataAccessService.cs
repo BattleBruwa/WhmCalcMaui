@@ -51,7 +51,7 @@ namespace WhmCalcMaui.Services
             await db.InsertAsync(target);
         }
 
-        public async Task RemoveTargetAsync(string name)
+        public async Task<int> RemoveTargetAsync(string name)
         {
             await Init();
 
@@ -59,8 +59,10 @@ namespace WhmCalcMaui.Services
 
             if (targetToDel != null)
             {
-                await db.DeleteAsync(targetToDel);
+                return await db.DeleteAsync(targetToDel);
             }
+
+            return 0;
         }
 
         public async Task<IEnumerable<TargetModel>> GetTargetsAsync()
