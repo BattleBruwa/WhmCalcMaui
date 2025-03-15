@@ -26,7 +26,7 @@ public partial class MessagePopup : Popup
     // Анимация
     private static readonly Easing animationEasing = Easing.Linear;
     // Длина анимации
-    private const uint animationLength = 2000;
+    private const uint animationLength = 500;
 
     public MessagePopup(string title, string message)
 	{

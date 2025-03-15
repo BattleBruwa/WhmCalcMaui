@@ -9,20 +9,26 @@
                HorizontalOptions="Center"
                VerticalOptions="Start">
 
-    <Border Style="{StaticResource borderStyle}"
-            Padding="{StaticResource spacing}"
-            x:Name="mainBorder"
-            Opacity="0"
-            WidthRequest="304">
+    <StackLayout>
 
-        <VerticalStackLayout>
+        <Border Style="{StaticResource borderStyle}"
+                Padding="{StaticResource spacing}"
+                x:Name="mainBorder"
+                Opacity="0"
+                Margin="0,16,0,0"
+                WidthRequest="304">
 
-            <Label Text="{Binding Source={x:Reference this}, Path=Title}"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" />
+            <VerticalStackLayout>
 
-            <Label Text="{Binding Source={x:Reference this}, Path=Message}" />
-        </VerticalStackLayout>
-    </Border>
+                <Label Text="{Binding Source={x:Reference this}, Path=Title}"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+
+                <Label Text="{Binding Source={x:Reference this}, Path=Message}"
+                       LineBreakMode="CharacterWrap" />
+            </VerticalStackLayout>
+        </Border>
+    </StackLayout>
+
 </toolkit:Popup>

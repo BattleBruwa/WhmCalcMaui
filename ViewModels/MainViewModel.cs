@@ -65,9 +65,9 @@ namespace WhmCalcMaui.ViewModels
         [RelayCommand]
         private async Task TestAsync()
         {
-            var popup = new MessagePopup("Ахтунг!", "Это тест. Оно работает!");
+            var popup = new MessagePopup("Ахтунг!", "Это тест. Оно работает! TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
 
-            await popup.ShowAsync();
+            _ = popup.ShowAsync();
         }
 
         private void Attacker_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
