@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WhmCalcMaui.Views.Popups.ConfirmationPopup"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             CanBeDismissedByTappingOutsideOfPopup="True"
-             Color="Transparent"
-             x:Name="this">
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="WhmCalcMaui.Views.Popups.ConfirmationPopup"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               CanBeDismissedByTappingOutsideOfPopup="True"
+               Color="Transparent"
+               HorizontalOptions="Fill">
 
+    <StackLayout>
 
+        <Border Style="{StaticResource borderStyle}"
+                Padding="{StaticResource spacing}"
+                x:Name="mainBorder"
+                Opacity="0"
+                WidthRequest="304">
+
+            <Grid RowDefinitions="*,*,*"
+                  ColumnDefinitions="*,*">
+
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       x:Name="titleLabel" />
+
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       x:Name="messageLabel" />
+
+                <Button Grid.Row="2"
+                        Grid.Column="0"
+                        x:Name="leftBtn"
+                        Clicked="leftBtn_Clicked" />
+
+                <Button Grid.Row="2"
+                        Grid.Column="1"
+                        x:Name="rightBtn"
+                        Clicked="rightBtn_Clicked" />
+            </Grid>
+        </Border>
+    </StackLayout>
 </toolkit:Popup>

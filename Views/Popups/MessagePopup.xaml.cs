@@ -4,24 +4,6 @@ namespace WhmCalcMaui.Views.Popups;
 
 public partial class MessagePopup : Popup
 {
-	public static readonly BindableProperty MessageProperty =
-  BindableProperty.Create(nameof(Message), typeof(string), typeof(MessagePopup), String.Empty);
-
-	public string Message
-	{
-		get => (string)GetValue(MessageProperty);
-		set => SetValue(MessageProperty, value);
-	}
-
-	public static readonly BindableProperty TitleProperty =
-  BindableProperty.Create(nameof(Title), typeof(string), typeof(MessagePopup), String.Empty);
-
-	public string Title
-	{
-		get => (string)GetValue(TitleProperty);
-		set => SetValue(TitleProperty, value);
-	}
-
     private bool isDismissed = false;
     // Анимация
     private static readonly Easing animationEasing = Easing.Linear;
@@ -31,8 +13,8 @@ public partial class MessagePopup : Popup
     public MessagePopup(string title, string message)
 	{
 		InitializeComponent();
-		Title = title;
-		Message = message;
+		titleLabel.Text = title;
+		messageLabel.Text = message;
 	}
 
     protected override Task OnDismissedByTappingOutsideOfPopup(CancellationToken token = default)

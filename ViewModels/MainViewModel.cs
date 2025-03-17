@@ -70,6 +70,31 @@ namespace WhmCalcMaui.ViewModels
             _ = popup.ShowAsync();
         }
 
+        [RelayCommand]
+        private async Task TestTwoAsync()
+        {
+            var popup = new ConfirmationPopup("Подтверждение.", "Вы действительно хотите что-то сделать?", "Нет", "Да");
+
+            _ = popup.ShowAsync();
+
+            var result = await Shell.Current.ShowPopupAsync(popup);
+
+            string message;
+
+            if ((bool)result)
+            {
+                message = "Вы нажали ДА!";
+            }
+            else
+            {
+                message = "Вы нажали НЕТ или дизмиснули!";
+            }
+
+            var popupTwo = new MessagePopup("Ахтунг!", message);
+
+            _ = popupTwo.ShowAsync();
+        }
+
         private void Attacker_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             Recalculate();

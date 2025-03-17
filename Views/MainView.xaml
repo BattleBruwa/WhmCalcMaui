@@ -226,7 +226,7 @@
                     HeightRequest="56"
                     Style="{StaticResource borderStyle}">
 
-                <ImageButton x:Name="deleteBtn"
+                <ImageButton x:Name="deleteTBtn"
                              Aspect="AspectFit"
                              Source="delete_t_icon.png"
                              Scale="0.8">
@@ -242,7 +242,7 @@
                     HeightRequest="56"
                     Style="{StaticResource borderStyle}">
 
-                <ImageButton Aspect="AspectFit"
+                <ImageButton x:Name="addTBtn" Aspect="AspectFit"
                              Source="add_t_icon.png"
                              Scale="0.8">
                     <ImageButton.Behaviors>
