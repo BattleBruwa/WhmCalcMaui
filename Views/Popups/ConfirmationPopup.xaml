@@ -34,21 +34,28 @@
                         x:Name="leftBtn"
                         Clicked="leftBtn_Clicked" />-->
 
-                <customViews:ButtonView x:Name="leftBtn"
-                                        Grid.Row="2"
+                <customViews:ButtonView Grid.Row="2"
                                         Grid.Column="0"
-                                        HeightRequest="56">
-                    <customViews:ButtonView.Content>
+                                        HeightRequest="56"
+                                        Clicked="leftBtn_Clicked">
 
-                        <Label Text="Отмена" />
+                    <Label x:Name="leftBtnLabel" Style="{StaticResource labelStyle}"/>
 
-                    </customViews:ButtonView.Content>
                 </customViews:ButtonView>
 
-                <Button Grid.Row="2"
+                <!--<Button Grid.Row="2"
                         Grid.Column="1"
                         x:Name="rightBtn"
-                        Clicked="rightBtn_Clicked" />
+                        Clicked="rightBtn_Clicked" />-->
+
+                <customViews:ButtonView Grid.Row="2"
+                                        Grid.Column="1"
+                                        HeightRequest="56"
+                                        Clicked="rightBtn_Clicked">
+
+                    <Label x:Name="rightBtnLabel" Style="{StaticResource labelStyle}"/>
+
+                </customViews:ButtonView>
             </Grid>
         </Border>
     </StackLayout>

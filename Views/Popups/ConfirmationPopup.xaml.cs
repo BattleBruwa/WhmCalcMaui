@@ -16,8 +16,8 @@ public partial class ConfirmationPopup : Popup
         ResultWhenUserTapsOutsideOfPopup = false;
 		titleLabel.Text = title;
 		messageLabel.Text = message;
-		leftBtn.Text = leftBtnText;
-		rightBtn.Text = rightBtnText;
+        leftBtnLabel.Text = leftBtnText;
+		rightBtnLabel.Text = rightBtnText;
 	}
 
     protected override Task OnDismissedByTappingOutsideOfPopup(CancellationToken token = default)

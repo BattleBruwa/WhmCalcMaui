@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using System.Windows.Input;
-using System.Xml.Linq;
 
 namespace WhmCalcMaui.Views.CustomControls;
 
@@ -24,9 +23,11 @@ public partial class ButtonView : ContentView
         set => SetValue(CommandParameterProperty, value);
     }
 
+    public event EventHandler? Clicked; 
+
     public ButtonView()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         var tGR = new TapGestureRecognizer();
         tGR.Tapped += OnTapped;
         GestureRecognizers.Add(tGR);
@@ -34,12 +35,17 @@ public partial class ButtonView : ContentView
 
     private async void OnTapped(object? sender, TappedEventArgs e)
     {
-        VisualStateManager.GoToState(this, "Pressed");
-        await Task.Delay(50);
+        if (IsEnabled)
+        {
+            VisualStateManager.GoToState(this, "Pressed");
 
-        this.Command?.Execute(CommandParameter);
+            await Task.Delay(50);
 
-        VisualStateManager.GoToState(this, "Normal");
+            Command?.Execute(CommandParameter);
+            Clicked?.Invoke(this, EventArgs.Empty);
+
+            VisualStateManager.GoToState(this, "Normal");
+        }
 #if DEBUG
         Debug.WriteLine($"{GetType().Name} is tapped!");
 #endif
