@@ -2,6 +2,7 @@
 <toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                x:Class="WhmCalcMaui.Views.Popups.ConfirmationPopup"
+               xmlns:customViews="clr-namespace:WhmCalcMaui.Views.CustomControls"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                CanBeDismissedByTappingOutsideOfPopup="True"
                Color="Transparent"
@@ -28,10 +29,21 @@
                        Grid.ColumnSpan="2"
                        x:Name="messageLabel" />
 
-                <Button Grid.Row="2"
+                <!--<Button Grid.Row="2"
                         Grid.Column="0"
                         x:Name="leftBtn"
-                        Clicked="leftBtn_Clicked" />
+                        Clicked="leftBtn_Clicked" />-->
+
+                <customViews:ButtonView x:Name="leftBtn"
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        HeightRequest="56">
+                    <customViews:ButtonView.Content>
+
+                        <Label Text="Отмена" />
+
+                    </customViews:ButtonView.Content>
+                </customViews:ButtonView>
 
                 <Button Grid.Row="2"
                         Grid.Column="1"

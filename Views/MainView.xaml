@@ -221,36 +221,38 @@
               x:DataType="models:TargetModel">
 
             <!--Кнопка удаления цели-->
-            <Border Grid.Row="2"
-                    Grid.Column="0"
-                    HeightRequest="56"
-                    Style="{StaticResource borderStyle}">
-
-                <ImageButton x:Name="deleteTBtn"
-                             Aspect="AspectFit"
-                             Source="delete_t_icon.png"
-                             Scale="0.8">
-                    <ImageButton.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
-                    </ImageButton.Behaviors>
-                </ImageButton>
-            </Border>
+            <customViews:ButtonView x:Name="deleteTBtn"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HeightRequest="56">
+                <customViews:ButtonView.Content>
+                    <Image Aspect="AspectFit"
+                           Source="delete_t_icon.png"
+                           Scale="0.8">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}"/>
+                        </Image.Behaviors>
+                    </Image>
+                </customViews:ButtonView.Content>
+            </customViews:ButtonView>
 
             <!--Кнопка добавления цели-->
-            <Border Grid.Row="2"
-                    Grid.Column="4"
-                    HeightRequest="56"
-                    Style="{StaticResource borderStyle}">
+            <customViews:ButtonView x:Name="addTBtn"
+                                     Grid.Row="2"
+                                     Grid.Column="4"
+                                     HeightRequest="56">
+                <customViews:ButtonView.Content>
+                    <Image Aspect="AspectFit"
+                           Source="add_t_icon.png"
+                           Scale="0.8">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                        </Image.Behaviors>
+                    </Image>
+                </customViews:ButtonView.Content>
+            </customViews:ButtonView>
 
-                <ImageButton x:Name="addTBtn" Aspect="AspectFit"
-                             Source="add_t_icon.png"
-                             Scale="0.8">
-                    <ImageButton.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
-                    </ImageButton.Behaviors>
-                </ImageButton>
-            </Border>
-
+            <!--Кнопка выбора цели-->
             <customViews:TargetBoxView Grid.Column="1"
                                        Grid.ColumnSpan="3"
                                        Grid.Row="2"
