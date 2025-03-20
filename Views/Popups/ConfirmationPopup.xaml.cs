@@ -26,7 +26,7 @@ public partial class ConfirmationPopup : Popup
         return base.OnDismissedByTappingOutsideOfPopup(token);
     }
 
-    public async Task ShowAsync()
+    public void StartAnim()
     {
         _ = Task.WhenAll(FadePopup(1), SlidePopup());
     }

@@ -58,7 +58,6 @@ namespace WhmCalcMaui.ViewModels
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
             // Тест ----------------------
             //Task test = Task.Run(Test);
-            SelectedTarget = new TargetModel { TargetName = "Space Marine", TargetT = 4, TargetSv = 3, TargetW = 2 };
             // ---------------------------
         }
 
@@ -67,7 +66,7 @@ namespace WhmCalcMaui.ViewModels
         {
             var popup = new MessagePopup("Ахтунг!", "Это тест. Оно работает! TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
 
-            _ = popup.ShowAsync();
+            await popup.ShowAsync();
         }
 
         [RelayCommand]
@@ -75,9 +74,9 @@ namespace WhmCalcMaui.ViewModels
         {
             var popup = new ConfirmationPopup("Подтверждение.", "Вы действительно хотите что-то сделать?", "Нет", "Да");
 
-            _ = popup.ShowAsync();
+            popup.StartAnim();
 
-            var result = await Shell.Current.ShowPopupAsync(popup);
+            var result = await Shell.Current.ShowPopupAsync(popup) ?? false;
 
             string message;
 
@@ -134,6 +133,7 @@ namespace WhmCalcMaui.ViewModels
             }
         }
 
+        [RelayCommand]
         private async Task DeleteTargetAsync()
         {
             if (SelectedTarget is null)
@@ -141,7 +141,53 @@ namespace WhmCalcMaui.ViewModels
                 return;
             }
 
-            int res = await DataAccessService.RemoveTargetAsync(SelectedTarget.TargetName);
+            var popup = new ConfirmationPopup("Подтверждение.", "Вы действительно хотите удалить эту цель?", "Нет", "Да");
+
+            popup.StartAnim();
+
+            var result = await Shell.Current.ShowPopupAsync(popup) ?? false;
+
+            string message;
+
+            if ((bool)result)
+            {
+                int res = await DataAccessService.RemoveTargetAsync(SelectedTarget.TargetName);
+
+                if (res == 0)
+                {
+                    message = "Не удалось удалить цель.";
+
+                    var errorMsgPopup = new MessagePopup("Ошибка.", message);
+
+                    await errorMsgPopup.ShowAsync();
+
+                    return;
+                }
+
+                Targets.Remove(SelectedTarget);
+
+                message = "Цель удалена.";
+
+                var successMsgPopup = new MessagePopup("Успех.", message);
+
+                await successMsgPopup.ShowAsync();
+
+                if (Targets.Count != 0)
+                {
+                    SelectedTarget = Targets[0];
+                }
+                else
+                {
+                    SelectedTarget = null;
+                }
+
+                return;
+            }
+            else
+            {
+                return;
+            }
+            
 
 
         }
@@ -177,6 +223,9 @@ namespace WhmCalcMaui.ViewModels
             var popup = new SelectTargetPopup(Targets, SelectedTarget);
 
             //_ = Task.WhenAll(popup.FadePopup(1), popup.SlidePopup());
+
+            popup.StartAnim();
+
             var result = await Shell.Current.ShowPopupAsync(popup);
 
             if (result is TargetModel sTarget)
@@ -192,7 +241,14 @@ namespace WhmCalcMaui.ViewModels
             {
                 using Stream stream = await FileSystem.OpenAppPackageFileAsync("DefaultTargets.json");
 
-                result = await JsonSerializer.DeserializeAsync<List<TargetModel>>(stream);
+                var defaultTargets = await JsonSerializer.DeserializeAsync<List<TargetModel>>(stream) ?? [];
+
+                foreach (var t in defaultTargets)
+                {
+                    await DataAccessService.AddTargetAsync(t);
+                }
+
+                await InitTargetsAsync();
             }
 
             if (result is not null)

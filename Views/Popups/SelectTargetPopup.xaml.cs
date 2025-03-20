@@ -10,7 +10,7 @@ public partial class SelectTargetPopup : Popup
     // Анимация
     private static readonly Easing animationEasing = Easing.Linear;
     // Длина анимации
-    private const uint animationLength = 200;
+    private const uint animationLength = 2000;
 
     private bool isBusy = false;
 
@@ -25,7 +25,6 @@ public partial class SelectTargetPopup : Popup
             collView.SelectedItem = selectedTarget;
         }
 
-        Task.WhenAll(FadePopup(1), SlidePopup());
     }
 
     // Нет смысла, работает хуже вызова в тап хэндлере.
@@ -35,6 +34,11 @@ public partial class SelectTargetPopup : Popup
 
     //    await base.OnClosed(result, wasDismissedByTappingOutsideOfPopup, token);
     //}
+
+    public void StartAnim()
+    {
+        _ = Task.WhenAll(FadePopup(1), SlidePopup());
+    }
 
     public Task<bool> FadePopup(double opacityChange)
     {
