@@ -4,7 +4,8 @@ namespace WhmCalcMaui.Services
 {
     public interface IDataAccessService
     {
-        Task AddTargetAsync(TargetModel target);
+        Task<int> AddTargetAsync(TargetModel target);
+        Task<int> UpdateTargetAsync(TargetModel target);
         Task<TargetModel?> GetTargetByNameAsync(string name);
         Task<IEnumerable<TargetModel>> GetTargetsAsync();
         Task<int> RemoveTargetAsync(string name);

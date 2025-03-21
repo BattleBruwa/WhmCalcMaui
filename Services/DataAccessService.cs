@@ -31,7 +31,7 @@ namespace WhmCalcMaui.Services
 #endif
         }
 
-        public async Task AddTargetAsync(TargetModel target)
+        public async Task<int> AddTargetAsync(TargetModel target)
         {
             await Init();
 
@@ -40,15 +40,18 @@ namespace WhmCalcMaui.Services
 
             if (tCheck != null)
             {
-                // Добавить попап: цель с таким именем существует!
-                // ------------------
-                // Если пользователь хочет обновить
-
-                await db.UpdateAsync(target);
-                return;
+                // Цель с таким именем существует
+                return 0;
             }
 
-            await db.InsertAsync(target);
+            return await db.InsertAsync(target);
+        }
+
+        public async Task<int> UpdateTargetAsync(TargetModel target)
+        {
+            await Init();
+
+            return await db.UpdateAsync(target);
         }
 
         public async Task<int> RemoveTargetAsync(string name)

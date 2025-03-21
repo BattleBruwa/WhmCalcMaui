@@ -32,24 +32,31 @@
         <Grid ColumnDefinitions="4*, 1*">
 
             <Border Style="{StaticResource borderStyle}"
-                    Margin="-4, -4, 0, -4">
+                    Margin="-4, -4, 0, -4"
+                    Grid.Column="0">
 
-                <Label Grid.Column="0"
-                       Text="{Binding Source={x:Reference this}, Path=Text}"
+                <Entry Text="{Binding Source={x:Reference this}, Path=Text}"
                        VerticalTextAlignment="Center"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"
                        FontAttributes="Bold" />
             </Border>
 
-            <Image x:Name="ArrowImg"
-                   Grid.Column="1"
-                   Aspect="AspectFit"
-                   Source="targetbox_arrow.png">
-                <Image.Behaviors>
-                    <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
-                </Image.Behaviors>
-            </Image>
+            <Border Grid.Column="1"
+                    Style="{StaticResource borderStyle}"
+                    StrokeThickness="0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTapped" />
+                </Border.GestureRecognizers>
+
+                <Image x:Name="ArrowImg"
+                       Aspect="AspectFit"
+                       Source="targetbox_arrow.png">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                    </Image.Behaviors>
+                </Image>
+            </Border>
         </Grid>
     </Border>
 

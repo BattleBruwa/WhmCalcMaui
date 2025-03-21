@@ -36,9 +36,9 @@ public partial class TargetBoxView : ContentView
     public TargetBoxView()
 	{
 		InitializeComponent();
-        var tGR = new TapGestureRecognizer();
-        tGR.Tapped += OnTapped;
-        GestureRecognizers.Add(tGR);
+        //var tGR = new TapGestureRecognizer();
+        //tGR.Tapped += OnTapped;
+        //GestureRecognizers.Add(tGR);
     }
 
     private async void OnTapped(object? sender, TappedEventArgs e)

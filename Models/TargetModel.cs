@@ -30,5 +30,13 @@ namespace WhmCalcMaui.Models
         {
             return $"T: {TargetT} Sv: {TargetSv} W: {TargetW}";
         }
+
+        public void CopyProps(TargetModel target)
+        {
+            TargetName = target.TargetName;
+            TargetT = target.TargetT;
+            TargetSv = target.TargetSv;
+            TargetW = target.TargetW;
+        }
     }
 }

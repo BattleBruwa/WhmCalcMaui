@@ -56,17 +56,10 @@ namespace WhmCalcMaui.ViewModels
             initTask = InitTargetsAsync();
             Attacker.PropertyChanged += Attacker_PropertyChanged;
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
+            SelectedTarget = new TargetModel();
             // Тест ----------------------
             //Task test = Task.Run(Test);
             // ---------------------------
-        }
-
-        [RelayCommand]
-        private async Task TestAsync()
-        {
-            var popup = new MessagePopup("Ахтунг!", "Это тест. Оно работает! TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
-
-            await popup.ShowAsync();
         }
 
         [RelayCommand]
@@ -134,6 +127,69 @@ namespace WhmCalcMaui.ViewModels
         }
 
         [RelayCommand]
+        private async Task AddTargetAsync()
+        {
+            if (SelectedTarget is null || String.IsNullOrWhiteSpace(SelectedTarget.TargetName))
+            {
+                return;
+            }
+
+            var targetToAdd = new TargetModel();
+            targetToAdd.CopyProps(SelectedTarget);
+
+            string message;
+
+            // Если цель с таким именем уже есть:
+            if (Targets.Any(x => x.TargetName == SelectedTarget.TargetName))
+            {
+                var popup = new ConfirmationPopup("Внимание.", "Цель с таким именем уже существует. Вы хотите изменить ее характеристики?", "Нет", "Да");
+
+                popup.StartAnim();
+
+                var result = await Shell.Current.ShowPopupAsync(popup) ?? false;
+                // Пользователь нажал "Да":
+                if ((bool)result)
+                {
+                    await DataAccessService.UpdateTargetAsync(targetToAdd);
+
+                    var targetToDelList = Targets.Where(x => x.TargetName.Equals(SelectedTarget.TargetName)).ToList();
+
+                    int i = Targets.IndexOf(targetToDelList.First());
+                    var tg = Targets.ElementAt(i);
+                    tg.CopyProps(targetToAdd);
+
+                    message = "Цель была обновлена.";
+
+                    var msgPopup = new MessagePopup("Успех.", message);
+
+                    _ = msgPopup.ShowAsync();
+
+                    return;
+                }
+                // Если пользователь нажал "Нет", возврат:
+                return;
+            }
+            // Если цели с таким именем нет:
+            else
+            {
+                int resultOfAdd = await DataAccessService.AddTargetAsync(targetToAdd);
+
+                if (resultOfAdd != 0)
+                {
+                    Targets.Add(targetToAdd);
+
+                    message = "Цель была добавлена.";
+
+                    var msgPopup = new MessagePopup("Успех.", message);
+
+                    _ = msgPopup.ShowAsync();
+
+                    return;
+                }
+            }
+        }
+
+        [RelayCommand]
         private async Task DeleteTargetAsync()
         {
             if (SelectedTarget is null)
@@ -164,7 +220,20 @@ namespace WhmCalcMaui.ViewModels
                     return;
                 }
 
-                Targets.Remove(SelectedTarget);
+                var targetToDelList = Targets.Where(x => x.TargetName.Equals(SelectedTarget.TargetName)).ToList();
+                if (targetToDelList.Count == 1)
+                {
+                    Targets.Remove(targetToDelList.First());
+                }
+
+                if (Targets.Count != 0)
+                {
+                    SelectedTarget.CopyProps(Targets.First());
+                }
+                else
+                {
+                    SelectedTarget = null;
+                }
 
                 message = "Цель удалена.";
 
@@ -172,24 +241,12 @@ namespace WhmCalcMaui.ViewModels
 
                 await successMsgPopup.ShowAsync();
 
-                if (Targets.Count != 0)
-                {
-                    SelectedTarget = Targets[0];
-                }
-                else
-                {
-                    SelectedTarget = null;
-                }
-
                 return;
             }
             else
             {
                 return;
             }
-            
-
-
         }
 
         [RelayCommand]
@@ -230,7 +287,9 @@ namespace WhmCalcMaui.ViewModels
 
             if (result is TargetModel sTarget)
             {
-                SelectedTarget = sTarget;
+                SelectedTarget ??= new TargetModel();
+
+                SelectedTarget.CopyProps(sTarget);
             }
         }
 
