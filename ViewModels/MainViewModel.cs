@@ -11,6 +11,7 @@ using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WhmCalcMaui.Models;
+using WhmCalcMaui.Resources.Localization;
 using WhmCalcMaui.Services;
 using WhmCalcMaui.Services.Calculations;
 using WhmCalcMaui.Views.CustomControls;
@@ -60,31 +61,6 @@ namespace WhmCalcMaui.ViewModels
             // Тест ----------------------
             //Task test = Task.Run(Test);
             // ---------------------------
-        }
-
-        [RelayCommand]
-        private async Task TestTwoAsync()
-        {
-            var popup = new ConfirmationPopup("Подтверждение.", "Вы действительно хотите что-то сделать?", "Нет", "Да");
-
-            popup.StartAnim();
-
-            var result = await Shell.Current.ShowPopupAsync(popup) ?? false;
-
-            string message;
-
-            if ((bool)result)
-            {
-                message = "Вы нажали ДА!";
-            }
-            else
-            {
-                message = "Вы нажали НЕТ или дизмиснули!";
-            }
-
-            var popupTwo = new MessagePopup("Ахтунг!", message);
-
-            _ = popupTwo.ShowAsync();
         }
 
         private void Attacker_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -137,12 +113,10 @@ namespace WhmCalcMaui.ViewModels
             var targetToAdd = new TargetModel();
             targetToAdd.CopyProps(SelectedTarget);
 
-            string message;
-
             // Если цель с таким именем уже есть:
             if (Targets.Any(x => x.TargetName == SelectedTarget.TargetName))
             {
-                var popup = new ConfirmationPopup("Внимание.", "Цель с таким именем уже существует. Вы хотите изменить ее характеристики?", "Нет", "Да");
+                var popup = new ConfirmationPopup(AppStrings.popup_type_warning, AppStrings.popup_confirm_targetupdate, AppStrings.btn_no, AppStrings.btn_yes);
 
                 popup.StartAnim();
 
@@ -158,9 +132,7 @@ namespace WhmCalcMaui.ViewModels
                     var tg = Targets.ElementAt(i);
                     tg.CopyProps(targetToAdd);
 
-                    message = "Цель была обновлена.";
-
-                    var msgPopup = new MessagePopup("Успех.", message);
+                    var msgPopup = new MessagePopup(AppStrings.popup_type_success, AppStrings.popup_message_targetupdated);
 
                     _ = msgPopup.ShowAsync();
 
@@ -178,9 +150,7 @@ namespace WhmCalcMaui.ViewModels
                 {
                     Targets.Add(targetToAdd);
 
-                    message = "Цель была добавлена.";
-
-                    var msgPopup = new MessagePopup("Успех.", message);
+                    var msgPopup = new MessagePopup(AppStrings.popup_type_success, AppStrings.popup_message_targetadded);
 
                     _ = msgPopup.ShowAsync();
 
@@ -197,13 +167,11 @@ namespace WhmCalcMaui.ViewModels
                 return;
             }
 
-            var popup = new ConfirmationPopup("Подтверждение.", "Вы действительно хотите удалить эту цель?", "Нет", "Да");
+            var popup = new ConfirmationPopup(AppStrings.popup_type_confirmation, AppStrings.popup_confirm_targetdelete, AppStrings.btn_no, AppStrings.btn_yes);
 
             popup.StartAnim();
 
             var result = await Shell.Current.ShowPopupAsync(popup) ?? false;
-
-            string message;
 
             if ((bool)result)
             {
@@ -211,9 +179,7 @@ namespace WhmCalcMaui.ViewModels
 
                 if (res == 0)
                 {
-                    message = "Не удалось удалить цель.";
-
-                    var errorMsgPopup = new MessagePopup("Ошибка.", message);
+                    var errorMsgPopup = new MessagePopup(AppStrings.popup_type_error, AppStrings.popup_error_couldnotdelete);
 
                     await errorMsgPopup.ShowAsync();
 
@@ -235,9 +201,7 @@ namespace WhmCalcMaui.ViewModels
                     SelectedTarget = null;
                 }
 
-                message = "Цель удалена.";
-
-                var successMsgPopup = new MessagePopup("Успех.", message);
+                var successMsgPopup = new MessagePopup(AppStrings.popup_type_success, AppStrings.popup_message_targetremoved);
 
                 await successMsgPopup.ShowAsync();
 
