@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using System.Globalization;
+using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using WhmCalcMaui.Services;
 using WhmCalcMaui.Services.Calculations;
@@ -24,6 +25,7 @@ namespace WhmCalcMaui
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            CultureInfo.CurrentUICulture = new CultureInfo("en-US");
 
             return builder.Build();
         }

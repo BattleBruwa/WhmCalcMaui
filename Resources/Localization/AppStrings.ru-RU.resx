@@ -163,7 +163,7 @@
     <value>Пробивание брони</value>
   </data>
   <data name="textbox_attacks" xml:space="preserve">
-    <value>Аттаки</value>
+    <value>Атаки</value>
   </data>
   <data name="textbox_damage" xml:space="preserve">
     <value>Урон</value>
