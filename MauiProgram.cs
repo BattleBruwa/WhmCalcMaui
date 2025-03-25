@@ -25,8 +25,6 @@ namespace WhmCalcMaui
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-
             return builder.Build();
         }
 

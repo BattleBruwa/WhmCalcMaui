@@ -79,6 +79,15 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Re-Roll 1s to Hit.
+        /// </summary>
+        internal static string mod_reroll_1s_to_hit {
+            get {
+                return ResourceManager.GetString("mod_reroll_1s_to_hit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you wish to delete this target?.
         /// </summary>
         internal static string popup_confirm_targetdelete {

@@ -1,7 +1,7 @@
 ﻿[
   {
     "Id": 1,
-    "Name": "Re-Roll 1s to Hit",
+    "Name": "mod_reroll_1s_to_hit",
     "ToolTip": "Each time an attack is made, re-roll a Hit roll of 1"
   },
   {

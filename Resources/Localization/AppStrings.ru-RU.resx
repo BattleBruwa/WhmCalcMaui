@@ -123,6 +123,9 @@
   <data name="btn_yes" xml:space="preserve">
     <value>Да</value>
   </data>
+  <data name="mod_reroll_1s_to_hit" xml:space="preserve">
+    <value>Переброс поподаний (1)</value>
+  </data>
   <data name="popup_confirm_targetdelete" xml:space="preserve">
     <value>Вы действительно хотите удалить эту цель?</value>
   </data>

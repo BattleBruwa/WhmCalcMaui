@@ -4,7 +4,9 @@
              xmlns:strings="clr-namespace:WhmCalcMaui.Resources.Localization"
              xmlns:customViews="clr-namespace:WhmCalcMaui.Views.CustomControls"
              xmlns:models="clr-namespace:WhmCalcMaui.Models"
+             xmlns:locale="clr-namespace:WhmCalcMaui.Services.Localization"
              xmlns:viewModels="clr-namespace:WhmCalcMaui.ViewModels"
+             xmlns:converters="clr-namespace:WhmCalcMaui.Converters"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="WhmCalcMaui.Views.MainView"
              x:DataType="viewModels:MainViewModel"
@@ -15,11 +17,15 @@
     <VerticalStackLayout>
 
         <!--Аутпут грид-->
+        <HorizontalStackLayout>
         <Label Text="Result:"
                Style="{StaticResource labelStyle}"
                FontSize="Medium"
                FontAttributes="Bold"
                HorizontalTextAlignment="Start" />
+
+            <Button Text="Lang" Command="{Binding ChangeLanguageCommand}" HorizontalOptions="End"/>
+        </HorizontalStackLayout>
 
         <!--Высота строк багуется и высчитывается неправильно, если ставить "1*,2*", по-этому поставлены абсолютные значения "54, 108"-->
         <Grid ColumnDefinitions="*,*,*,*,*,*"
@@ -27,17 +33,17 @@
               RowSpacing="{StaticResource spacing}"
               BindingContext="{Binding Output}"
               x:DataType="models:OutputModel">
-            <Label Text="{x:Static strings:AppStrings.textbox_attacks}"
+            <Label Text="{locale:Translate textbox_attacks}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="0"
                    Grid.Row="0"
                    VerticalOptions="End" />
-            <Label Text="{x:Static strings:AppStrings.textbox_deadmodels}"
+            <Label Text="{locale:Translate textbox_deadmodels}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="4"
                    Grid.Row="0"
                    VerticalOptions="End" />
-            <Label Text="{x:Static strings:AppStrings.textbox_totaldamage}"
+            <Label Text="{locale:Translate textbox_totaldamage}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="5"
                    Grid.Row="0"
@@ -51,22 +57,22 @@
                                          Grid.Column="1"
                                          Grid.Row="0"
                                          Grid.RowSpan="2"
-                                         EntryOneHeader="{x:Static strings:AppStrings.textbox_hits}"
-                                         EntryTwoHeader="{x:Static strings:AppStrings.textbox_sushits}"
+                                         EntryOneHeader="{locale:Translate textbox_hits}"
+                                         EntryTwoHeader="{locale:Translate textbox_sushits}"
                                          EntryOneText="{Binding NatHits}"
                                          EntryTwoText="{Binding SustainedHits}" />
             <customViews:OutputEntryView Grid.Column="2"
                                          Grid.Row="0"
                                          Grid.RowSpan="2"
-                                         EntryOneHeader="{x:Static strings:AppStrings.textbox_wounds}"
-                                         EntryTwoHeader="{x:Static strings:AppStrings.textbox_lethalhits}"
+                                         EntryOneHeader="{locale:Translate textbox_wounds}"
+                                         EntryTwoHeader="{locale:Translate textbox_lethalhits}"
                                          EntryOneText="{Binding NatWounds}"
                                          EntryTwoText="{Binding AutoWounds}" />
             <customViews:OutputEntryView Grid.Column="3"
                                          Grid.Row="0"
                                          Grid.RowSpan="2"
-                                         EntryOneHeader="{x:Static strings:AppStrings.textbox_unsavedwonds}"
-                                         EntryTwoHeader="{x:Static strings:AppStrings.textbox_devwounds}"
+                                         EntryOneHeader="{locale:Translate textbox_unsavedwonds}"
+                                         EntryTwoHeader="{locale:Translate textbox_devwounds}"
                                          EntryOneText="{Binding UnSavedWounds}"
                                          EntryTwoText="{Binding DevWounds}" />
             <customViews:EntryView Text="{Binding DeadModels}"
@@ -100,7 +106,7 @@
               ColumnSpacing="{StaticResource spacing}">
             <!--рр 1 хит-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
+                                      Name="{locale:Translate{Name}}"
                                       Grid.Column="0"
                                       Grid.Row="0" />
             <!--рр хит-->
@@ -260,15 +266,15 @@
                                        x:Name="targetBox"
                                        Text="{Binding TargetName}" />
 
-            <Label Text="{x:Static strings:AppStrings.textbox_toughness}"
+            <Label Text="{locale:Translate textbox_toughness}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="1"
                    Grid.Row="0" />
-            <Label Text="{x:Static strings:AppStrings.textbox_save}"
+            <Label Text="{locale:Translate textbox_save}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="2"
                    Grid.Row="0" />
-            <Label Text="{x:Static strings:AppStrings.textbox_wounds}"
+            <Label Text="{locale:Translate textbox_wounds}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="3"
                    Grid.Row="0" />
@@ -295,23 +301,23 @@
               RowSpacing="{StaticResource spacing}"
               ColumnSpacing="{StaticResource spacing}"
               BindingContext="{Binding Attacker}">
-            <Label Text="{x:Static strings:AppStrings.textbox_attacks}"
+            <Label Text="{locale:Translate textbox_attacks}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="0"
                    Grid.Row="0" />
-            <Label Text="{x:Static strings:AppStrings.textbox_weaponskill}"
+            <Label Text="{locale:Translate textbox_weaponskill}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="1"
                    Grid.Row="0" />
-            <Label Text="{x:Static strings:AppStrings.textbox_strength}"
+            <Label Text="{locale:Translate textbox_strength}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="2"
                    Grid.Row="0" />
-            <Label Text="{x:Static strings:AppStrings.textbox_armorpen}"
+            <Label Text="{locale:Translate textbox_armorpen}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="3"
                    Grid.Row="0" />
-            <Label Text="{x:Static strings:AppStrings.textbox_damage}"
+            <Label Text="{locale:Translate textbox_damage}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="4"
                    Grid.Row="0" />

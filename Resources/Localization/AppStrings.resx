@@ -125,6 +125,10 @@
     <value>Yes</value>
     <comment>Yes</comment>
   </data>
+  <data name="mod_reroll_1s_to_hit" xml:space="preserve">
+    <value>Re-Roll 1s to Hit</value>
+    <comment>Re-Roll 1s to Hit</comment>
+  </data>
   <data name="popup_confirm_targetdelete" xml:space="preserve">
     <value>Do you wish to delete this target?</value>
     <comment>Do you wish to delete this target?</comment>

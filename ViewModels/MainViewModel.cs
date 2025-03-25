@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,6 +15,7 @@ using WhmCalcMaui.Models;
 using WhmCalcMaui.Resources.Localization;
 using WhmCalcMaui.Services;
 using WhmCalcMaui.Services.Calculations;
+using WhmCalcMaui.Services.Localization;
 using WhmCalcMaui.Views.CustomControls;
 using WhmCalcMaui.Views.Popups;
 using static SQLite.SQLite3;
@@ -103,6 +105,15 @@ namespace WhmCalcMaui.ViewModels
         }
 
         [RelayCommand]
+        private void ChangeLanguage()
+        {
+            var culture = AppStrings.Culture.TwoLetterISOLanguageName
+                .Equals("ru", StringComparison.InvariantCultureIgnoreCase) ? new CultureInfo("en-US") : new CultureInfo("ru-RU");
+
+            LocalizationResourceManager.Instance.SetCulture(culture);
+        }
+
+        [RelayCommand]
         private async Task AddTargetAsync()
         {
             if (SelectedTarget is null || String.IsNullOrWhiteSpace(SelectedTarget.TargetName))
@@ -117,7 +128,6 @@ namespace WhmCalcMaui.ViewModels
             if (Targets.Any(x => x.TargetName == SelectedTarget.TargetName))
             {
                 var popup = new ConfirmationPopup(AppStrings.popup_type_warning, AppStrings.popup_confirm_targetupdate, AppStrings.btn_no, AppStrings.btn_yes);
-
                 popup.StartAnim();
 
                 var result = await Shell.Current.ShowPopupAsync(popup) ?? false;
