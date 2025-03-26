@@ -125,9 +125,61 @@
     <value>Yes</value>
     <comment>Yes</comment>
   </data>
+  <data name="mod_anti_x" xml:space="preserve">
+    <value>AntiX</value>
+    <comment>AntiX</comment>
+  </data>
+  <data name="mod_devastating_wounds" xml:space="preserve">
+    <value>Devastating Wounds</value>
+    <comment>Devastating Wounds</comment>
+  </data>
+  <data name="mod_feel_no_pain" xml:space="preserve">
+    <value>Feel No Pain</value>
+    <comment>Feel No Pain</comment>
+  </data>
+  <data name="mod_half_damage" xml:space="preserve">
+    <value>Half Damage</value>
+    <comment>Half Damage</comment>
+  </data>
+  <data name="mod_invul_save" xml:space="preserve">
+    <value>Invulnerable Save</value>
+    <comment>Invulnerable Save</comment>
+  </data>
+  <data name="mod_lethal_hits" xml:space="preserve">
+    <value>Lethal Hits</value>
+    <comment>Lethal Hits</comment>
+  </data>
+  <data name="mod_minus_1_damage" xml:space="preserve">
+    <value>Minus 1 to Damage</value>
+    <comment>Minus 1 to Damage</comment>
+  </data>
+  <data name="mod_minus_1_to_wound" xml:space="preserve">
+    <value>Minus 1 to Wound</value>
+    <comment>Minus 1 to Wound</comment>
+  </data>
+  <data name="mod_plus_1_to_wound" xml:space="preserve">
+    <value>Plus 1 to Wound</value>
+    <comment>Plus 1 to Wound</comment>
+  </data>
   <data name="mod_reroll_1s_to_hit" xml:space="preserve">
     <value>Re-Roll 1s to Hit</value>
     <comment>Re-Roll 1s to Hit</comment>
+  </data>
+  <data name="mod_reroll_1s_to_wound" xml:space="preserve">
+    <value>Re-Roll 1s to Wound</value>
+    <comment>Re-Roll 1s to Wound</comment>
+  </data>
+  <data name="mod_reroll_all_to_hit" xml:space="preserve">
+    <value>Re-Roll to Hit</value>
+    <comment>Re-Roll to Hit</comment>
+  </data>
+  <data name="mod_reroll_all_to_wound" xml:space="preserve">
+    <value>Re-Roll to Wound</value>
+    <comment>Re-Roll to Wound</comment>
+  </data>
+  <data name="mod_sustained_hits" xml:space="preserve">
+    <value>Sustained Hits</value>
+    <comment>Sustained Hits</comment>
   </data>
   <data name="popup_confirm_targetdelete" xml:space="preserve">
     <value>Do you wish to delete this target?</value>

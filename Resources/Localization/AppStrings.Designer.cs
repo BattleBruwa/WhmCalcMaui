@@ -79,11 +79,128 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AntiX.
+        /// </summary>
+        internal static string mod_anti_x {
+            get {
+                return ResourceManager.GetString("mod_anti_x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devastating Wounds.
+        /// </summary>
+        internal static string mod_devastating_wounds {
+            get {
+                return ResourceManager.GetString("mod_devastating_wounds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feel No Pain.
+        /// </summary>
+        internal static string mod_feel_no_pain {
+            get {
+                return ResourceManager.GetString("mod_feel_no_pain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Half Damage.
+        /// </summary>
+        internal static string mod_half_damage {
+            get {
+                return ResourceManager.GetString("mod_half_damage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invulnerable Save.
+        /// </summary>
+        internal static string mod_invul_save {
+            get {
+                return ResourceManager.GetString("mod_invul_save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lethal Hits.
+        /// </summary>
+        internal static string mod_lethal_hits {
+            get {
+                return ResourceManager.GetString("mod_lethal_hits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minus 1 to Damage.
+        /// </summary>
+        internal static string mod_minus_1_damage {
+            get {
+                return ResourceManager.GetString("mod_minus_1_damage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minus 1 to Wound.
+        /// </summary>
+        internal static string mod_minus_1_to_wound {
+            get {
+                return ResourceManager.GetString("mod_minus_1_to_wound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plus 1 to Wound.
+        /// </summary>
+        internal static string mod_plus_1_to_wound {
+            get {
+                return ResourceManager.GetString("mod_plus_1_to_wound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Re-Roll 1s to Hit.
         /// </summary>
         internal static string mod_reroll_1s_to_hit {
             get {
                 return ResourceManager.GetString("mod_reroll_1s_to_hit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re-Roll 1s to Wound.
+        /// </summary>
+        internal static string mod_reroll_1s_to_wound {
+            get {
+                return ResourceManager.GetString("mod_reroll_1s_to_wound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re-Roll to Hit.
+        /// </summary>
+        internal static string mod_reroll_all_to_hit {
+            get {
+                return ResourceManager.GetString("mod_reroll_all_to_hit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re-Roll to Wound.
+        /// </summary>
+        internal static string mod_reroll_all_to_wound {
+            get {
+                return ResourceManager.GetString("mod_reroll_all_to_wound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sustained Hits.
+        /// </summary>
+        internal static string mod_sustained_hits {
+            get {
+                return ResourceManager.GetString("mod_sustained_hits", resourceCulture);
             }
         }
         

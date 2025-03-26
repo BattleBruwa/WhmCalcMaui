@@ -61,7 +61,7 @@ namespace WhmCalcMaui.ViewModels
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
             SelectedTarget = new TargetModel();
             // Тест ----------------------
-            //Task test = Task.Run(Test);
+            Task test = Task.Run(Test);
             // ---------------------------
         }
 
@@ -102,6 +102,23 @@ namespace WhmCalcMaui.ViewModels
                     ModListService.PickedMods.Remove(mod);
                 }
             }
+        }
+
+        [RelayCommand]
+        private void ChangeAppTheme()
+        {
+            if (Application.Current is null)
+            {
+                return;
+            }
+
+            if (Application.Current.RequestedTheme is AppTheme.Dark)
+            {
+                Application.Current.UserAppTheme = AppTheme.Light;
+                return;
+            }
+
+            Application.Current.UserAppTheme = AppTheme.Dark;
         }
 
         [RelayCommand]
@@ -297,28 +314,25 @@ namespace WhmCalcMaui.ViewModels
         {
             while (true)
             {
-                //Debug.WriteLine($"Attacker:\nA: {Attacker?.AttackerA} WS: {Attacker?.AttackerWS} S: {Attacker?.AttackerS} AP: {Attacker?.AttackerAP} D: {Attacker?.AttackerD}");
-                //Debug.WriteLine($"Output:\nA: {Output?.Attacks} H: {Output?.NatHits} Sus: {Output?.SustainedHits} W: {Output?.AllWounds} US: {Output?.UnSavedWounds} D: {Output?.TotalDamage}");
-                //Debug.WriteLine("Modlist:");
-                //foreach (var i in ModListService.PickedMods)
-                //{
-                //    Debug.Write(i.Name + " ");
+                Debug.WriteLine($"Attacker:\nA: {Attacker?.AttackerA} WS: {Attacker?.AttackerWS} S: {Attacker?.AttackerS} AP: {Attacker?.AttackerAP} D: {Attacker?.AttackerD}");
+                Debug.WriteLine($"Output:\nA: {Output?.Attacks} H: {Output?.NatHits} Sus: {Output?.SustainedHits} W: {Output?.AllWounds} US: {Output?.UnSavedWounds} D: {Output?.TotalDamage}");
+                Debug.WriteLine("Modlist:");
+                foreach (var i in ModListService.PickedMods)
+                {
+                    Debug.Write(i.Name + " ");
 
-                //    if (i.Condition is not null)
-                //    {
-                //        Debug.Write(i.Condition + " ");
-                //    }
-                //}
+                    if (i.Condition is not null)
+                    {
+                        Debug.Write(i.Condition + " ");
+                    }
+                }
                 //Debug.WriteLine("Targets:");
                 //foreach (var t in Targets)
                 //{
                 //    Debug.Write(t.TargetName + " ");
                 //}
-                //Debug.WriteLine("");
-                //Thread.Sleep(2000);
-
-                Debug.WriteLine(Thread.CurrentThread.CurrentUICulture.Name);
-                Task.Delay(2000);
+                Debug.WriteLine("");
+                Thread.Sleep(2000);
             }
         }
     }

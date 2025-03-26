@@ -6,7 +6,6 @@
              xmlns:models="clr-namespace:WhmCalcMaui.Models"
              xmlns:locale="clr-namespace:WhmCalcMaui.Services.Localization"
              xmlns:viewModels="clr-namespace:WhmCalcMaui.ViewModels"
-             xmlns:converters="clr-namespace:WhmCalcMaui.Converters"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="WhmCalcMaui.Views.MainView"
              x:DataType="viewModels:MainViewModel"
@@ -17,15 +16,24 @@
     <VerticalStackLayout>
 
         <!--Аутпут грид-->
-        <HorizontalStackLayout>
-        <Label Text="Result:"
-               Style="{StaticResource labelStyle}"
-               FontSize="Medium"
-               FontAttributes="Bold"
-               HorizontalTextAlignment="Start" />
+        <Grid ColumnDefinitions="*,*">
+            <Label Text="Result:"
+                   Style="{StaticResource labelStyle}"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Start"
+                   Grid.Column="0" />
 
-            <Button Text="Lang" Command="{Binding ChangeLanguageCommand}" HorizontalOptions="End"/>
-        </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Column="1"
+                                   HorizontalOptions="End">
+                <Button Text="Lang"
+                        Command="{Binding ChangeLanguageCommand}"
+                        HorizontalOptions="End" />
+                <Button Text="Theme"
+                        Command="{Binding ChangeAppThemeCommand}"
+                        HorizontalOptions="Start" />
+            </HorizontalStackLayout>
+        </Grid>
 
         <!--Высота строк багуется и высчитывается неправильно, если ставить "1*,2*", по-этому поставлены абсолютные значения "54, 108"-->
         <Grid ColumnDefinitions="*,*,*,*,*,*"
@@ -106,32 +114,26 @@
               ColumnSpacing="{StaticResource spacing}">
             <!--рр 1 хит-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{locale:Translate{Name}}"
                                       Grid.Column="0"
                                       Grid.Row="0" />
             <!--рр хит-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="1" />
             <!--рр 1 вунд-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="2" />
             <!--рр вунд-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="3" />
             <!--леталки-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="4" />
             <!--сус хитс-->
             <customViews:PickerCheckBox x:DataType="models:ModificatorModel"
-                                        Name="{Binding Name}"
                                         Grid.Column="0"
                                         Grid.Row="5">
                 <x:Arguments>
@@ -145,17 +147,14 @@
             </customViews:PickerCheckBox>
             <!--дев вундс-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
                                       Grid.Column="0"
                                       Grid.Row="6" />
             <!---1 вунд-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="0" />
             <!--анти х-->
             <customViews:PickerCheckBox x:DataType="models:ModificatorModel"
-                                        Name="{Binding Name}"
                                         Grid.Column="1"
                                         Grid.Row="1">
                 <x:Arguments>
@@ -170,7 +169,6 @@
             </customViews:PickerCheckBox>
             <!--фнп-->
             <customViews:PickerCheckBox x:DataType="models:ModificatorModel"
-                                        Name="{Binding Name}"
                                         Grid.Column="1"
                                         Grid.Row="2">
                 <x:Arguments>
@@ -184,7 +182,6 @@
             </customViews:PickerCheckBox>
             <!--инвуль-->
             <customViews:PickerCheckBox x:DataType="models:ModificatorModel"
-                                        Name="{Binding Name}"
                                         Grid.Column="1"
                                         Grid.Row="3">
                 <x:Arguments>
@@ -199,17 +196,14 @@
             </customViews:PickerCheckBox>
             <!---1 дмг-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="4" />
             <!--халф дмг-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="5" />
             <!--+1 вунд-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
-                                      Name="{Binding Name}"
                                       Grid.Column="1"
                                       Grid.Row="6" />
         </Grid>
@@ -237,7 +231,7 @@
                            Source="delete_t_icon.png"
                            Scale="0.8">
                         <Image.Behaviors>
-                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}"/>
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
                         </Image.Behaviors>
                     </Image>
                 </customViews:ButtonView.Content>
@@ -245,9 +239,9 @@
 
             <!--Кнопка добавления цели-->
             <customViews:ButtonView x:Name="addTBtn"
-                                     Grid.Row="2"
-                                     Grid.Column="4"
-                                     HeightRequest="56">
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HeightRequest="56">
                 <customViews:ButtonView.Content>
                     <Image Aspect="AspectFit"
                            Source="add_t_icon.png"

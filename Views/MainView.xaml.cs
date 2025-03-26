@@ -2,6 +2,8 @@ using Microsoft.Maui.Controls;
 using WhmCalcMaui.ViewModels;
 using WhmCalcMaui.Views.CustomControls;
 using System.Collections.Specialized;
+using WhmCalcMaui.Resources.Localization;
+using WhmCalcMaui.Services.Localization;
 
 namespace WhmCalcMaui.Views;
 
@@ -35,7 +37,18 @@ public partial class MainView : ContentPage
         {
             if (children[i] is CheckBoxView cb)
             {
-                cb.BindingContext = _viewModel.ModListService.ModificatorsList[i];
+                var mod = _viewModel.ModListService.ModificatorsList[i];
+
+                cb.BindingContext = mod;
+
+                Binding binding = new Binding { 
+                
+                    Source = LocalizationResourceManager.Instance,
+                    Path = $"[{mod.Name}]",
+                    Mode = BindingMode.OneWay
+                };
+
+                cb.SetBinding(CheckBoxView.NameProperty, binding);
 
                 cb.CommandParameter = cb;
 
@@ -44,7 +57,19 @@ public partial class MainView : ContentPage
 
             if (children[i] is PickerCheckBox pcb)
             {
-                pcb.BindingContext = _viewModel.ModListService.ModificatorsList[i];
+                var mod = _viewModel.ModListService.ModificatorsList[i];
+
+                pcb.BindingContext = mod;
+
+                Binding binding = new Binding
+                {
+
+                    Source = LocalizationResourceManager.Instance,
+                    Path = $"[{mod.Name}]",
+                    Mode = BindingMode.OneWay
+                };
+
+                pcb.SetBinding(PickerCheckBox.NameProperty, binding);
 
                 pcb.CommandParameter = pcb;
 
