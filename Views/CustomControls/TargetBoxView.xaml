@@ -53,7 +53,7 @@
                        Aspect="AspectFit"
                        Source="targetbox_arrow.png">
                     <Image.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={DynamicResource MainOutlineColorLight}, Dark={DynamicResource MainOutlineColorDark}}" />
                     </Image.Behaviors>
                 </Image>
             </Border>

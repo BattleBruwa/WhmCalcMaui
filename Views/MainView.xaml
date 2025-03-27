@@ -7,6 +7,7 @@
              xmlns:locale="clr-namespace:WhmCalcMaui.Services.Localization"
              xmlns:viewModels="clr-namespace:WhmCalcMaui.ViewModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:beh="clr-namespace:WhmCalcMaui.Views.Behaviors"
              x:Class="WhmCalcMaui.Views.MainView"
              x:DataType="viewModels:MainViewModel"
              x:Name="this"
@@ -231,7 +232,7 @@
                            Source="delete_t_icon.png"
                            Scale="0.8">
                         <Image.Behaviors>
-                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                            <beh:TintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
                         </Image.Behaviors>
                     </Image>
                 </customViews:ButtonView.Content>
@@ -247,7 +248,7 @@
                            Source="add_t_icon.png"
                            Scale="0.8">
                         <Image.Behaviors>
-                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={DynamicResource MainOutlineColorLight}, Dark={DynamicResource MainOutlineColorDark}}" />
                         </Image.Behaviors>
                     </Image>
                 </customViews:ButtonView.Content>
