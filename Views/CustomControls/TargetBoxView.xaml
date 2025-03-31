@@ -51,10 +51,10 @@
 
                 <Image x:Name="ArrowImg"
                        Aspect="AspectFit"
-                       Source="targetbox_arrow.png">
-                    <Image.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={DynamicResource MainOutlineColorLight}, Dark={DynamicResource MainOutlineColorDark}}" />
-                    </Image.Behaviors>
+                       Source="{AppThemeBinding Light=targetbox_arrow_light.png, Dark=targetbox_arrow_dark.png}">
+                    <!--<Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                    </Image.Behaviors>-->
                 </Image>
             </Border>
         </Grid>

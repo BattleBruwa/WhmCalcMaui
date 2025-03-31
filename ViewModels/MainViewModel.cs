@@ -61,7 +61,7 @@ namespace WhmCalcMaui.ViewModels
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
             SelectedTarget = new TargetModel();
             // Тест ----------------------
-            Task test = Task.Run(Test);
+            //Task test = Task.Run(Test);
             // ---------------------------
         }
 

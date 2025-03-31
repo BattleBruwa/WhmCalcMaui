@@ -4,6 +4,8 @@ using WhmCalcMaui.Views.CustomControls;
 using System.Collections.Specialized;
 using WhmCalcMaui.Resources.Localization;
 using WhmCalcMaui.Services.Localization;
+using System.Diagnostics;
+using CommunityToolkit.Maui.Behaviors;
 
 namespace WhmCalcMaui.Views;
 
@@ -23,7 +25,6 @@ public partial class MainView : ContentPage
         addTBtn.Command = _viewModel.AddTargetCommand;
         initTask = BindingInitAsync();
     }
-
     private async Task BindingInitAsync()
     {
         while (_viewModel.ModListService.IsBusy)

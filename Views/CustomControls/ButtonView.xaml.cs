@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace WhmCalcMaui.Views.CustomControls;
@@ -31,6 +32,16 @@ public partial class ButtonView : ContentView
         var tGR = new TapGestureRecognizer();
         tGR.Tapped += OnTapped;
         GestureRecognizers.Add(tGR);
+    }
+
+    protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        base.OnPropertyChanged(propertyName);
+
+        if (string.Equals(propertyName, "Content"))
+        {
+            InvalidateMeasure();
+        }
     }
 
     private async void OnTapped(object? sender, TappedEventArgs e)

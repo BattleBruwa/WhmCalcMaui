@@ -61,6 +61,15 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to РУ.
+        /// </summary>
+        internal static string btn_lang_change {
+            get {
+                return ResourceManager.GetString("btn_lang_change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string btn_no {

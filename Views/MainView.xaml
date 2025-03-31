@@ -7,7 +7,6 @@
              xmlns:locale="clr-namespace:WhmCalcMaui.Services.Localization"
              xmlns:viewModels="clr-namespace:WhmCalcMaui.ViewModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:beh="clr-namespace:WhmCalcMaui.Views.Behaviors"
              x:Class="WhmCalcMaui.Views.MainView"
              x:DataType="viewModels:MainViewModel"
              x:Name="this"
@@ -26,13 +25,31 @@
                    Grid.Column="0" />
 
             <HorizontalStackLayout Grid.Column="1"
+                                   Spacing="8"
                                    HorizontalOptions="End">
-                <Button Text="Lang"
+                <customViews:ButtonView HeightRequest="28"
+                                        WidthRequest="56"
+                                        Command="{Binding ChangeAppThemeCommand}">
+                    <Image Aspect="AspectFit"
+                           Source="{AppThemeBinding Light=mode_btn_icon_dark.png, Dark=mode_btn_icon_light.png}"
+                           Scale="0.8" />
+                </customViews:ButtonView>
+
+                <customViews:ButtonView HeightRequest="28"
+                                        WidthRequest="56"
+                                        Command="{Binding ChangeLanguageCommand}">
+                    <Label Style="{StaticResource labelStyle}"
+                           FontSize="Medium"
+                           Margin="2"
+                           Text="{locale:Translate btn_lang_change}" />
+                </customViews:ButtonView>
+
+                <!--<Button Text="Lang"
                         Command="{Binding ChangeLanguageCommand}"
-                        HorizontalOptions="End" />
-                <Button Text="Theme"
+                        HorizontalOptions="End" />-->
+                <!--<Button Text="Theme"
                         Command="{Binding ChangeAppThemeCommand}"
-                        HorizontalOptions="Start" />
+                        HorizontalOptions="Start" />-->
             </HorizontalStackLayout>
         </Grid>
 
@@ -229,11 +246,14 @@
                                     HeightRequest="56">
                 <customViews:ButtonView.Content>
                     <Image Aspect="AspectFit"
-                           Source="delete_t_icon.png"
+                           Source="{AppThemeBinding Light=delete_t_icon_light.png, Dark=delete_t_icon_dark.png}"
                            Scale="0.8">
-                        <Image.Behaviors>
-                            <beh:TintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
-                        </Image.Behaviors>
+
+                        <!--Behaviors не обрабатывает смену цвета в рантайме, по-этому просто привязываем файл кнопки к теме-->
+
+                        <!--<Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource MainOutlineColorLight}, Dark={StaticResource MainOutlineColorDark}}" />
+                        </Image.Behaviors>-->
                     </Image>
                 </customViews:ButtonView.Content>
             </customViews:ButtonView>
@@ -245,11 +265,8 @@
                                     HeightRequest="56">
                 <customViews:ButtonView.Content>
                     <Image Aspect="AspectFit"
-                           Source="add_t_icon.png"
+                           Source="{AppThemeBinding Light=add_t_icon_light.png, Dark=add_t_icon_dark.png}"
                            Scale="0.8">
-                        <Image.Behaviors>
-                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={DynamicResource MainOutlineColorLight}, Dark={DynamicResource MainOutlineColorDark}}" />
-                        </Image.Behaviors>
                     </Image>
                 </customViews:ButtonView.Content>
             </customViews:ButtonView>

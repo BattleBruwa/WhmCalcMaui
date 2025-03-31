@@ -22,12 +22,14 @@
                 <Label Grid.Row="0"
                        Grid.Column="0"
                        Grid.ColumnSpan="2"
-                       x:Name="titleLabel" />
+                       x:Name="titleLabel"
+                       Margin="8" FontSize="Medium"/>
 
                 <Label Grid.Row="1"
                        Grid.Column="0"
                        Grid.ColumnSpan="2"
-                       x:Name="messageLabel" />
+                       x:Name="messageLabel"
+                       Margin="8" />
 
                 <!--<Button Grid.Row="2"
                         Grid.Column="0"
@@ -37,9 +39,12 @@
                 <customViews:ButtonView Grid.Row="2"
                                         Grid.Column="0"
                                         HeightRequest="56"
-                                        Clicked="leftBtn_Clicked">
+                                        Clicked="leftBtn_Clicked"
+                                        Margin="8">
 
-                    <Label x:Name="leftBtnLabel" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="leftBtnLabel"
+                           Style="{StaticResource labelStyle}"
+                           FontSize="Medium" />
 
                 </customViews:ButtonView>
 
@@ -51,9 +56,12 @@
                 <customViews:ButtonView Grid.Row="2"
                                         Grid.Column="1"
                                         HeightRequest="56"
-                                        Clicked="rightBtn_Clicked">
+                                        Clicked="rightBtn_Clicked"
+                                        Margin="8">
 
-                    <Label x:Name="rightBtnLabel" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="rightBtnLabel"
+                           Style="{StaticResource labelStyle}"
+                           FontSize="Medium" />
 
                 </customViews:ButtonView>
             </Grid>
