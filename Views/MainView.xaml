@@ -39,7 +39,7 @@
                                         WidthRequest="56"
                                         Command="{Binding ChangeLanguageCommand}">
                     <Label Style="{StaticResource labelStyle}"
-                           FontSize="Medium"
+                           FontSize="16"
                            Margin="2"
                            Text="{locale:Translate btn_lang_change}" />
                 </customViews:ButtonView>
@@ -325,10 +325,11 @@
                    Style="{StaticResource labelStyle}"
                    Grid.Column="2"
                    Grid.Row="0" />
-            <Label Text="{locale:Translate textbox_armorpen}"
-                   Style="{StaticResource labelStyle}"
-                   Grid.Column="3"
-                   Grid.Row="0" />
+            <customViews:LabelFitWidthView Text="{locale:Translate textbox_armorpen}"
+                                           Style="{StaticResource labelStyle}"
+                                           Grid.Column="3"
+                                           DefaultFontSize="Small"
+                                           Grid.Row="0" />
             <Label Text="{locale:Translate textbox_damage}"
                    Style="{StaticResource labelStyle}"
                    Grid.Column="4"

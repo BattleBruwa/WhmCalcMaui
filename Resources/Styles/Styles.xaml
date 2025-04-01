@@ -35,6 +35,8 @@
                 Value="True" />
         <Setter Property="Background"
                 Value="Transparent" />
+        <Setter Property="MaxLines"
+                Value="2" />
     </Style>
 
     <Shadow x:Key="modShadow"
