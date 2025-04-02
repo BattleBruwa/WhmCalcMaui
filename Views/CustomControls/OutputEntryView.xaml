@@ -63,10 +63,11 @@
               RowDefinitions="1*,2*"
               RowSpacing="{StaticResource spacing}">
 
-            <Label Grid.Row="0"
-                   VerticalOptions="End"
-                   Style="{StaticResource labelStyle}"
-                   Text="{Binding Source={x:Reference this}, Path=EntryOneHeader}" />
+            <customViews:LabelFitWidthView Grid.Row="0"
+                                           VerticalOptions="End"
+                                           Style="{StaticResource labelStyle}"
+                                           DefaultFontSize="Small"
+                                           Text="{Binding Source={x:Reference this}, Path=EntryOneHeader}" />
 
             <customViews:EntryView Text="{Binding Source={x:Reference this}, Path=EntryOneText}"
                                    Grid.Row="1"
@@ -78,10 +79,11 @@
               Grid.Row="0"
               RowDefinitions="*,2*">
 
-            <Label x:Name="upperBoxHeader"
-                   Grid.Row="0"
-                   Style="{StaticResource labelStyle}"
-                   Text="{Binding Source={x:Reference this}, Path=EntryTwoHeader}" />
+            <customViews:LabelFitWidthView x:Name="upperBoxHeader"
+                                           Grid.Row="0"
+                                           Style="{StaticResource labelStyle}"
+                                           DefaultFontSize="Small"
+                                           Text="{Binding Source={x:Reference this}, Path=EntryTwoHeader}" />
 
             <customViews:EntryView Text="{Binding Source={x:Reference this}, Path=EntryTwoText}"
                                    Grid.Row="1"
@@ -92,9 +94,10 @@
               Grid.Row="1"
               RowDefinitions="*,2*">
 
-            <Label Grid.Row="0"
-                   Style="{StaticResource labelStyle}"
-                   Text="{Binding Source={x:Reference this}, Path=EntryOneHeader}" />
+            <customViews:LabelFitWidthView Grid.Row="0"
+                                           Style="{StaticResource labelStyle}"
+                                           DefaultFontSize="Small"
+                                           Text="{Binding Source={x:Reference this}, Path=EntryOneHeader}" />
 
             <customViews:EntryView Text="{Binding Source={x:Reference this}, Path=EntryOneText}"
                                    Grid.Row="1"
