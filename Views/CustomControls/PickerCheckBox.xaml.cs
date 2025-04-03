@@ -7,7 +7,7 @@ public partial class PickerCheckBox : ContentView
 {
     // Имя мода
     public static readonly BindableProperty NameProperty =
-  BindableProperty.Create(nameof(Name), typeof(string), typeof(PickerCheckBox), string.Empty);
+  BindableProperty.Create(nameof(Name), typeof(string), typeof(PickerCheckBox), string.Empty, BindingMode.TwoWay, propertyChanged: NameChanged);
 
     public string Name
     {
@@ -58,6 +58,14 @@ public partial class PickerCheckBox : ContentView
         GestureRecognizers.Add(tGR);
         PopulateGrid(nums, symbol);
     }
+
+    // Обработчик для фикса смены локализации
+    private static void NameChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        var picker = (PickerCheckBox)bindable;
+        picker.NameLabel.Text = picker.Name + " " + picker.SelectedValue + picker.valueSymbol;
+    }
+
     // Обработчик для самого чекбокса.
     private async void OnTapped(object? sender, TappedEventArgs e)
     {

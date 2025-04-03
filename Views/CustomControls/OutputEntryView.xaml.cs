@@ -4,7 +4,7 @@ public partial class OutputEntryView : ContentView
 {
     // Заголовок первого текстбокса
     public static readonly BindableProperty EntryOneHeaderProperty =
-  BindableProperty.Create(nameof(EntryOneHeader), typeof(string), typeof(OutputEntryView), string.Empty);
+  BindableProperty.Create(nameof(EntryOneHeader), typeof(string), typeof(OutputEntryView), string.Empty, BindingMode.TwoWay);
 
     public string EntryOneHeader
     {
@@ -24,7 +24,7 @@ public partial class OutputEntryView : ContentView
 
     // Заголовок второго текстбокса
     public static readonly BindableProperty EntryTwoHeaderProperty =
-  BindableProperty.Create(nameof(EntryTwoHeader), typeof(string), typeof(OutputEntryView), string.Empty);
+  BindableProperty.Create(nameof(EntryTwoHeader), typeof(string), typeof(OutputEntryView), string.Empty, BindingMode.TwoWay);
 
     public string EntryTwoHeader
     {
