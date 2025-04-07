@@ -17,9 +17,12 @@
                IsReadOnly="{Binding Source={x:Reference this}, Path=IsReadOnly}"
                Keyboard="{Binding Source={x:Reference this}, Path=Keyboard}"
                Background="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}">
-            <Entry.Behaviors>
+
+               <!--ЗАКОМЕНТИТЬ ПРИ ТЕСТИРОВАНИИ-->
+
+            <!--<Entry.Behaviors>
                 <toolkit:SelectAllTextBehavior />
-            </Entry.Behaviors>
+            </Entry.Behaviors>-->
         </Entry>
     </Border>
 </ContentView>
