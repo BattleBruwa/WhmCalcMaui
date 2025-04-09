@@ -20,15 +20,15 @@ namespace WhmCalcMaui.Services.Calculations
             var susHitsMod = mods.Single(m => m.Id == 6);
             int susHitsCon = susHitsMod.Condition ?? 0;
             // Без критов
-            if (mods.Any(m => m.Id == 14) is false)
+            if (mods.Any(m => m.Id == 15) is false)
             {
                 output.SustainedHits = output.Attacks * AccuracyCalc.ToHitRoll(6, mods) * susHitsCon;
                 return;
             }
             // С критами
-            if (mods.Any(m => m.Id == 14))
+            if (mods.Any(m => m.Id == 15))
             {
-                var critMod = mods.Single(m => m.Id == 14);
+                var critMod = mods.Single(m => m.Id == 15);
                 int critCon = critMod.Condition ?? 0;
 
                 output.SustainedHits = output.Attacks * AccuracyCalc.ToHitRoll(critCon, mods) * susHitsCon;
@@ -40,15 +40,15 @@ namespace WhmCalcMaui.Services.Calculations
         public void LethalHits(OutputModel output, ICollection<ModificatorModel> mods)
         {
             // Без критов
-            if (mods.Any(m => m.Id == 14) is false)
+            if (mods.Any(m => m.Id == 15) is false)
             {
                 output.AutoWounds = output.Attacks * AccuracyCalc.ToHitRoll(6, mods);
                 return;
             }
             // С критами
-            if (mods.Any(m => m.Id == 14))
+            if (mods.Any(m => m.Id == 15))
             {
-                var critMod = mods.Single(m => m.Id == 14);
+                var critMod = mods.Single(m => m.Id == 15);
                 int critCon = critMod.Condition ?? 0;
 
                 output.AutoWounds = output.Attacks * AccuracyCalc.ToHitRoll(critCon, mods);
@@ -126,15 +126,15 @@ namespace WhmCalcMaui.Services.Calculations
                 output.AutoWounds = 0d;
             }
             // Без критов
-            if (mods.Any(m => m.Id == 14) is false)
+            if (mods.Any(m => m.Id == 15) is false)
             {
                 output.NatHits = output.Attacks * AccuracyCalc.ToHitRoll(attacker.AttackerWS, mods);
                 return;
             }
             // C критами
-            if (mods.Any(m => m.Id == 14))
+            if (mods.Any(m => m.Id == 15))
             {
-                var critMod = mods.Single(m => m.Id == 14);
+                var critMod = mods.Single(m => m.Id == 15);
                 int critCon = critMod.Condition ?? 0;
                 // Если меткость лучше крита
                 if (attacker.AttackerWS <= critCon)
