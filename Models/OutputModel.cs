@@ -120,5 +120,6 @@ namespace WhmCalcMaui.Models
             get { return deadModels; }
             set { SetProperty(ref deadModels, value); }
         }
+
     }
 }

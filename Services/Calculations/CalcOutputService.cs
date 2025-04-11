@@ -128,7 +128,7 @@ namespace WhmCalcMaui.Services.Calculations
             // Без критов
             if (mods.Any(m => m.Id == 15) is false)
             {
-                output.NatHits = output.Attacks * AccuracyCalc.ToHitRoll(attacker.AttackerWS, mods);
+                output.NatHits = output.Attacks * AccuracyCalc.ToHitRoll(attacker.AttackerWS, mods) - output.AutoWounds;
                 return;
             }
             // C критами
@@ -139,13 +139,13 @@ namespace WhmCalcMaui.Services.Calculations
                 // Если меткость лучше крита
                 if (attacker.AttackerWS <= critCon)
                 {
-                    output.NatHits = output.Attacks * AccuracyCalc.ToHitRoll(attacker.AttackerWS, mods);
+                    output.NatHits = output.Attacks * AccuracyCalc.ToHitRoll(attacker.AttackerWS, mods) - output.AutoWounds;
                     return;
                 }
                 // Если меткость хуже крита
                 if (attacker.AttackerWS > critCon)
                 {
-                    output.NatHits = output.Attacks * AccuracyCalc.ToHitRoll(critCon, mods);
+                    output.NatHits = output.Attacks * AccuracyCalc.ToHitRoll(critCon, mods) - output.AutoWounds;
                     return;
                 }
             }
@@ -231,16 +231,18 @@ namespace WhmCalcMaui.Services.Calculations
             {
                 var fnpMod = mods.Single(m => m.Id == 10);
                 int fnpCon = fnpMod.Condition ?? 0;
+                // Урон с ФНП
+                double fnpDmg = Math.Round(output.DmgPerWound - (output.DmgPerWound * ((7f - fnpCon) / 6f)), 2);
                 // Если урон с фнп меньше хп цели
-                if (output.DmgPerWound * ((7f - fnpCon) / 6f) < target.TargetW)
+                if (fnpDmg < target.TargetW)
                 {
                     for (int i = 1; i < output.UnSavedWounds; i++)
                     {
-                        double c = output.DmgPerWound * ((7f - fnpCon) / 6f);
+                        double c = fnpDmg;
                         while (c < target.TargetW && i < output.UnSavedWounds)
                         {
                             i++;
-                            c += output.DmgPerWound * ((7f - fnpCon) / 6f);
+                            c += c;
                         }
                         if (c >= target.TargetW)
                         {
@@ -250,11 +252,11 @@ namespace WhmCalcMaui.Services.Calculations
                     // Для дев. вундс
                     for (int i = 1; i < output.DevWounds; i++)
                     {
-                        double c = output.DmgPerWound * ((7f - fnpCon) / 6f);
+                        double c = fnpDmg;
                         while (c < target.TargetW && i < output.DevWounds)
                         {
                             i++;
-                            c += output.DmgPerWound * ((7f - fnpCon) / 6f);
+                            c += c;
                         }
                         if (c >= target.TargetW)
                         {
@@ -265,7 +267,7 @@ namespace WhmCalcMaui.Services.Calculations
                     return;
                 }
                 // Если урон с фнп больше или равен хп цели
-                if (output.DmgPerWound * ((7f - fnpCon) / 6f) >= target.TargetW)
+                if (fnpDmg >= target.TargetW)
                 {
                     deadModels = (int)(Math.Round(output.UnSavedWounds, 0) + Math.Round(output.DevWounds, 0));
                     output.DeadModels = deadModels;
