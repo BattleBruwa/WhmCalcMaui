@@ -50,6 +50,12 @@ public partial class OutputEntryView : ContentView
     public OutputEntryView()
     {
         InitializeComponent();
+        upperBoxHeader.PropertyChanged += UpperBoxHeader_PropertyChanged;
+    }
+
+    private void UpperBoxHeader_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        upperBoxHeader.InvalidateMeasure();
     }
 
     private static async void ConModPropChanged(BindableObject bindable, object oldValue, object newValue)

@@ -4,18 +4,14 @@ namespace WhmCalcMaui.Services.Calculations
 {
     public class CalcOutputService
     {
-        // Следующие методы помечены модификатором public
-        // для доступа тестовых методов и
-        // НЕ должны вызываться напрямую нигде,
-        // кроме тестов
         #region Частичный расчет
-        public void ResolveAttacks(AttackerModel attacker, OutputModel output)
+        private void ResolveAttacks(AttackerModel attacker, OutputModel output)
         {
             output.Attacks = AttackOrDamageCalc.CalculateAOrD(attacker.AttackerA);
         }
 
         // Вычисление SustainedHits
-        public void SusteinedHits(OutputModel output, ICollection<ModificatorModel> mods)
+        private void SusteinedHits(OutputModel output, ICollection<ModificatorModel> mods)
         {
             var susHitsMod = mods.Single(m => m.Id == 6);
             int susHitsCon = susHitsMod.Condition ?? 0;
@@ -37,7 +33,7 @@ namespace WhmCalcMaui.Services.Calculations
         }
 
         // Вычисление LethalHits
-        public void LethalHits(OutputModel output, ICollection<ModificatorModel> mods)
+        private void LethalHits(OutputModel output, ICollection<ModificatorModel> mods)
         {
             // Без критов
             if (mods.Any(m => m.Id == 15) is false)
@@ -57,7 +53,7 @@ namespace WhmCalcMaui.Services.Calculations
         }
 
         // Вычисление DevastatingWounds
-        public void DevWounds(OutputModel output, ICollection<ModificatorModel> mods)
+        private void DevWounds(OutputModel output, ICollection<ModificatorModel> mods)
         {
             // Без Анти х
             if (mods.Any(m => m.Id == 9) is false)
@@ -77,7 +73,7 @@ namespace WhmCalcMaui.Services.Calculations
         }
 
         // Вычисление DamagePerWound
-        public void DamagePerWound(AttackerModel attacker, OutputModel output, ICollection<ModificatorModel> mods)
+        private void DamagePerWound(AttackerModel attacker, OutputModel output, ICollection<ModificatorModel> mods)
         {
             double damage = AttackOrDamageCalc.CalculateAOrD(attacker.AttackerD);
             // Если есть ополовинивание урона
@@ -98,7 +94,7 @@ namespace WhmCalcMaui.Services.Calculations
             output.DmgPerWound = damage;
         }
 
-        public void ResolveHits(AttackerModel attacker, OutputModel output, ICollection<ModificatorModel> mods)
+        private void ResolveHits(AttackerModel attacker, OutputModel output, ICollection<ModificatorModel> mods)
         {
             // Наличие реролов проверяет и обрабатывает AccuracyCalc.ToHitRoll
             // Если меткость 0, то автохиты
@@ -151,7 +147,7 @@ namespace WhmCalcMaui.Services.Calculations
             }
         }
 
-        public void ResolveWounds(AttackerModel attacker,TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
+        private void ResolveWounds(AttackerModel attacker,TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
         {
             // -1 ToWound, +1 ToWound и реролы обрабатываются в WoundCalc.ToWoundRoll
             int resultedRoll = 0;
@@ -213,7 +209,7 @@ namespace WhmCalcMaui.Services.Calculations
             }
         }
 
-        public void ResolveSave(AttackerModel attacker, TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
+        private void ResolveSave(AttackerModel attacker, TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
         {
             // Инвуль обрабатывается в ArmorSaveCalc.ToSaveRoll
             double savedWounds = 0d;
@@ -221,7 +217,7 @@ namespace WhmCalcMaui.Services.Calculations
             output.UnSavedWounds = output.AllWounds - savedWounds;
         }
 
-        public void ResolveDeadModels(AttackerModel attacker, TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
+        private void ResolveDeadModels(AttackerModel attacker, TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
         {
             DamagePerWound(attacker, output, mods);
 
@@ -317,12 +313,11 @@ namespace WhmCalcMaui.Services.Calculations
             }
         }
 
-        public void ResolveTotalDamage(OutputModel output)
+        private void ResolveTotalDamage(OutputModel output)
         {
             output.TotalDamage = (output.UnSavedWounds + output.DevWounds) * output.DmgPerWound;
         }
         #endregion
-
 
         public void CalculateOutput(AttackerModel attacker, TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
         {

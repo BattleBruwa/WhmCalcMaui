@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -57,20 +59,21 @@ namespace WhmCalcMaui.ViewModels
             Calculator = calculator;
             Targets = [];
             initTask = InitTargetsAsync();
-            Attacker.PropertyChanged += Attacker_PropertyChanged;
+            Attacker.PropertyChanged += Attacker_Or_Target_PropertyChanged;
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
             SelectedTarget = new TargetModel();
+            SelectedTarget.PropertyChanged += Attacker_Or_Target_PropertyChanged;
             // Тест ----------------------
             //Task test = Task.Run(Test);
             // ---------------------------
         }
 
-        private void Attacker_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void Attacker_Or_Target_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             Recalculate();
         }
-
-        private void PickedMods_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        
+        private void PickedMods_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             Recalculate();
         }
