@@ -67,6 +67,7 @@
                                            VerticalOptions="End"
                                            Style="{StaticResource labelStyle}"
                                            DefaultFontSize="Small"
+                                           x:Name="singleStateHeader"
                                            Text="{Binding Source={x:Reference this}, Path=EntryOneHeader}" />
 
             <customViews:EntryView Text="{Binding Source={x:Reference this}, Path=EntryOneText}"
@@ -79,7 +80,7 @@
               Grid.Row="0"
               RowDefinitions="*,2*">
 
-            <customViews:LabelFitWidthView x:Name="upperBoxHeader"
+            <customViews:LabelFitWidthView x:Name="doubleStateHeader1"
                                            Grid.Row="0"
                                            Style="{StaticResource labelStyle}"
                                            DefaultFontSize="Small"
@@ -94,7 +95,8 @@
               Grid.Row="1"
               RowDefinitions="*,2*">
 
-            <customViews:LabelFitWidthView Grid.Row="0"
+            <customViews:LabelFitWidthView x:Name="doubleStateHeader2"
+                                           Grid.Row="0"
                                            Style="{StaticResource labelStyle}"
                                            DefaultFontSize="Small"
                                            Text="{Binding Source={x:Reference this}, Path=EntryOneHeader}" />

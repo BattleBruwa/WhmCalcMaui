@@ -1,4 +1,6 @@
 
+using System.Diagnostics;
+
 namespace WhmCalcMaui.Views.CustomControls;
 
 // Лэйбл с подстраивающимся под ширину размером шрифта
@@ -27,9 +29,27 @@ public class LabelFitWidthView : Label
     //    set => SetValue(TextProperty, value);
     //}
 
+    //protected override Size MeasureOverride(double widthConstraint, double heightConstraint)
+    //{
+    //    if (double.IsInfinity(widthConstraint))
+    //    {
+    //        widthConstraint = DeviceDisplay.MainDisplayInfo.Width;
+    //    }
+
+    //    if (double.IsInfinity(heightConstraint))
+    //    {
+    //        heightConstraint = DeviceDisplay.MainDisplayInfo.Height;
+    //    }
+
+    //    return base.MeasureOverride(widthConstraint, heightConstraint);
+    //}
+
     protected override void OnSizeAllocated(double width, double height)
     {
         base.OnSizeAllocated(width, height);
+#if DEBUG
+        Debug.WriteLine($"{Text}`s size allocation with W:{width} H:{height}");
+#endif
 
         if (width <= 0 || height <= 0 || string.IsNullOrEmpty(Text) || DefaultFontSize == 0)
         {
@@ -44,14 +64,20 @@ public class LabelFitWidthView : Label
         // Уменьшаем размер шрифта, если не помещаемся
         while (size.Width > width && FontSize > minFontSize)
         {
-            FontSize--;
+            FontSize -= 0.5;
+#if DEBUG
+            Debug.WriteLine($"{Text}`s font size LOWERED to {FontSize}");
+#endif
             size = Measure(width, double.PositiveInfinity);
         }
 
         // Увеличиваем размер шрифта вплоть до стандартного, если помещаемся
         while (size.Width < width && FontSize < DefaultFontSize)
         {
-            FontSize++;
+            FontSize += 0.5;
+#if DEBUG
+            Debug.WriteLine($"{Text}`s font size INCREASED to {FontSize}");
+#endif
             size = Measure(width, double.PositiveInfinity);
         }
     }

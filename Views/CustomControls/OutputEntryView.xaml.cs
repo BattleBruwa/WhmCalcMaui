@@ -50,12 +50,17 @@ public partial class OutputEntryView : ContentView
     public OutputEntryView()
     {
         InitializeComponent();
-        upperBoxHeader.PropertyChanged += UpperBoxHeader_PropertyChanged;
+        singleStateHeader.PropertyChanged += Header_PropertyChanged;
+        doubleStateHeader1.PropertyChanged += Header_PropertyChanged;
+        doubleStateHeader2.PropertyChanged += Header_PropertyChanged;
     }
 
-    private void UpperBoxHeader_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    private void Header_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
-        upperBoxHeader.InvalidateMeasure();
+        if (e.PropertyName == "Text")
+        {
+            InvalidateMeasure();
+        }
     }
 
     private static async void ConModPropChanged(BindableObject bindable, object oldValue, object newValue)
@@ -70,7 +75,7 @@ public partial class OutputEntryView : ContentView
 
                 output.TranslateBoxes(output.doubleStateGrid1, /*(double)output.Parent.GetValue(HeightProperty) / 6*/ 27),
                 output.TranslateBoxes(output.doubleStateGrid2, /*(double)output.Parent.GetValue(HeightProperty) / -3*/ -54),
-                output.upperBoxHeader.FadeTo(0, animationLength, animationEasing)
+                output.doubleStateHeader1.FadeTo(0, animationLength, animationEasing)
 
                 );
 
@@ -80,7 +85,7 @@ public partial class OutputEntryView : ContentView
 
         _ = output.TranslateBoxes(output.doubleStateGrid1, 0);
         _ = output.TranslateBoxes(output.doubleStateGrid2, 0);
-        _ = output.upperBoxHeader.FadeTo(1, animationLength, animationEasing);
+        _ = output.doubleStateHeader1.FadeTo(1, animationLength, animationEasing);
 
         VisualStateManager.GoToState(output, "Doubled");
     }

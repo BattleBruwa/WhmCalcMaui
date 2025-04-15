@@ -131,6 +131,9 @@ namespace WhmCalcMaui.ViewModels
                 .Equals("ru", StringComparison.InvariantCultureIgnoreCase) ? new CultureInfo("en-US") : new CultureInfo("ru-RU");
 
             LocalizationResourceManager.Instance.SetCulture(culture);
+#if DEBUG
+            Debug.WriteLine($"Localization changed to {culture.Name}");
+#endif
         }
 
         [RelayCommand]
