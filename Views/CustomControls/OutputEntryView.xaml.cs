@@ -1,10 +1,12 @@
+
+
 namespace WhmCalcMaui.Views.CustomControls;
 
 public partial class OutputEntryView : ContentView
 {
     // Заголовок первого текстбокса
     public static readonly BindableProperty EntryOneHeaderProperty =
-  BindableProperty.Create(nameof(EntryOneHeader), typeof(string), typeof(OutputEntryView), string.Empty, BindingMode.TwoWay);
+  BindableProperty.Create(nameof(EntryOneHeader), typeof(string), typeof(OutputEntryView), string.Empty, BindingMode.TwoWay, propertyChanged: TextPropertyChanged);
 
     public string EntryOneHeader
     {
@@ -24,7 +26,7 @@ public partial class OutputEntryView : ContentView
 
     // Заголовок второго текстбокса
     public static readonly BindableProperty EntryTwoHeaderProperty =
-  BindableProperty.Create(nameof(EntryTwoHeader), typeof(string), typeof(OutputEntryView), string.Empty, BindingMode.TwoWay);
+  BindableProperty.Create(nameof(EntryTwoHeader), typeof(string), typeof(OutputEntryView), string.Empty, BindingMode.TwoWay, propertyChanged: TextPropertyChanged);
 
     public string EntryTwoHeader
     {
@@ -50,16 +52,26 @@ public partial class OutputEntryView : ContentView
     public OutputEntryView()
     {
         InitializeComponent();
-        singleStateHeader.PropertyChanged += Header_PropertyChanged;
-        doubleStateHeader1.PropertyChanged += Header_PropertyChanged;
-        doubleStateHeader2.PropertyChanged += Header_PropertyChanged;
+        //singleStateHeader.PropertyChanged += Header_PropertyChanged;
+        //doubleStateHeader1.PropertyChanged += Header_PropertyChanged;
+        //doubleStateHeader2.PropertyChanged += Header_PropertyChanged;
     }
 
-    private void Header_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    //private void Header_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    //{
+    //    if (e.PropertyName == "Text")
+    //    {
+    //        InvalidateMeasure();
+    //    }
+    //}
+
+    private static void TextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
     {
-        if (e.PropertyName == "Text")
+        if (!string.IsNullOrWhiteSpace(newValue as string))
         {
-            InvalidateMeasure();
+            var output = (OutputEntryView)bindable;
+            output.doubleStateHeader1.AutoSizeFont();
+            output.doubleStateHeader2.AutoSizeFont();
         }
     }
 

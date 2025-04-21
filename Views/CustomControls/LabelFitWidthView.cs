@@ -10,11 +10,6 @@ public class LabelFitWidthView : Label
     [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
     public double DefaultFontSize { get; set; }
 
-    public LabelFitWidthView()
-    {
-        LineBreakMode = LineBreakMode.WordWrap;
-    }
-
     //public new static readonly BindableProperty TextProperty =
     //  BindableProperty.Create(nameof(Text), typeof(string), typeof(LabelFitWidthView), string.Empty, BindingMode.TwoWay, propertyChanged: OnTextChanged);
 
@@ -44,14 +39,9 @@ public class LabelFitWidthView : Label
     //    return base.MeasureOverride(widthConstraint, heightConstraint);
     //}
 
-    protected override void OnSizeAllocated(double width, double height)
+    public void AutoSizeFont()
     {
-        base.OnSizeAllocated(width, height);
-#if DEBUG
-        Debug.WriteLine($"{Text}`s size allocation with W:{width} H:{height}");
-#endif
-
-        if (width <= 0 || height <= 0 || string.IsNullOrEmpty(Text) || DefaultFontSize == 0)
+        if (Width <= 0 || string.IsNullOrEmpty(Text) || DefaultFontSize == 0)
         {
             return;
         }
@@ -59,26 +49,66 @@ public class LabelFitWidthView : Label
         // Минимальный размер шрифта
         double minFontSize = 1d;
 
-        var size = Measure(width, double.PositiveInfinity);
+        var size = Measure(Width, double.PositiveInfinity);
 
         // Уменьшаем размер шрифта, если не помещаемся
-        while (size.Width > width && FontSize > minFontSize)
+        while (size.Width >= Width && FontSize > minFontSize)
         {
-            FontSize -= 0.5;
+            FontSize -= 0.2;
 #if DEBUG
             Debug.WriteLine($"{Text}`s font size LOWERED to {FontSize}");
 #endif
-            size = Measure(width, double.PositiveInfinity);
+            size = Measure(Width, double.PositiveInfinity);
         }
 
         // Увеличиваем размер шрифта вплоть до стандартного, если помещаемся
-        while (size.Width < width && FontSize < DefaultFontSize)
+        while (size.Width < Width && FontSize < DefaultFontSize)
         {
-            FontSize += 0.5;
+            FontSize += 0.2;
 #if DEBUG
             Debug.WriteLine($"{Text}`s font size INCREASED to {FontSize}");
 #endif
-            size = Measure(width, double.PositiveInfinity);
+            size = Measure(Width, double.PositiveInfinity);
         }
+    }
+
+    protected override void OnSizeAllocated(double width, double height)
+    {
+        base.OnSizeAllocated(width, height);
+#if DEBUG
+        Debug.WriteLine($"{Text}`s size allocation with W:{width} H:{height}");
+#endif
+
+        AutoSizeFont();
+
+//        if (width <= 0 || height <= 0 || string.IsNullOrEmpty(Text) || DefaultFontSize == 0)
+//        {
+//            return;
+//        }
+
+//        // Минимальный размер шрифта
+//        double minFontSize = 1d;
+
+//        var size = Measure(width, double.PositiveInfinity);
+
+//        // Уменьшаем размер шрифта, если не помещаемся
+//        while (size.Width > width && FontSize > minFontSize)
+//        {
+//            FontSize -= 0.2;
+//#if DEBUG
+//            Debug.WriteLine($"{Text}`s font size LOWERED to {FontSize}");
+//#endif
+//            size = Measure(width, double.PositiveInfinity);
+//        }
+
+//        // Увеличиваем размер шрифта вплоть до стандартного, если помещаемся
+//        while (size.Width <= width && FontSize < DefaultFontSize)
+//        {
+//            FontSize += 0.2;
+//#if DEBUG
+//            Debug.WriteLine($"{Text}`s font size INCREASED to {FontSize}");
+//#endif
+//            size = Measure(width, double.PositiveInfinity);
+//        }
     }
 }
