@@ -315,7 +315,7 @@
 
         <Grid ColumnDefinitions="*,*,*,*,*"
               x:DataType="models:AttackerModel"
-              RowDefinitions="1*, 2*"
+              RowDefinitions="30, *"
               RowSpacing="{StaticResource spacing}"
               ColumnSpacing="{StaticResource spacing}"
               BindingContext="{Binding Attacker}">
