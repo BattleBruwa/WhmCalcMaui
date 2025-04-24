@@ -130,7 +130,7 @@
     <value>АнтиX</value>
   </data>
   <data name="mod_devastating_wounds" xml:space="preserve">
-    <value>Опустошающие раны</value>
+    <value>Опустощающие раны</value>
   </data>
   <data name="mod_feel_no_pain" xml:space="preserve">
     <value>Подавление боли</value>
@@ -217,13 +217,13 @@
     <value>Убито моделей</value>
   </data>
   <data name="textbox_devwounds" xml:space="preserve">
-    <value>Опустошающие</value>
+    <value>Дев. раны</value>
   </data>
   <data name="textbox_hits" xml:space="preserve">
     <value>Поподания</value>
   </data>
   <data name="textbox_lethalhits" xml:space="preserve">
-    <value>Летальные</value>
+    <value>Леталки</value>
   </data>
   <data name="textbox_save" xml:space="preserve">
     <value>Защита</value>
@@ -232,7 +232,7 @@
     <value>Сила</value>
   </data>
   <data name="textbox_sushits" xml:space="preserve">
-    <value>Множественные</value>
+    <value>Доп. поподания</value>
   </data>
   <data name="textbox_totaldamage" xml:space="preserve">
     <value>Полный урон</value>

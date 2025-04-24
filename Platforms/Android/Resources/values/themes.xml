@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="Theme.Animated" parent="Theme.SplashScreen">
+    <item name="windowSplashScreenBackground">#252422</item>
+    <item name="windowSplashScreenAnimatedIcon">@drawable/splash_animation</item>
+    <item name="windowSplashScreenAnimationDuration">0</item>
+    <item name="postSplashScreenTheme">@style/Maui.MainTheme.NoActionBar</item>
+  </style>
+</resources>
