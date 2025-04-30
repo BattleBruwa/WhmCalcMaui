@@ -118,10 +118,12 @@ namespace WhmCalcMaui.ViewModels
             if (Application.Current.RequestedTheme is AppTheme.Dark)
             {
                 Application.Current.UserAppTheme = AppTheme.Light;
+                Preferences.Default.Set("appTheme", "Light");
                 return;
             }
 
             Application.Current.UserAppTheme = AppTheme.Dark;
+            Preferences.Default.Set("appTheme", "Dark");
         }
 
         [RelayCommand]
@@ -131,6 +133,7 @@ namespace WhmCalcMaui.ViewModels
                 .Equals("ru", StringComparison.InvariantCultureIgnoreCase) ? new CultureInfo("en-US") : new CultureInfo("ru-RU");
 
             LocalizationResourceManager.Instance.SetCulture(culture);
+            Preferences.Default.Set("appLocalization", $"{culture.Name}");
 #if DEBUG
             Debug.WriteLine($"Localization changed to {culture.Name}");
 #endif
