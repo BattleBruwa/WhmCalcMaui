@@ -31,7 +31,7 @@ namespace WhmCalcMaui
             switch (appThemeCode)
             {
                 case "Dark": theme = AppTheme.Dark; break;
-                case "Light": theme= AppTheme.Light; break;
+                case "Light": theme = AppTheme.Light; break;
                     default: theme = AppTheme.Dark; break;
             }
 

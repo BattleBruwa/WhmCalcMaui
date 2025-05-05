@@ -228,7 +228,7 @@ namespace WhmCalcMaui.Services.Calculations
                 var fnpMod = mods.Single(m => m.Id == 10);
                 int fnpCon = fnpMod.Condition ?? 0;
                 // Урон с ФНП
-                double fnpDmg = Math.Round(output.DmgPerWound - (output.DmgPerWound * ((7f - fnpCon) / 6f)), 2);
+                double fnpDmg = Math.Round(output.DmgPerWound - (output.DmgPerWound * ((7f - fnpCon) / 6f)), 4);
                 // Если урон с фнп меньше хп цели
                 if (fnpDmg < target.TargetW)
                 {
