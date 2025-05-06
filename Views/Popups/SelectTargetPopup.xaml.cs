@@ -8,9 +8,9 @@ namespace WhmCalcMaui.Views.Popups;
 public partial class SelectTargetPopup : Popup
 {
     // Анимация
-    private static readonly Easing animationEasing = Easing.Linear;
+    private static readonly Easing animationEasing = Easing.SinOut;
     // Длина анимации
-    private const uint animationLength = 2000;
+    private const uint animationLength = 250;
 
     private bool isBusy = false;
 

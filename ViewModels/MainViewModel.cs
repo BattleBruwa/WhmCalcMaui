@@ -63,6 +63,7 @@ namespace WhmCalcMaui.ViewModels
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
             SelectedTarget = new TargetModel();
             SelectedTarget.PropertyChanged += Attacker_Or_Target_PropertyChanged;
+            SetAndroidNavAndStatusBarsColors();
             // Тест ----------------------
             //Task test = Task.Run(Test);
             // ---------------------------
@@ -119,11 +120,33 @@ namespace WhmCalcMaui.ViewModels
             {
                 Application.Current.UserAppTheme = AppTheme.Light;
                 Preferences.Default.Set("appTheme", "Light");
+                SetAndroidNavAndStatusBarsColors();
                 return;
             }
 
             Application.Current.UserAppTheme = AppTheme.Dark;
             Preferences.Default.Set("appTheme", "Dark");
+            SetAndroidNavAndStatusBarsColors();
+        }
+
+        private void SetAndroidNavAndStatusBarsColors()
+        {
+            if (Application.Current is null)
+            {
+                return;
+            }
+#if ANDROID
+            if (Application.Current.RequestedTheme is AppTheme.Dark)
+            {
+                Platform.CurrentActivity.Window.SetNavigationBarColor(Android.Graphics.Color.Black);
+                Platform.CurrentActivity.Window.SetStatusBarColor(Android.Graphics.Color.Black);
+            }
+            else
+            {
+                Platform.CurrentActivity.Window.SetNavigationBarColor(Android.Graphics.Color.White);
+                Platform.CurrentActivity.Window.SetStatusBarColor(Android.Graphics.Color.White);
+            }
+#endif
         }
 
         [RelayCommand]

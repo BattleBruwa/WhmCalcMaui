@@ -44,7 +44,7 @@ public partial class PickerCheckBox : ContentView
     // Символ мода (++ для инвуля, +++ для фнп)
     private readonly string valueSymbol;
     // Анимация
-    private readonly Easing animationEasing = Easing.Linear;
+    private readonly Easing animationEasing = Easing.SinOut;
     // Длина анимации
     private const uint animationLength = 250;
 
