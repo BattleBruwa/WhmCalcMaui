@@ -6,9 +6,9 @@ public partial class MessagePopup : Popup
 {
     private bool isDismissed = false;
     // Анимация
-    private static readonly Easing animationEasing = Easing.Linear;
+    private static readonly Easing animationEasing = Easing.SinOut;
     // Длина анимации
-    private const uint animationLength = 500;
+    private const uint animationLength = 250;
 
     public MessagePopup(string title, string message)
 	{

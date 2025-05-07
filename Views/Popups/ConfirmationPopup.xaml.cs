@@ -6,9 +6,9 @@ public partial class ConfirmationPopup : Popup
 {
     private bool isDismissed = false;
     // Анимация
-    private static readonly Easing animationEasing = Easing.Linear;
+    private static readonly Easing animationEasing = Easing.SinOut;
     // Длина анимации
-    private const uint animationLength = 2500;
+    private const uint animationLength = 250;
 
     public ConfirmationPopup(string title, string message, string leftBtnText, string rightBtnText)
 	{

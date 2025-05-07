@@ -2,7 +2,9 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhmCalcMaui.Views.CustomControls.CheckBoxView"
-             x:Name="this" MinimumHeightRequest="38">
+             xmlns:customViews="clr-namespace:WhmCalcMaui.Views.CustomControls"
+             x:Name="this"
+             MinimumHeightRequest="38">
 
     <VisualStateManager.VisualStateGroups>
         <VisualStateGroupList>
@@ -32,12 +34,13 @@
         </VisualStateGroupList>
     </VisualStateManager.VisualStateGroups>
 
-    <Border x:Name="RBborder" Style="{StaticResource borderStyle}">
+    <Border x:Name="RBborder"
+            Style="{StaticResource borderStyle}">
 
-        <Label x:Name="RBname"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Text="{Binding Source={x:Reference this}, Path=Name}"
-               TextColor="{AppThemeBinding Light={StaticResource TextMainColorLight}, Dark={StaticResource TextMainColorDark}}" />
+        <customViews:LabelFitWidthView x:Name="RBname"
+                                       Margin="2,-1,2,0"
+                                       Text="{Binding Source={x:Reference this}, Path=Name}"
+                                       Style="{StaticResource labelStyle}"
+                                       DefaultFontSize="14" />
     </Border>
 </ContentView>
