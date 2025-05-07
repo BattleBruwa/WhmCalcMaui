@@ -74,13 +74,10 @@ public class LabelFitWidthView : Label
         //        }
     }
 
-//    protected override void OnSizeAllocated(double width, double height)
-//    {
-//        base.OnSizeAllocated(width, height);
-//#if DEBUG
-//        Debug.WriteLine($"{Text}`s size allocation with W:{width} H:{height}");
-//#endif
+    protected override void OnSizeAllocated(double width, double height)
+    {
+        base.OnSizeAllocated(width, height);
 
-//        AutoSizeFont();
-//    }
+        AutoSizeFont();
+    }
 }
