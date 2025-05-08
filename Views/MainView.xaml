@@ -300,13 +300,16 @@
                                            Grid.Row="0" />
             <customViews:EntryView Text="{Binding TargetT}"
                                    Grid.Column="1"
-                                   Grid.Row="1" />
+                                   Grid.Row="1"
+                                   Keyboard="Numeric" />
             <customViews:EntryView Text="{Binding TargetSv}"
                                    Grid.Column="2"
-                                   Grid.Row="1" />
+                                   Grid.Row="1"
+                                   Keyboard="Numeric" />
             <customViews:EntryView Text="{Binding TargetW}"
                                    Grid.Column="3"
-                                   Grid.Row="1" />
+                                   Grid.Row="1"
+                                   Keyboard="Numeric" />
         </Grid>
         <!--Инпут грид-->
         <Label Text="Attacker:"
@@ -351,7 +354,7 @@
             <customViews:EntryView Text="{Binding AttackerA}"
                                    Grid.Column="0"
                                    Grid.Row="1"
-                                   Keyboard="Numeric" />
+                                   Keyboard="Plain" />
             <customViews:EntryView Text="{Binding AttackerWS}"
                                    Grid.Column="1"
                                    Grid.Row="1"
@@ -367,7 +370,7 @@
             <customViews:EntryView Text="{Binding AttackerD}"
                                    Grid.Column="4"
                                    Grid.Row="1"
-                                   Keyboard="Numeric" />
+                                   Keyboard="Plain" />
         </Grid>
 
     </VerticalStackLayout>
