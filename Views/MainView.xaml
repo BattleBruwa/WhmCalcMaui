@@ -354,7 +354,8 @@
             <customViews:EntryView Text="{Binding AttackerA}"
                                    Grid.Column="0"
                                    Grid.Row="1"
-                                   Keyboard="Plain" />
+                                   Keyboard="Plain"
+                                   ValidationExpression="^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$"/>
             <customViews:EntryView Text="{Binding AttackerWS}"
                                    Grid.Column="1"
                                    Grid.Row="1"
@@ -370,7 +371,8 @@
             <customViews:EntryView Text="{Binding AttackerD}"
                                    Grid.Column="4"
                                    Grid.Row="1"
-                                   Keyboard="Plain" />
+                                   Keyboard="Plain"
+                                   ValidationExpression="^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$" />
         </Grid>
 
     </VerticalStackLayout>

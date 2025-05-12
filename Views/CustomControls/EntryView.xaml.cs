@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace WhmCalcMaui.Views.CustomControls;
 
@@ -10,7 +11,25 @@ public partial class EntryView : ContentView
     public string Text
     {
         get => (string)GetValue(TextProperty);
-        set => SetValue(TextProperty, value);
+        set 
+        {
+            if (validationRegex is not null)
+            {
+                if (validationRegex.IsMatch(value))
+                {
+                    SetValue(TextProperty, value);
+                    GoToState(false);
+                }
+                else
+                {
+                    GoToState(true);
+                }
+            }
+            else
+            {
+                SetValue(TextProperty, value);
+            }
+        }
     }
 
     public static readonly BindableProperty IsReadOnlyProperty =
@@ -32,8 +51,34 @@ public partial class EntryView : ContentView
         set => SetValue(KeyboardProperty, value);
     }
 
+    public string? ValidationExpression
+    {
+        get
+        {
+            return validationString;
+        }
+        set
+        {
+            validationString = value;
+
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                validationRegex = new Regex(value);
+            }
+        }
+    }
+
+    private string? validationString;
+    private Regex? validationRegex;
+
     public EntryView()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+    }
+
+    private void GoToState(bool hasError)
+    {
+        string visualState = hasError ? "HasError" : "Normal";
+        VisualStateManager.GoToState(this, visualState);
+    }
 }
