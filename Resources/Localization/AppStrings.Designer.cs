@@ -97,11 +97,29 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unmodified Wound roll of X+ against a target with the matching keyword scores a Critical Wound.
+        /// </summary>
+        internal static string mod_anti_x_tooltip {
+            get {
+                return ResourceManager.GetString("mod_anti_x_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Devastating Wounds.
         /// </summary>
         internal static string mod_devastating_wounds {
             get {
                 return ResourceManager.GetString("mod_devastating_wounds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saving throws cannot be made against Critical Wounds scored by this attack.
+        /// </summary>
+        internal static string mod_devastating_wounds_tooltip {
+            get {
+                return ResourceManager.GetString("mod_devastating_wounds_tooltip", resourceCulture);
             }
         }
         
@@ -115,11 +133,29 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Each time this model would lose a wound, roll one D6: if the result equals or exceeds X, that wound is not lost.
+        /// </summary>
+        internal static string mod_feel_no_pain_tooltip {
+            get {
+                return ResourceManager.GetString("mod_feel_no_pain_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Half Damage.
         /// </summary>
         internal static string mod_half_damage {
             get {
                 return ResourceManager.GetString("mod_half_damage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each time an attack is allocated to this model, halve the Damage characteristic of that attack.
+        /// </summary>
+        internal static string mod_half_damage_tooltip {
+            get {
+                return ResourceManager.GetString("mod_half_damage_tooltip", resourceCulture);
             }
         }
         
@@ -133,11 +169,29 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Never modified by an attack&apos;s AP.
+        /// </summary>
+        internal static string mod_invul_save_tooltip {
+            get {
+                return ResourceManager.GetString("mod_invul_save_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lethal Hits.
         /// </summary>
         internal static string mod_lethal_hits {
             get {
                 return ResourceManager.GetString("mod_lethal_hits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each time an attack is made, a Critical Hit automatically wounds the target.
+        /// </summary>
+        internal static string mod_lethal_hits_tooltip {
+            get {
+                return ResourceManager.GetString("mod_lethal_hits_tooltip", resourceCulture);
             }
         }
         
@@ -151,11 +205,29 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Subtract 1 from Damage characteristic.
+        /// </summary>
+        internal static string mod_minus_1_damage_tooltip {
+            get {
+                return ResourceManager.GetString("mod_minus_1_damage_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minus 1 to Wound.
         /// </summary>
         internal static string mod_minus_1_to_wound {
             get {
                 return ResourceManager.GetString("mod_minus_1_to_wound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subtract 1 from the Wound roll.
+        /// </summary>
+        internal static string mod_minus_1_to_wound_tooltip {
+            get {
+                return ResourceManager.GetString("mod_minus_1_to_wound_tooltip", resourceCulture);
             }
         }
         
@@ -169,11 +241,29 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add 1 to the Wound roll.
+        /// </summary>
+        internal static string mod_plus_1_to_wound_tooltip {
+            get {
+                return ResourceManager.GetString("mod_plus_1_to_wound_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Re-Roll 1s to Hit.
         /// </summary>
         internal static string mod_reroll_1s_to_hit {
             get {
                 return ResourceManager.GetString("mod_reroll_1s_to_hit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each time an attack is made, re-roll a Hit roll of 1.
+        /// </summary>
+        internal static string mod_reroll_1s_to_hit_tooltip {
+            get {
+                return ResourceManager.GetString("mod_reroll_1s_to_hit_tooltip", resourceCulture);
             }
         }
         
@@ -187,11 +277,29 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Each time an attack is made, re-roll a Wound roll of 1.
+        /// </summary>
+        internal static string mod_reroll_1s_to_wound_tooltip {
+            get {
+                return ResourceManager.GetString("mod_reroll_1s_to_wound_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Re-Roll to Hit.
         /// </summary>
         internal static string mod_reroll_all_to_hit {
             get {
                 return ResourceManager.GetString("mod_reroll_all_to_hit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each time an attack is made, you can re-roll that attack&apos;s Hit roll.
+        /// </summary>
+        internal static string mod_reroll_all_to_hit_tooltip {
+            get {
+                return ResourceManager.GetString("mod_reroll_all_to_hit_tooltip", resourceCulture);
             }
         }
         
@@ -205,11 +313,29 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Each time an attack is made, you can re-roll that attack&apos;s Wound roll.
+        /// </summary>
+        internal static string mod_reroll_all_to_wound_tooltip {
+            get {
+                return ResourceManager.GetString("mod_reroll_all_to_wound_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sustained Hits.
         /// </summary>
         internal static string mod_sustained_hits {
             get {
                 return ResourceManager.GetString("mod_sustained_hits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each Critical Hit scores X additional hits on the target.
+        /// </summary>
+        internal static string mod_sustained_hits_tooltip {
+            get {
+                return ResourceManager.GetString("mod_sustained_hits_tooltip", resourceCulture);
             }
         }
         

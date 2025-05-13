@@ -29,13 +29,14 @@
             Style="{StaticResource borderStyle}">
 
         <Entry TextColor="{AppThemeBinding Light={StaticResource TextMainColorLight}, Dark={StaticResource TextMainColorDark}}"
+               BindingContext="{x:Reference this}"
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center"
                FontAttributes="Bold"
                FontSize="Large"
-               Text="{Binding Source={x:Reference this}, Path=Text}"
-               IsReadOnly="{Binding Source={x:Reference this}, Path=IsReadOnly}"
-               Keyboard="{Binding Source={x:Reference this}, Path=Keyboard}"
+               Text="{Binding Text}"
+               IsReadOnly="{Binding IsReadOnly}"
+               Keyboard="{Binding Keyboard}"
                Background="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}">
 
             <!-- ЗАКОМЕНТИТЬ ПРИ ТЕСТИРОВАНИИ -->

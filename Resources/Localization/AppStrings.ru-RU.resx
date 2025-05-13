@@ -129,44 +129,86 @@
   <data name="mod_anti_x" xml:space="preserve">
     <value>АнтиX</value>
   </data>
+  <data name="mod_anti_x_tooltip" xml:space="preserve">
+    <value>Немодифицируемый результат X+ против цели с совпадающим типом считается Критическим Ранением</value>
+  </data>
   <data name="mod_devastating_wounds" xml:space="preserve">
     <value>Опустощающие раны</value>
+  </data>
+  <data name="mod_devastating_wounds_tooltip" xml:space="preserve">
+    <value>Броски на защиту не делаются для Критических Ранений от этой атаки</value>
   </data>
   <data name="mod_feel_no_pain" xml:space="preserve">
     <value>Подавление боли</value>
   </data>
+  <data name="mod_feel_no_pain_tooltip" xml:space="preserve">
+    <value>Каждый раз, когда эта модель теряет рану, брось один D6; если результат равен или превышает X, эта рана не теряется</value>
+  </data>
   <data name="mod_half_damage" xml:space="preserve">
     <value>Ополовинивание урона</value>
+  </data>
+  <data name="mod_half_damage_tooltip" xml:space="preserve">
+    <value>Каждый раз, когда атака определена на эту модель, раздели Урон этой атаки на 2</value>
   </data>
   <data name="mod_invul_save" xml:space="preserve">
     <value>Непробиваемая защита</value>
   </data>
+  <data name="mod_invul_save_tooltip" xml:space="preserve">
+    <value>Не модифицируется Пробиванием брони атаки</value>
+  </data>
   <data name="mod_lethal_hits" xml:space="preserve">
     <value>Летальные поподания</value>
+  </data>
+  <data name="mod_lethal_hits_tooltip" xml:space="preserve">
+    <value>Критическое поподание автоматически ранит цель</value>
   </data>
   <data name="mod_minus_1_damage" xml:space="preserve">
     <value>Минус 1 урон</value>
   </data>
+  <data name="mod_minus_1_damage_tooltip" xml:space="preserve">
+    <value>Вычти 1 из характеристики Урон</value>
+  </data>
   <data name="mod_minus_1_to_wound" xml:space="preserve">
     <value>Минус 1 на ранение</value>
+  </data>
+  <data name="mod_minus_1_to_wound_tooltip" xml:space="preserve">
+    <value>Вычти 1 из броска на ранение</value>
   </data>
   <data name="mod_plus_1_to_wound" xml:space="preserve">
     <value>Плюс 1 на ранение</value>
   </data>
+  <data name="mod_plus_1_to_wound_tooltip" xml:space="preserve">
+    <value>Добавь 1 к броску на ранение</value>
+  </data>
   <data name="mod_reroll_1s_to_hit" xml:space="preserve">
     <value>Переброс поподаний (1)</value>
+  </data>
+  <data name="mod_reroll_1s_to_hit_tooltip" xml:space="preserve">
+    <value>Перебрось результат 1 при броске на попадание</value>
   </data>
   <data name="mod_reroll_1s_to_wound" xml:space="preserve">
     <value>Перепрос на ранение (1)</value>
   </data>
+  <data name="mod_reroll_1s_to_wound_tooltip" xml:space="preserve">
+    <value>Перебрось результат 1 при броске на ранение</value>
+  </data>
   <data name="mod_reroll_all_to_hit" xml:space="preserve">
     <value>Переброс поподаний (все)</value>
+  </data>
+  <data name="mod_reroll_all_to_hit_tooltip" xml:space="preserve">
+    <value>Можешь перебросить любой результат при броске на попадание</value>
   </data>
   <data name="mod_reroll_all_to_wound" xml:space="preserve">
     <value>Перепрос на ранение (все)</value>
   </data>
+  <data name="mod_reroll_all_to_wound_tooltip" xml:space="preserve">
+    <value>Можешь перебросить любой результат при броске на ранение</value>
+  </data>
   <data name="mod_sustained_hits" xml:space="preserve">
     <value>Множественные поподания</value>
+  </data>
+  <data name="mod_sustained_hits_tooltip" xml:space="preserve">
+    <value>Каждое Критической поподание добавляет X дополнительных поподаний на цель</value>
   </data>
   <data name="popup_confirm_targetdelete" xml:space="preserve">
     <value>Вы действительно хотите удалить эту цель?</value>

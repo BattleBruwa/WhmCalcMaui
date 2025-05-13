@@ -6,6 +6,7 @@ using WhmCalcMaui.Resources.Localization;
 using WhmCalcMaui.Services.Localization;
 using System.Diagnostics;
 using CommunityToolkit.Maui.Behaviors;
+using WhmCalcMaui.Models;
 
 namespace WhmCalcMaui.Views;
 
@@ -25,6 +26,7 @@ public partial class MainView : ContentPage
         addTBtn.Command = _viewModel.AddTargetCommand;
         initTask = BindingInitAsync();
     }
+
     private async Task BindingInitAsync()
     {
         while (_viewModel.ModListService.IsBusy)
@@ -42,14 +44,21 @@ public partial class MainView : ContentPage
 
                 cb.BindingContext = mod;
 
-                Binding binding = new Binding { 
-                
+                Binding bindingText = new Binding { 
                     Source = LocalizationResourceManager.Instance,
                     Path = $"[{mod.Name}]",
                     Mode = BindingMode.OneWay
                 };
 
-                cb.SetBinding(CheckBoxView.NameProperty, binding);
+                Binding bindingTooltip = new Binding {
+                    Source = LocalizationResourceManager.Instance,
+                    Path = $"[{mod.ToolTip}]",
+                    Mode = BindingMode.OneWay
+                };
+
+                ToolTipProperties.SetText(cb, bindingTooltip);
+
+                cb.SetBinding(CheckBoxView.NameProperty, bindingText);
 
                 cb.CommandParameter = cb;
 
@@ -62,13 +71,19 @@ public partial class MainView : ContentPage
 
                 pcb.BindingContext = mod;
 
-                Binding binding = new Binding
-                {
-
+                Binding binding = new Binding {
                     Source = LocalizationResourceManager.Instance,
                     Path = $"[{mod.Name}]",
                     Mode = BindingMode.OneWay
                 };
+
+                Binding bindingTooltip = new Binding {
+                    Source = LocalizationResourceManager.Instance,
+                    Path = $"[{mod.ToolTip}]",
+                    Mode = BindingMode.OneWay
+                };
+
+                ToolTipProperties.SetText(pcb, bindingTooltip);
 
                 pcb.SetBinding(PickerCheckBox.NameProperty, binding);
 

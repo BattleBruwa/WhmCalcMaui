@@ -133,57 +133,113 @@
     <value>AntiX</value>
     <comment>AntiX</comment>
   </data>
+  <data name="mod_anti_x_tooltip" xml:space="preserve">
+    <value>An unmodified Wound roll of X+ against a target with the matching keyword scores a Critical Wound</value>
+    <comment>An unmodified Wound roll of X+ against a target with the matching keyword scores a Critical Wound</comment>
+  </data>
   <data name="mod_devastating_wounds" xml:space="preserve">
     <value>Devastating Wounds</value>
     <comment>Devastating Wounds</comment>
+  </data>
+  <data name="mod_devastating_wounds_tooltip" xml:space="preserve">
+    <value>Saving throws cannot be made against Critical Wounds scored by this attack</value>
+    <comment>Saving throws cannot be made against Critical Wounds scored by this attack</comment>
   </data>
   <data name="mod_feel_no_pain" xml:space="preserve">
     <value>Feel No Pain</value>
     <comment>Feel No Pain</comment>
   </data>
+  <data name="mod_feel_no_pain_tooltip" xml:space="preserve">
+    <value>Each time this model would lose a wound, roll one D6: if the result equals or exceeds X, that wound is not lost</value>
+    <comment>Each time this model would lose a wound, roll one D6: if the result equals or exceeds X, that wound is not lost</comment>
+  </data>
   <data name="mod_half_damage" xml:space="preserve">
     <value>Half Damage</value>
     <comment>Half Damage</comment>
+  </data>
+  <data name="mod_half_damage_tooltip" xml:space="preserve">
+    <value>Each time an attack is allocated to this model, halve the Damage characteristic of that attack</value>
+    <comment>Each time an attack is allocated to this model, halve the Damage characteristic of that attack</comment>
   </data>
   <data name="mod_invul_save" xml:space="preserve">
     <value>Invulnerable Save</value>
     <comment>Invulnerable Save</comment>
   </data>
+  <data name="mod_invul_save_tooltip" xml:space="preserve">
+    <value>Never modified by an attack's AP</value>
+    <comment>Never modified by an attack's AP</comment>
+  </data>
   <data name="mod_lethal_hits" xml:space="preserve">
     <value>Lethal Hits</value>
     <comment>Lethal Hits</comment>
+  </data>
+  <data name="mod_lethal_hits_tooltip" xml:space="preserve">
+    <value>Each time an attack is made, a Critical Hit automatically wounds the target</value>
+    <comment>Each time an attack is made, a Critical Hit automatically wounds the target</comment>
   </data>
   <data name="mod_minus_1_damage" xml:space="preserve">
     <value>Minus 1 to Damage</value>
     <comment>Minus 1 to Damage</comment>
   </data>
+  <data name="mod_minus_1_damage_tooltip" xml:space="preserve">
+    <value>Subtract 1 from Damage characteristic</value>
+    <comment>Subtract 1 from Damage characteristic</comment>
+  </data>
   <data name="mod_minus_1_to_wound" xml:space="preserve">
     <value>Minus 1 to Wound</value>
     <comment>Minus 1 to Wound</comment>
+  </data>
+  <data name="mod_minus_1_to_wound_tooltip" xml:space="preserve">
+    <value>Subtract 1 from the Wound roll</value>
+    <comment>Subtract 1 from the Wound roll</comment>
   </data>
   <data name="mod_plus_1_to_wound" xml:space="preserve">
     <value>Plus 1 to Wound</value>
     <comment>Plus 1 to Wound</comment>
   </data>
+  <data name="mod_plus_1_to_wound_tooltip" xml:space="preserve">
+    <value>Add 1 to the Wound roll</value>
+    <comment>Add 1 to the Wound roll</comment>
+  </data>
   <data name="mod_reroll_1s_to_hit" xml:space="preserve">
     <value>Re-Roll 1s to Hit</value>
     <comment>Re-Roll 1s to Hit</comment>
+  </data>
+  <data name="mod_reroll_1s_to_hit_tooltip" xml:space="preserve">
+    <value>Each time an attack is made, re-roll a Hit roll of 1</value>
+    <comment>Each time an attack is made, re-roll a Hit roll of 1</comment>
   </data>
   <data name="mod_reroll_1s_to_wound" xml:space="preserve">
     <value>Re-Roll 1s to Wound</value>
     <comment>Re-Roll 1s to Wound</comment>
   </data>
+  <data name="mod_reroll_1s_to_wound_tooltip" xml:space="preserve">
+    <value>Each time an attack is made, re-roll a Wound roll of 1</value>
+    <comment>Each time an attack is made, re-roll a Wound roll of 1</comment>
+  </data>
   <data name="mod_reroll_all_to_hit" xml:space="preserve">
     <value>Re-Roll to Hit</value>
     <comment>Re-Roll to Hit</comment>
+  </data>
+  <data name="mod_reroll_all_to_hit_tooltip" xml:space="preserve">
+    <value>Each time an attack is made, you can re-roll that attack's Hit roll</value>
+    <comment>Each time an attack is made, you can re-roll that attack's Hit roll</comment>
   </data>
   <data name="mod_reroll_all_to_wound" xml:space="preserve">
     <value>Re-Roll to Wound</value>
     <comment>Re-Roll to Wound</comment>
   </data>
+  <data name="mod_reroll_all_to_wound_tooltip" xml:space="preserve">
+    <value>Each time an attack is made, you can re-roll that attack's Wound roll</value>
+    <comment>Each time an attack is made, you can re-roll that attack's Wound roll</comment>
+  </data>
   <data name="mod_sustained_hits" xml:space="preserve">
     <value>Sustained Hits</value>
     <comment>Sustained Hits</comment>
+  </data>
+  <data name="mod_sustained_hits_tooltip" xml:space="preserve">
+    <value>Each Critical Hit scores X additional hits on the target</value>
+    <comment>Each Critical Hit scores X additional hits on the target</comment>
   </data>
   <data name="popup_confirm_targetdelete" xml:space="preserve">
     <value>Do you wish to delete this target?</value>

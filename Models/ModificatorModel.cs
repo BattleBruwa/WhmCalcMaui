@@ -9,7 +9,7 @@ namespace WhmCalcMaui.Models
 
         public string Name { get; set; } = string.Empty;
 
-        public string Description { get; set; } = string.Empty;
+        public string ToolTip { get; set; } = string.Empty;
 
         /// <summary>
         /// Для модификаторов с выбором значения.
@@ -27,7 +27,7 @@ namespace WhmCalcMaui.Models
 
         public override string ToString()
         {
-            return $"{Name}:\n{Description}";
+            return $"{Name}:\n{ToolTip}";
         }
     }
 }

@@ -2,71 +2,71 @@
   {
     "Id": 1,
     "Name": "mod_reroll_1s_to_hit",
-    "ToolTip": "Each time an attack is made, re-roll a Hit roll of 1"
+    "ToolTip": "mod_reroll_1s_to_hit_tooltip"
   },
   {
     "Id": 2,
     "Name": "mod_reroll_all_to_hit",
-    "ToolTip": "Each time an attack is made, you can re-roll that attack's Hit roll"
+    "ToolTip": "mod_reroll_all_to_hit_tooltip"
   },
   {
     "Id": 3,
     "Name": "mod_reroll_1s_to_wound",
-    "ToolTip": "Each time an attack is made, re-roll a Wound roll of 1"
+    "ToolTip": "mod_reroll_1s_to_wound_tooltip"
   },
   {
     "Id": 4,
     "Name": "mod_reroll_all_to_wound",
-    "ToolTip": "Each time an attack is made, you can re-roll that attack's Wound roll"
+    "ToolTip": "mod_reroll_all_to_wound_tooltip"
   },
   {
     "Id": 5,
     "Name": "mod_lethal_hits",
-    "ToolTip": "Each time an attack is made, a Critical Hit automatically wounds the target"
+    "ToolTip": "mod_lethal_hits_tooltip"
   },
   {
     "Id": 6,
     "Name": "mod_sustained_hits",
-    "ToolTip": "Each Critical Hit scores X additional hits on the target"
+    "ToolTip": "mod_sustained_hits_tooltip"
   },
   {
     "Id": 7,
     "Name": "mod_devastating_wounds",
-    "ToolTip": "Saving throws cannot be made against Critical Wounds scored by this attack"
+    "ToolTip": "mod_devastating_wounds_tooltip"
   },
   {
     "Id": 8,
     "Name": "mod_minus_1_to_wound",
-    "ToolTip": "Subtract 1 from the Wound roll"
+    "ToolTip": "mod_minus_1_to_wound_tooltip"
   },
   {
     "Id": 9,
     "Name": "mod_anti_x",
-    "ToolTip": "An unmodified Wound roll of X+ against a target with the matching keyword scores a Critical Wound"
+    "ToolTip": "mod_anti_x_tooltip"
   },
   {
     "Id": 10,
     "Name": "mod_feel_no_pain",
-    "ToolTip": "Each time this model would lose a wound, roll one D6: if the result equals or exceeds X, that wound is not lost"
+    "ToolTip": "mod_feel_no_pain_tooltip"
   },
   {
     "Id": 11,
     "Name": "mod_invul_save",
-    "ToolTip": "Never modified by an attack's AP"
+    "ToolTip": "mod_invul_save_tooltip"
   },
   {
     "Id": 12,
     "Name": "mod_minus_1_damage",
-    "ToolTip": "Subtract 1 from Damage characteristic"
+    "ToolTip": "mod_minus_1_damage_tooltip"
   },
   {
     "Id": 13,
     "Name": "mod_half_damage",
-    "ToolTip": "Each time an attack is allocated to this model, halve the Damage characteristic of that attack"
+    "ToolTip": "mod_half_damage_tooltip"
   },
   {
     "Id": 14,
     "Name": "mod_plus_1_to_wound",
-    "ToolTip": "Add 1 to the Wound roll"
+    "ToolTip": "mod_plus_1_to_wound_tooltip"
   }
 ]

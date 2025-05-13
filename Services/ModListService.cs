@@ -37,7 +37,7 @@ namespace WhmCalcMaui.Services
 
                 var tempCollection = await JsonSerializer.DeserializeAsync<ObservableCollection<ModificatorModel>>(stream);
 
-                foreach (var mod in tempCollection)
+                foreach (var mod in tempCollection!)
                 {
                     ModificatorsList.Add(mod);
                 }
