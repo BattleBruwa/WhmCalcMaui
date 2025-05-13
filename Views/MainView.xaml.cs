@@ -1,12 +1,6 @@
-using Microsoft.Maui.Controls;
+using WhmCalcMaui.Services.Localization;
 using WhmCalcMaui.ViewModels;
 using WhmCalcMaui.Views.CustomControls;
-using System.Collections.Specialized;
-using WhmCalcMaui.Resources.Localization;
-using WhmCalcMaui.Services.Localization;
-using System.Diagnostics;
-using CommunityToolkit.Maui.Behaviors;
-using WhmCalcMaui.Models;
 
 namespace WhmCalcMaui.Views;
 

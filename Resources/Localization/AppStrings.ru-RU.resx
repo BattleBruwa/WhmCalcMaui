@@ -246,6 +246,18 @@
   <data name="popup_type_warning" xml:space="preserve">
     <value>Внимание</value>
   </data>
+  <data name="separator_attacker" xml:space="preserve">
+    <value>Атакующий:</value>
+  </data>
+  <data name="separator_modificators" xml:space="preserve">
+    <value>Модификаторы:</value>
+  </data>
+  <data name="separator_result" xml:space="preserve">
+    <value>Результат:</value>
+  </data>
+  <data name="separator_target" xml:space="preserve">
+    <value>Цель:</value>
+  </data>
   <data name="textbox_armorpen" xml:space="preserve">
     <value>Пробивание брони</value>
   </data>

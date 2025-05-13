@@ -18,9 +18,9 @@
 
         <!--Аутпут грид-->
         <Grid ColumnDefinitions="*,*">
-            <Label Text="Result:"
+            <Label Text="{locale:Translate separator_result}"
                    Style="{StaticResource labelStyle}"
-                   FontSize="Medium"
+                   FontSize="{OnIdiom Medium, Desktop=Small}"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Start"
                    Grid.Column="0" />
@@ -124,9 +124,9 @@
                                    VerticalOptions="Start" />
         </Grid>
         <!--Мод грид-->
-        <Label Text="Modificators:"
+        <Label Text="{locale:Translate separator_modificators}"
                Style="{StaticResource labelStyle}"
-               FontSize="Medium"
+               FontSize="{OnIdiom Medium, Desktop=Small}"
                FontAttributes="Bold"
                HorizontalTextAlignment="Start" />
 
@@ -231,9 +231,9 @@
                                       Grid.Row="6" />
         </Grid>
         <!--Таргет грид-->
-        <Label Text="Target:"
+        <Label Text="{locale:Translate separator_target}"
                Style="{StaticResource labelStyle}"
-               FontSize="Medium"
+               FontSize="{OnIdiom Medium, Desktop=Small}"
                FontAttributes="Bold"
                HorizontalTextAlignment="Start" />
 
@@ -312,9 +312,9 @@
                                    Keyboard="Numeric" />
         </Grid>
         <!--Инпут грид-->
-        <Label Text="Attacker:"
+        <Label Text="{locale:Translate separator_attacker}"
                Style="{StaticResource labelStyle}"
-               FontSize="Medium"
+               FontSize="{OnIdiom Medium, Desktop=Small}"
                FontAttributes="Bold"
                HorizontalTextAlignment="Start" />
 

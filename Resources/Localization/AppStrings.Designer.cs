@@ -448,6 +448,42 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attacker:.
+        /// </summary>
+        internal static string separator_attacker {
+            get {
+                return ResourceManager.GetString("separator_attacker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modificators:.
+        /// </summary>
+        internal static string separator_modificators {
+            get {
+                return ResourceManager.GetString("separator_modificators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Result:.
+        /// </summary>
+        internal static string separator_result {
+            get {
+                return ResourceManager.GetString("separator_result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target:.
+        /// </summary>
+        internal static string separator_target {
+            get {
+                return ResourceManager.GetString("separator_target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ArmorPen.
         /// </summary>
         internal static string textbox_armorpen {

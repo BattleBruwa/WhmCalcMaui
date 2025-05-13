@@ -289,6 +289,22 @@
     <value>Warning</value>
     <comment>Warning</comment>
   </data>
+  <data name="separator_attacker" xml:space="preserve">
+    <value>Attacker:</value>
+    <comment>Attacker:</comment>
+  </data>
+  <data name="separator_modificators" xml:space="preserve">
+    <value>Modificators:</value>
+    <comment>Modificators:</comment>
+  </data>
+  <data name="separator_result" xml:space="preserve">
+    <value>Result:</value>
+    <comment>Result:</comment>
+  </data>
+  <data name="separator_target" xml:space="preserve">
+    <value>Target:</value>
+    <comment>Target:</comment>
+  </data>
   <data name="textbox_armorpen" xml:space="preserve">
     <value>ArmorPen</value>
     <comment>ArmorPen</comment>
