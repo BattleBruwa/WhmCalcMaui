@@ -309,13 +309,37 @@
     <value>ArmorPen</value>
     <comment>ArmorPen</comment>
   </data>
+  <data name="textbox_armorpen_tooltip" xml:space="preserve">
+    <value>Represents how effective the attack is against armour</value>
+    <comment>Represents how effective the attack is against armour</comment>
+  </data>
+  <data name="textbox_armorpen_tooltip_error" xml:space="preserve">
+    <value>Must be a number between 0 and 6</value>
+    <comment>Must be a number between 0 and 6</comment>
+  </data>
   <data name="textbox_attacks" xml:space="preserve">
     <value>Attacks</value>
     <comment>Attacks</comment>
   </data>
+  <data name="textbox_attacks_tooltip" xml:space="preserve">
+    <value>The amount of shots or strikes your weapon gets</value>
+    <comment>The amount of shots or strikes your weapon gets</comment>
+  </data>
+  <data name="textbox_attacks_tooltip_error" xml:space="preserve">
+    <value>Must be a number between 0 and 99, an xDx or xDx + x expression</value>
+    <comment>Must be a number between 0 and 99, an xDx or xDx + x expression</comment>
+  </data>
   <data name="textbox_damage" xml:space="preserve">
     <value>Damage</value>
     <comment>Damage</comment>
+  </data>
+  <data name="textbox_damage_tooltip" xml:space="preserve">
+    <value>The amount of damage inflicted by a succesful wound</value>
+    <comment>The amount of damage inflicted by a succesful wound</comment>
+  </data>
+  <data name="textbox_damage_tooltip_error" xml:space="preserve">
+    <value>Must be a number between 0 and 99, an xDx or xDx + x expression</value>
+    <comment>Must be a number between 0 and 99, an xDx or xDx + x expression</comment>
   </data>
   <data name="textbox_deadmodels" xml:space="preserve">
     <value>Dead Models</value>
@@ -341,6 +365,14 @@
     <value>Strength</value>
     <comment>Strength</comment>
   </data>
+  <data name="textbox_strength_tooltip" xml:space="preserve">
+    <value>How likely the weapon is to wound a foe</value>
+    <comment>How likely the weapon is to wound a foe</comment>
+  </data>
+  <data name="textbox_strength_tooltip_error" xml:space="preserve">
+    <value>Must be a number between 0 and 29</value>
+    <comment>Must be a number between 0 and 29</comment>
+  </data>
   <data name="textbox_sushits" xml:space="preserve">
     <value>Sus Hits</value>
     <comment>Sus Hits</comment>
@@ -360,6 +392,14 @@
   <data name="textbox_weaponskill" xml:space="preserve">
     <value>Skill</value>
     <comment>Skill</comment>
+  </data>
+  <data name="textbox_weaponskill_tooltip" xml:space="preserve">
+    <value>How accurate your attacks are</value>
+    <comment>How accurate your attacks are</comment>
+  </data>
+  <data name="textbox_weaponskill_tooltip_error" xml:space="preserve">
+    <value>Must be a number between 0 and 6 where 0 is autohit</value>
+    <comment>Must be a number between 0 and 6 where 0 is autohit</comment>
   </data>
   <data name="textbox_wounds" xml:space="preserve">
     <value>Wounds</value>

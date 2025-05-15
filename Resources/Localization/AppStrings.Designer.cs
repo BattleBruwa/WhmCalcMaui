@@ -493,6 +493,24 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Represents how effective the attack is against armour.
+        /// </summary>
+        internal static string textbox_armorpen_tooltip {
+            get {
+                return ResourceManager.GetString("textbox_armorpen_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be a number between 0 and 6.
+        /// </summary>
+        internal static string textbox_armorpen_tooltip_error {
+            get {
+                return ResourceManager.GetString("textbox_armorpen_tooltip_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attacks.
         /// </summary>
         internal static string textbox_attacks {
@@ -502,11 +520,47 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The amount of shots or strikes your weapon gets.
+        /// </summary>
+        internal static string textbox_attacks_tooltip {
+            get {
+                return ResourceManager.GetString("textbox_attacks_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be a number between 0 and 99, an xDx or xDx + x expression.
+        /// </summary>
+        internal static string textbox_attacks_tooltip_error {
+            get {
+                return ResourceManager.GetString("textbox_attacks_tooltip_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Damage.
         /// </summary>
         internal static string textbox_damage {
             get {
                 return ResourceManager.GetString("textbox_damage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The amount of damage inflicted by a succesful wound.
+        /// </summary>
+        internal static string textbox_damage_tooltip {
+            get {
+                return ResourceManager.GetString("textbox_damage_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be a number between 0 and 99, an xDx or xDx + x expression.
+        /// </summary>
+        internal static string textbox_damage_tooltip_error {
+            get {
+                return ResourceManager.GetString("textbox_damage_tooltip_error", resourceCulture);
             }
         }
         
@@ -565,6 +619,24 @@ namespace WhmCalcMaui.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How likely the weapon is to wound a foe.
+        /// </summary>
+        internal static string textbox_strength_tooltip {
+            get {
+                return ResourceManager.GetString("textbox_strength_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be a number between 0 and 29.
+        /// </summary>
+        internal static string textbox_strength_tooltip_error {
+            get {
+                return ResourceManager.GetString("textbox_strength_tooltip_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sus Hits.
         /// </summary>
         internal static string textbox_sushits {
@@ -606,6 +678,24 @@ namespace WhmCalcMaui.Resources.Localization {
         internal static string textbox_weaponskill {
             get {
                 return ResourceManager.GetString("textbox_weaponskill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How accurate your attacks are.
+        /// </summary>
+        internal static string textbox_weaponskill_tooltip {
+            get {
+                return ResourceManager.GetString("textbox_weaponskill_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be a number between 0 and 6 where 0 is autohit.
+        /// </summary>
+        internal static string textbox_weaponskill_tooltip_error {
+            get {
+                return ResourceManager.GetString("textbox_weaponskill_tooltip_error", resourceCulture);
             }
         }
         

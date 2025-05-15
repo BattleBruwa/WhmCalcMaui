@@ -45,12 +45,6 @@
                            Text="{locale:Translate btn_lang_change}" />
                 </customViews:ButtonView>
 
-                <!--<Button Text="Lang"
-                        Command="{Binding ChangeLanguageCommand}"
-                        HorizontalOptions="End" />-->
-                <!--<Button Text="Theme"
-                        Command="{Binding ChangeAppThemeCommand}"
-                        HorizontalOptions="Start" />-->
             </HorizontalStackLayout>
         </Grid>
 
@@ -130,7 +124,8 @@
                FontAttributes="Bold"
                HorizontalTextAlignment="Start" />
 
-        <Grid x:Name="modGrid" HeightRequest="284"
+        <Grid x:Name="modGrid"
+              HeightRequest="284"
               ColumnDefinitions="*,*"
               RowDefinitions="*,*,*,*,*,*,*"
               RowSpacing="2"
@@ -138,7 +133,7 @@
             <!--рр 1 хит-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Grid.Column="0"
-                                      Grid.Row="0"/>
+                                      Grid.Row="0" />
             <!--рр хит-->
             <customViews:CheckBoxView x:DataType="models:ModificatorModel"
                                       Grid.Column="0"
@@ -301,15 +296,18 @@
             <customViews:EntryView Text="{Binding TargetT}"
                                    Grid.Column="1"
                                    Grid.Row="1"
-                                   Keyboard="Numeric" />
+                                   Keyboard="Numeric"
+                                   ValidationExpression="^([0-9]|[1-2][0-9])$" />
             <customViews:EntryView Text="{Binding TargetSv}"
                                    Grid.Column="2"
                                    Grid.Row="1"
-                                   Keyboard="Numeric" />
+                                   Keyboard="Numeric"
+                                   ValidationExpression="^[2-7]$" />
             <customViews:EntryView Text="{Binding TargetW}"
                                    Grid.Column="3"
                                    Grid.Row="1"
-                                   Keyboard="Numeric" />
+                                   Keyboard="Numeric"
+                                   ValidationExpression="^([0-9]|[1-9][0-9])$" />
         </Grid>
         <!--Инпут грид-->
         <Label Text="{locale:Translate separator_attacker}"
@@ -355,23 +353,32 @@
                                    Grid.Column="0"
                                    Grid.Row="1"
                                    Keyboard="Plain"
-                                   ValidationExpression="^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$"/>
+                                   ToolTipProperties.Text="{locale:Translate textbox_attacks_tooltip}"
+                                   ValidationExpression="^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$"
+                                   ValidationErrorMessage=""/>
             <customViews:EntryView Text="{Binding AttackerWS}"
                                    Grid.Column="1"
                                    Grid.Row="1"
-                                   Keyboard="Numeric" />
+                                   Keyboard="Numeric"
+                                   ToolTipProperties.Text="{locale:Translate textbox_weaponskill_tooltip}"
+                                   ValidationExpression="^[0-6]$" />
             <customViews:EntryView Text="{Binding AttackerS}"
                                    Grid.Column="2"
                                    Grid.Row="1"
-                                   Keyboard="Numeric" />
+                                   Keyboard="Numeric"
+                                   ToolTipProperties.Text="{locale:Translate textbox_strength_tooltip}"
+                                   ValidationExpression="^([0-9]|[1-2][0-9])$" />
             <customViews:EntryView Text="{Binding AttackerAP}"
                                    Grid.Column="3"
                                    Grid.Row="1"
-                                   Keyboard="Numeric" />
+                                   Keyboard="Numeric"
+                                   ToolTipProperties.Text="{locale:Translate textbox_armorpen_tooltip}"
+                                   ValidationExpression="^[0-6]$" />
             <customViews:EntryView Text="{Binding AttackerD}"
                                    Grid.Column="4"
                                    Grid.Row="1"
                                    Keyboard="Plain"
+                                   ToolTipProperties.Text="{locale:Translate textbox_damage_tooltip}"
                                    ValidationExpression="^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$" />
         </Grid>
 

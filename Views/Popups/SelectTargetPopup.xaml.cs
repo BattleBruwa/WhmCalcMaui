@@ -20,9 +20,9 @@ public partial class SelectTargetPopup : Popup
 
         collView.ItemsSource = targets;
 
-        if (selectedTarget is not null && targets.Where(t => t.TargetName == selectedTarget.TargetName).Any())
+        if (selectedTarget is not null && targets.Any(t => t.TargetName == selectedTarget.TargetName))
         {
-            collView.SelectedItem = selectedTarget;
+            collView.SelectedItem = targets.First(t => t.TargetName == selectedTarget.TargetName);
         }
 
     }

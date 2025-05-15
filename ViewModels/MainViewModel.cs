@@ -61,7 +61,7 @@ namespace WhmCalcMaui.ViewModels
             initTask = InitTargetsAsync();
             Attacker.PropertyChanged += Attacker_Or_Target_PropertyChanged;
             ModListService.PickedMods.CollectionChanged += PickedMods_CollectionChanged;
-            SelectedTarget = new TargetModel();
+            SelectedTarget ??= new TargetModel();
             SelectedTarget.PropertyChanged += Attacker_Or_Target_PropertyChanged;
             SetAndroidNavAndStatusBarsColors();
             // Тест ----------------------
@@ -339,6 +339,11 @@ namespace WhmCalcMaui.ViewModels
                 {
                     Targets.Add(t);
                 }
+            }
+
+            if (Targets.Any())
+            {
+                SelectedTarget?.CopyProps(Targets.First());
             }
         }
 

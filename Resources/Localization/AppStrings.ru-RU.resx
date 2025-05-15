@@ -261,11 +261,29 @@
   <data name="textbox_armorpen" xml:space="preserve">
     <value>Пробивание брони</value>
   </data>
+  <data name="textbox_armorpen_tooltip" xml:space="preserve">
+    <value>На сколько атака эффективна против защиты</value>
+  </data>
+  <data name="textbox_armorpen_tooltip_error" xml:space="preserve">
+    <value>Должно быть число от 0 до 6</value>
+  </data>
   <data name="textbox_attacks" xml:space="preserve">
     <value>Атаки</value>
   </data>
+  <data name="textbox_attacks_tooltip" xml:space="preserve">
+    <value>Количество выстрелов или ударов</value>
+  </data>
+  <data name="textbox_attacks_tooltip_error" xml:space="preserve">
+    <value>Должно быть число от 0 до 99 или выражение вида xDx (+x)</value>
+  </data>
   <data name="textbox_damage" xml:space="preserve">
     <value>Урон</value>
+  </data>
+  <data name="textbox_damage_tooltip" xml:space="preserve">
+    <value>Количество урона, наносимого каждой успешной раной</value>
+  </data>
+  <data name="textbox_damage_tooltip_error" xml:space="preserve">
+    <value>Должно быть число от 0 до 99 или выражение вида xDx (+x)</value>
   </data>
   <data name="textbox_deadmodels" xml:space="preserve">
     <value>Убито моделей</value>
@@ -285,6 +303,12 @@
   <data name="textbox_strength" xml:space="preserve">
     <value>Сила</value>
   </data>
+  <data name="textbox_strength_tooltip" xml:space="preserve">
+    <value>На сколько вероятно ранение цели</value>
+  </data>
+  <data name="textbox_strength_tooltip_error" xml:space="preserve">
+    <value>Должно быть число от 0 до 29</value>
+  </data>
   <data name="textbox_sushits" xml:space="preserve">
     <value>Доп. поподания</value>
   </data>
@@ -299,6 +323,12 @@
   </data>
   <data name="textbox_weaponskill" xml:space="preserve">
     <value>Меткость</value>
+  </data>
+  <data name="textbox_weaponskill_tooltip" xml:space="preserve">
+    <value>На сколько точны атаки</value>
+  </data>
+  <data name="textbox_weaponskill_tooltip_error" xml:space="preserve">
+    <value>Должно быть число от 0 до 6, где 0 - автопоподания</value>
   </data>
   <data name="textbox_wounds" xml:space="preserve">
     <value>Раны</value>

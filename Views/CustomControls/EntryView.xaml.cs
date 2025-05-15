@@ -11,7 +11,7 @@ public partial class EntryView : ContentView
     public string Text
     {
         get => (string)GetValue(TextProperty);
-        set 
+        set
         {
             if (validationRegex is not null)
             {
@@ -71,6 +71,10 @@ public partial class EntryView : ContentView
     private string? validationString;
     private Regex? validationRegex;
 
+    public string ValidationErrorMessage { get; set; }
+
+    //private object? toolTipNoError;
+
     public EntryView()
     {
         InitializeComponent();
@@ -80,5 +84,16 @@ public partial class EntryView : ContentView
     {
         string visualState = hasError ? "HasError" : "Normal";
         VisualStateManager.GoToState(this, visualState);
+
+        //toolTipNoError = ToolTipProperties.GetText(this);
+
+        //if (hasError)
+        //{
+        //    ToolTipProperties.SetText(this, ValidationErrorMessage);
+        //}
+        //else
+        //{
+        //    toolTipNoError = null;
+        //}
     }
 }
