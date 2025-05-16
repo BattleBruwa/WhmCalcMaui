@@ -6,23 +6,18 @@ namespace WhmCalcMaui.Models
     public partial class AttackerModel : ObservableObject
     {
         [ObservableProperty]
-        [property: StringLength(10)]
         private string attackerA = "0";
 
         [ObservableProperty]
-        [property: MaxLength(1)]
         private int attackerWS;
 
         [ObservableProperty]
-        [property: MaxLength(2)]
         private int attackerS;
 
         [ObservableProperty]
-        [property: MaxLength(1)]
         private int attackerAP;
 
         [ObservableProperty]
-        [property: StringLength(10)]
         private string attackerD = "0";
 
 

@@ -8,19 +8,15 @@ namespace WhmCalcMaui.Models
     {
         [ObservableProperty]
         [property: PrimaryKey]
-        //[property: StringLength(1, 20)]
         private string targetName;
 
         [ObservableProperty]
-        //[property: MaxLength(3)]
         private int targetT;
 
         [ObservableProperty]
-        //[property: MaxLength(1)]
         private int targetSv;
 
         [ObservableProperty]
-        //[property: MaxLength(3)]
         private int targetW;
 
         [Ignore]

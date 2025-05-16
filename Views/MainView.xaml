@@ -234,6 +234,7 @@
 
         <Grid ColumnDefinitions="*, *, *, *, *"
               RowDefinitions="1*, 2*, 2*"
+              x:Name="targetGrid"
               BindingContext="{Binding SelectedTarget}"
               RowSpacing="{StaticResource spacing}"
               ColumnSpacing="{StaticResource spacing}"
@@ -353,32 +354,36 @@
                                    Grid.Column="0"
                                    Grid.Row="1"
                                    Keyboard="Plain"
-                                   ToolTipProperties.Text="{locale:Translate textbox_attacks_tooltip}"
-                                   ValidationExpression="^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$"
-                                   ValidationErrorMessage=""/>
+                                   TooltipText="{locale:Translate textbox_attacks_tooltip}"
+                                   ValidationErrorText="{locale:Translate textbox_attacks_tooltip_error}"
+                                   ValidationExpression="^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$" />
             <customViews:EntryView Text="{Binding AttackerWS}"
                                    Grid.Column="1"
                                    Grid.Row="1"
                                    Keyboard="Numeric"
-                                   ToolTipProperties.Text="{locale:Translate textbox_weaponskill_tooltip}"
+                                   TooltipText="{locale:Translate textbox_weaponskill_tooltip}"
+                                   ValidationErrorText="{locale:Translate textbox_weaponskill_tooltip_error}"
                                    ValidationExpression="^[0-6]$" />
             <customViews:EntryView Text="{Binding AttackerS}"
                                    Grid.Column="2"
                                    Grid.Row="1"
                                    Keyboard="Numeric"
-                                   ToolTipProperties.Text="{locale:Translate textbox_strength_tooltip}"
+                                   TooltipText="{locale:Translate textbox_strength_tooltip}"
+                                   ValidationErrorText="{locale:Translate textbox_strength_tooltip_error}"
                                    ValidationExpression="^([0-9]|[1-2][0-9])$" />
             <customViews:EntryView Text="{Binding AttackerAP}"
                                    Grid.Column="3"
                                    Grid.Row="1"
                                    Keyboard="Numeric"
-                                   ToolTipProperties.Text="{locale:Translate textbox_armorpen_tooltip}"
+                                   TooltipText="{locale:Translate textbox_armorpen_tooltip}"
+                                   ValidationErrorText="{locale:Translate textbox_armorpen_tooltip_error}"
                                    ValidationExpression="^[0-6]$" />
             <customViews:EntryView Text="{Binding AttackerD}"
                                    Grid.Column="4"
                                    Grid.Row="1"
                                    Keyboard="Plain"
-                                   ToolTipProperties.Text="{locale:Translate textbox_damage_tooltip}"
+                                   TooltipText="{locale:Translate textbox_damage_tooltip}"
+                                   ValidationErrorText="{locale:Translate textbox_damage_tooltip_error}"
                                    ValidationExpression="^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$" />
         </Grid>
 

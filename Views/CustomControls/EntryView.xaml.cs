@@ -17,19 +17,58 @@ public partial class EntryView : ContentView
             {
                 if (validationRegex.IsMatch(value))
                 {
+                    if (HasError)
+                        HasError = false;
                     SetValue(TextProperty, value);
-                    GoToState(false);
+                    GoToState(HasError);
                 }
                 else
                 {
-                    GoToState(true);
+                    if (!HasError)
+                        HasError = true;
+                    GoToState(HasError);
                 }
             }
             else
             {
+                if (HasError)
+                    HasError = false;
                 SetValue(TextProperty, value);
             }
         }
+    }
+
+    private bool hasError;
+    public bool HasError
+    {
+        get => hasError;
+        set
+        {
+            if (hasError != value)
+            {
+                hasError = value;
+                OnPropertyChanged(nameof(HasError));
+            }
+        }
+    }
+
+    public static readonly BindableProperty TooltipTextProperty =
+  BindableProperty.Create(nameof(TooltipText), typeof(string), typeof(EntryView), null);
+
+    public string TooltipText
+    {
+        get => (string)GetValue(TooltipTextProperty);
+        set => SetValue(TooltipTextProperty, value);
+    }
+
+
+    public static readonly BindableProperty ValidationErrorTextProperty =
+  BindableProperty.Create(nameof(ValidationErrorText), typeof(string), typeof(EntryView), null);
+
+    public string ValidationErrorText
+    {
+        get => (string)GetValue(ValidationErrorTextProperty);
+        set => SetValue(ValidationErrorTextProperty, value);
     }
 
     public static readonly BindableProperty IsReadOnlyProperty =
@@ -70,14 +109,14 @@ public partial class EntryView : ContentView
 
     private string? validationString;
     private Regex? validationRegex;
-
-    public string ValidationErrorMessage { get; set; }
-
-    //private object? toolTipNoError;
-
     public EntryView()
     {
         InitializeComponent();
+
+        if (TooltipText is not null)
+        {
+            ToolTipProperties.SetText(this, TooltipText);
+        }
     }
 
     private void GoToState(bool hasError)
@@ -85,15 +124,25 @@ public partial class EntryView : ContentView
         string visualState = hasError ? "HasError" : "Normal";
         VisualStateManager.GoToState(this, visualState);
 
-        //toolTipNoError = ToolTipProperties.GetText(this);
-
-        //if (hasError)
-        //{
-        //    ToolTipProperties.SetText(this, ValidationErrorMessage);
-        //}
-        //else
-        //{
-        //    toolTipNoError = null;
-        //}
+        // Если тултип не установлен, менять нечего
+        if (TooltipText is null)
+        {
+            return;
+        }
+        
+        if (hasError)
+        {
+            if ((string)ToolTipProperties.GetText(this) != ValidationErrorText)
+            {
+                ToolTipProperties.SetText(this, ValidationErrorText);
+            }
+        }
+        else
+        {
+            if ((string)ToolTipProperties.GetText(this) != TooltipText)
+            {
+                ToolTipProperties.SetText(this, TooltipText);
+            }
+        }
     }
 }
