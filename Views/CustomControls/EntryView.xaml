@@ -34,7 +34,7 @@
                HorizontalTextAlignment="Center"
                FontAttributes="Bold"
                FontSize="Large"
-               Text="{Binding Text}"
+               Text="{Binding InternalText}"
                IsReadOnly="{Binding IsReadOnly}"
                Keyboard="{Binding Keyboard}"
                Background="{AppThemeBinding Light={StaticResource BoxesInnerColorLight}, Dark={StaticResource BoxesInnerColorDark}}">

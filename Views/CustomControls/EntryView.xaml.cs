@@ -5,37 +5,60 @@ namespace WhmCalcMaui.Views.CustomControls;
 
 public partial class EntryView : ContentView
 {
+    public static readonly BindableProperty InternalTextProperty =
+  BindableProperty.Create(nameof(InternalText), typeof(string), typeof(EntryView), string.Empty, BindingMode.TwoWay, propertyChanged:OnInternalTextChanged);
+
+    private static void OnInternalTextChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        EntryView entry = (EntryView)bindable;
+
+        if (entry.validationRegex is not null)
+        {
+            if (entry.validationRegex.IsMatch((string)newValue))
+            {
+                if (entry.HasError)
+                    entry.HasError = false;
+                entry.Text = (string)newValue;
+                entry.GoToState(entry.HasError);
+            }
+            else
+            {
+                if (!entry.HasError)
+                    entry.HasError = true;
+                entry.GoToState(entry.HasError);
+            }
+        }
+        else
+        {
+            if (entry.HasError)
+                entry.HasError = false;
+            entry.Text = (string)newValue;
+        }
+    }
+
+    public string InternalText
+    {
+        get => (string)GetValue(InternalTextProperty);
+        set => SetValue(InternalTextProperty, value);
+    }
+
     public static readonly BindableProperty TextProperty =
-  BindableProperty.Create(nameof(Text), typeof(string), typeof(EntryView), string.Empty, BindingMode.TwoWay);
+  BindableProperty.Create(nameof(Text), typeof(string), typeof(EntryView), string.Empty, BindingMode.TwoWay, propertyChanged:OnTextChanged);
+
+    private static void OnTextChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        EntryView entry = (EntryView)bindable;
+
+        if(entry.InternalText != (string)newValue)
+        {
+            entry.InternalText = (string)newValue;
+        }
+    }
 
     public string Text
     {
         get => (string)GetValue(TextProperty);
-        set
-        {
-            if (validationRegex is not null)
-            {
-                if (validationRegex.IsMatch(value))
-                {
-                    if (HasError)
-                        HasError = false;
-                    SetValue(TextProperty, value);
-                    GoToState(HasError);
-                }
-                else
-                {
-                    if (!HasError)
-                        HasError = true;
-                    GoToState(HasError);
-                }
-            }
-            else
-            {
-                if (HasError)
-                    HasError = false;
-                SetValue(TextProperty, value);
-            }
-        }
+        set => SetValue(TextProperty, value);
     }
 
     private bool hasError;
