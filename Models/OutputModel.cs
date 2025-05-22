@@ -5,6 +5,8 @@ namespace WhmCalcMaui.Models
 {
     public partial class OutputModel : ObservableObject
     {
+        private const int roundingPrecision = 1;
+
 		private double attacks;
         /// <summary>
         /// Количество атак.
@@ -12,7 +14,7 @@ namespace WhmCalcMaui.Models
 		public double Attacks
 		{
 			get { return attacks; }
-			set { SetProperty(ref attacks, Math.Round(value, 2)); }
+			set { SetProperty(ref attacks, Math.Round(value, roundingPrecision)); }
 		}
 
         private double natHits;
@@ -22,7 +24,7 @@ namespace WhmCalcMaui.Models
         public double NatHits
         {
             get { return natHits; }
-            set { SetProperty(ref natHits, Math.Round(value, 2)); }
+            set { SetProperty(ref natHits, Math.Round(value, roundingPrecision)); }
         }
 
         private double susHits;
@@ -32,7 +34,7 @@ namespace WhmCalcMaui.Models
         public double SustainedHits
         {
             get { return susHits; }
-            set { SetProperty(ref susHits, Math.Round(value, 2)); }
+            set { SetProperty(ref susHits, Math.Round(value, roundingPrecision)); }
         }
 
         /// <summary>
@@ -50,7 +52,7 @@ namespace WhmCalcMaui.Models
         public double NatWounds
         {
             get { return natWounds; }
-            set { SetProperty(ref natWounds, Math.Round(value, 2)); }
+            set { SetProperty(ref natWounds, Math.Round(value, roundingPrecision)); }
         }
 
         private double autoWounds;
@@ -60,7 +62,7 @@ namespace WhmCalcMaui.Models
         public double AutoWounds
         {
             get { return autoWounds; }
-            set { SetProperty(ref autoWounds, Math.Round(value, 2)); }
+            set { SetProperty(ref autoWounds, Math.Round(value, roundingPrecision)); }
         }
 
         /// <summary>
@@ -78,7 +80,7 @@ namespace WhmCalcMaui.Models
         public double UnSavedWounds
         {
             get { return unSavedW; }
-            set { SetProperty(ref unSavedW, Math.Round(value, 2)); }
+            set { SetProperty(ref unSavedW, Math.Round(value, roundingPrecision)); }
         }
 
         private double devW;
@@ -88,7 +90,7 @@ namespace WhmCalcMaui.Models
         public double DevWounds
         {
             get { return devW; }
-            set { SetProperty(ref devW, Math.Round(value, 2)); }
+            set { SetProperty(ref devW, Math.Round(value, roundingPrecision)); }
         }
 
         private double dmgPerWound;
@@ -108,7 +110,7 @@ namespace WhmCalcMaui.Models
         public double TotalDamage
         {
             get { return totalD; }
-            set { SetProperty(ref totalD, Math.Round(value, 2)); }
+            set { SetProperty(ref totalD, Math.Round(value, roundingPrecision)); }
         }
 
         private int deadModels;

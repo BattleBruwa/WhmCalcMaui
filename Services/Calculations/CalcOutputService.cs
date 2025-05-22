@@ -217,7 +217,7 @@ namespace WhmCalcMaui.Services.Calculations
             output.UnSavedWounds = output.AllWounds - savedWounds;
         }
 
-        private void ResolveDeadModels(AttackerModel attacker, TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
+        private void ResolveDeadModelsAndTotalDamage(AttackerModel attacker, TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
         {
             DamagePerWound(attacker, output, mods);
 
@@ -229,6 +229,8 @@ namespace WhmCalcMaui.Services.Calculations
                 int fnpCon = fnpMod.Condition ?? 0;
                 // Урон с ФНП
                 double fnpDmg = Math.Round(output.DmgPerWound - (output.DmgPerWound * ((7f - fnpCon) / 6f)), 4);
+                // Полный урон с ФНП
+                output.TotalDamage = (output.UnSavedWounds + output.DevWounds) * fnpDmg;
                 // Если урон с фнп меньше хп цели
                 if (fnpDmg < target.TargetW)
                 {
@@ -271,6 +273,8 @@ namespace WhmCalcMaui.Services.Calculations
                 }
             }
             // Без ФНП
+            // Полный урон
+            output.TotalDamage = (output.UnSavedWounds + output.DevWounds) * output.DmgPerWound;
             // Если урон меньше, чем хп цели
             if (output.DmgPerWound < target.TargetW)
             {
@@ -313,10 +317,6 @@ namespace WhmCalcMaui.Services.Calculations
             }
         }
 
-        private void ResolveTotalDamage(OutputModel output)
-        {
-            output.TotalDamage = (output.UnSavedWounds + output.DevWounds) * output.DmgPerWound;
-        }
         #endregion
 
         public void CalculateOutput(AttackerModel attacker, TargetModel target, OutputModel output, ICollection<ModificatorModel> mods)
@@ -325,8 +325,7 @@ namespace WhmCalcMaui.Services.Calculations
             ResolveHits(attacker, output, mods);
             ResolveWounds(attacker, target, output, mods);
             ResolveSave(attacker, target, output, mods);
-            ResolveDeadModels(attacker, target, output, mods);
-            ResolveTotalDamage(output);
+            ResolveDeadModelsAndTotalDamage(attacker, target, output, mods);
         }
     }
 }
