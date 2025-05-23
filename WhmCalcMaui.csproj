@@ -130,10 +130,6 @@
 	  </EmbeddedResource>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Converters\" />
-	</ItemGroup>
-
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
 	  <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen">
 	    <Version>1.0.1.14</Version>

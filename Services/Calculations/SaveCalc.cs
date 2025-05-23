@@ -27,6 +27,11 @@ namespace WhmCalcMaui.Services.Calculations
             }
             // Если нет инвуля
             resultedRoll = attacker.AttackerAP + target.TargetSv;
+            // Если сейв > 6, то не ролится
+            if (resultedRoll > 6)
+            {
+                return 0;
+            }
             return DiceRoller.Roll(resultedRoll);
         }
     }

@@ -5,6 +5,7 @@
              xmlns:customViews="clr-namespace:WhmCalcMaui.Views.CustomControls"
              xmlns:models="clr-namespace:WhmCalcMaui.Models"
              xmlns:locale="clr-namespace:WhmCalcMaui.Services.Localization"
+             xmlns:converters="clr-namespace:WhmCalcMaui.Converters"
              xmlns:viewModels="clr-namespace:WhmCalcMaui.ViewModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:droid="clr-namespace:CommunityToolkit.Maui.PlatformConfiguration.AndroidSpecific;assembly=CommunityToolkit.Maui"
@@ -299,11 +300,11 @@
                                    Grid.Row="1"
                                    Keyboard="Numeric"
                                    ValidationExpression="^([0-9]|[1-2][0-9])$" />
-            <customViews:EntryView Text="{Binding TargetSv}"
+            <customViews:EntryView Text="{Binding TargetSv, Converter={converters:WeaponSkillConverter}}"
                                    Grid.Column="2"
                                    Grid.Row="1"
                                    Keyboard="Numeric"
-                                   ValidationExpression="^[2-7]$" />
+                                   ValidationExpression="^[2-7]\+{0,1}$" />
             <customViews:EntryView Text="{Binding TargetW}"
                                    Grid.Column="3"
                                    Grid.Row="1"
@@ -357,13 +358,13 @@
                                    TooltipText="{locale:Translate textbox_attacks_tooltip}"
                                    ValidationErrorText="{locale:Translate textbox_attacks_tooltip_error}"
                                    ValidationExpression="^([0-9]|[1-9][0-9]|(D|d)[36]|([1-9]|1[0-9])(D|d)[36]|(D|d)[36][+]([1-9]|1[0-9])|([1-9]|1[0-9])(D|d)[36][+]([1-9]|1[0-9]))$" />
-            <customViews:EntryView Text="{Binding AttackerWS}"
+            <customViews:EntryView Text="{Binding AttackerWS, Converter={converters:WeaponSkillConverter}}"
                                    Grid.Column="1"
                                    Grid.Row="1"
                                    Keyboard="Numeric"
                                    TooltipText="{locale:Translate textbox_weaponskill_tooltip}"
                                    ValidationErrorText="{locale:Translate textbox_weaponskill_tooltip_error}"
-                                   ValidationExpression="^[0-6]$" />
+                                   ValidationExpression="^[0-6]\+{0,1}$" />
             <customViews:EntryView Text="{Binding AttackerS}"
                                    Grid.Column="2"
                                    Grid.Row="1"
@@ -371,13 +372,13 @@
                                    TooltipText="{locale:Translate textbox_strength_tooltip}"
                                    ValidationErrorText="{locale:Translate textbox_strength_tooltip_error}"
                                    ValidationExpression="^([0-9]|[1-2][0-9])$" />
-            <customViews:EntryView Text="{Binding AttackerAP}"
+            <customViews:EntryView Text="{Binding AttackerAP, Converter={converters:ArmorPenConverter}}"
                                    Grid.Column="3"
                                    Grid.Row="1"
                                    Keyboard="Numeric"
                                    TooltipText="{locale:Translate textbox_armorpen_tooltip}"
                                    ValidationErrorText="{locale:Translate textbox_armorpen_tooltip_error}"
-                                   ValidationExpression="^[0-6]$" />
+                                   ValidationExpression="^-{0,1}[0-6]$" />
             <customViews:EntryView Text="{Binding AttackerD}"
                                    Grid.Column="4"
                                    Grid.Row="1"
