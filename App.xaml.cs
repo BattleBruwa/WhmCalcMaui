@@ -14,7 +14,15 @@ namespace WhmCalcMaui
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            var window = new Window(new AppShell());
+#if WINDOWS
+            int newHeight = 832;
+            int newWidth = 768;
+
+            window.Height = newHeight;
+            window.Width = newWidth;
+#endif
+            return window;
         }
 
         private void SetAppPreferences()
@@ -30,9 +38,15 @@ namespace WhmCalcMaui
 
             switch (appThemeCode)
             {
-                case "Dark": theme = AppTheme.Dark; break;
-                case "Light": theme = AppTheme.Light; break;
-                    default: theme = AppTheme.Dark; break;
+                case "Dark":
+                    theme = AppTheme.Dark;
+                    break;
+                case "Light":
+                    theme = AppTheme.Light;
+                    break;
+                default:
+                    theme = AppTheme.Dark;
+                    break;
             }
 
             Current.UserAppTheme = theme;

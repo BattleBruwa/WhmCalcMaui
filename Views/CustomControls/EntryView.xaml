@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhmCalcMaui.Views.CustomControls.EntryView"
              x:Name="this"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             HeightRequest="56">
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <ContentView.HeightRequest>
+        <OnIdiom x:TypeArguments="x:Double"
+                 Default="{StaticResource defaultSize}"
+                 Desktop="{StaticResource desktopSize}" />
+    </ContentView.HeightRequest>
 
     <VisualStateManager.VisualStateGroups>
         <VisualStateGroupList>
@@ -33,7 +37,7 @@
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center"
                FontAttributes="Bold"
-               FontSize="Large"
+               FontSize="{OnIdiom Large, Desktop=Small}"
                Text="{Binding InternalText}"
                IsReadOnly="{Binding IsReadOnly}"
                Keyboard="{Binding Keyboard}"

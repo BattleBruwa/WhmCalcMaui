@@ -244,8 +244,12 @@
             <!--Кнопка удаления цели-->
             <customViews:ButtonView x:Name="deleteTBtn"
                                     Grid.Row="2"
-                                    Grid.Column="0"
-                                    HeightRequest="56">
+                                    Grid.Column="0">
+                <customViews:ButtonView.HeightRequest>
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Default="{StaticResource defaultSize}"
+                             Desktop="{StaticResource desktopSize}" />
+                </customViews:ButtonView.HeightRequest>
                 <customViews:ButtonView.Content>
                     <Image Aspect="AspectFit"
                            Source="{AppThemeBinding Light=delete_t_icon_light.png, Dark=delete_t_icon_dark.png}"
@@ -263,8 +267,12 @@
             <!--Кнопка добавления цели-->
             <customViews:ButtonView x:Name="addTBtn"
                                     Grid.Row="2"
-                                    Grid.Column="4"
-                                    HeightRequest="56">
+                                    Grid.Column="4">
+                <customViews:ButtonView.HeightRequest>
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Default="{StaticResource defaultSize}"
+                             Desktop="{StaticResource desktopSize}" />
+                </customViews:ButtonView.HeightRequest>
                 <customViews:ButtonView.Content>
                     <Image Aspect="AspectFit"
                            Source="{AppThemeBinding Light=add_t_icon_light.png, Dark=add_t_icon_dark.png}"
