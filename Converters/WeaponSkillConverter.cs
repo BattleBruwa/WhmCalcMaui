@@ -24,7 +24,9 @@ namespace WhmCalcMaui.Converters
                 return string.Empty;
             }
 
-            return str.Split("+", StringSplitOptions.RemoveEmptyEntries).First();
+            var res = str.Split("+", StringSplitOptions.RemoveEmptyEntries).First();
+
+            return Int32.Parse(res);
         }
     }
 }

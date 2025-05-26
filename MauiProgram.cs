@@ -12,6 +12,8 @@ namespace WhmCalcMaui
     {
         public static MauiApp CreateMauiApp()
         {
+            
+
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -25,6 +27,15 @@ namespace WhmCalcMaui
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            // фикс краша на дроиде при использовании конвертора https://github.com/dotnet/maui/issues/25728
+#if ANDROID
+            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("DisableEmojiCompat", (handler, view) =>
+                {
+                    handler.PlatformView.EmojiCompatEnabled = false;
+                }); 
+#endif
+
             return builder.Build();
         }
 
